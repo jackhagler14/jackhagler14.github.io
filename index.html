@@ -943,6 +943,18 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent;
 }
 
+.education__card ul ul li::before {
+  border: none;
+  background: none;
+  content: '–';
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  top: 0;
+}
+
 .cert-download {
   display: inline-block;
   font-size: 0.75rem;
@@ -1464,7 +1476,17 @@ h1, h2, h3, h4, h5, h6 {
             <h3>Education</h3>
             <ul>
               <li><strong>Kennesaw State University</strong><br>Bachelor of Science, Public Relations, 2017 – 2020<br>Published Researcher/Co-Author — NCUR 2019</li>
-              <li><strong>Georgia Southern University</strong><br>Public Relations, 2015 – 2017<br>Re-Founding Father, Phi Delta Theta<br>• Executive Officer - Scholarship Chairman<br>• Bylaws Chairman</li>
+              <li><strong>Georgia Southern University</strong>
+                <ul>
+                  <li>Public Relations, 2015 – 2017</li>
+                  <li>Re-Founding Father, Phi Delta Theta
+                    <ul>
+                      <li>Executive Officer - Scholarship Chairman</li>
+                      <li>Bylaws Chairman</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </div>
           <div class="education__card reveal reveal-delay-1">

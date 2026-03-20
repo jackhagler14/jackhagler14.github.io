@@ -1107,7 +1107,13 @@ h1, h2, h3, h4, h5, h6 {
    MUSIC SECTION
    ============================================ */
 .music__content {
-  max-width: 660px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .music__content { grid-template-columns: 1fr; }
 }
 
 .music__embed {
@@ -1853,6 +1859,9 @@ h1, h2, h3, h4, h5, h6 {
         <div class="music__content reveal">
           <div class="music__embed">
             <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;overflow:hidden;border-radius:16px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/love-heat-death/1723977212"></iframe>
+          </div>
+          <div class="music__embed">
+            <iframe style="border-radius:16px" src="https://open.spotify.com/embed/album/5AViQHleIvVDSnC3CLV89E?utm_source=generator" width="100%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
         </div>
       </div>

@@ -1924,11 +1924,13 @@ h1, h2, h3, h4, h5, h6 {
               </a>
             </div>
           </div>
-          <form class="contact__form reveal reveal-delay-1" id="contactForm">
+          <form class="contact__form reveal reveal-delay-1" id="contactForm" action="https://formsubmit.co/jackhagler14@gmail.com" method="POST">
             <input type="text" name="name" placeholder="Your Name" required aria-label="Your name">
             <input type="email" name="email" placeholder="Your Email" required aria-label="Your email">
-            <input type="text" name="subject" placeholder="Subject" aria-label="Subject">
+            <input type="text" name="_subject" placeholder="Subject" aria-label="Subject">
             <textarea name="message" placeholder="Your Message" required aria-label="Your message"></textarea>
+            <input type="hidden" name="_next" value="https://jackhagler.com">
+            <input type="hidden" name="_captcha" value="false">
             <button type="submit" class="btn">Send Message</button>
           </form>
           <div class="form-success" id="formSuccess">
@@ -2354,10 +2356,11 @@ h1, h2, h3, h4, h5, h6 {
     const form = document.getElementById('contactForm');
     const success = document.getElementById('formSuccess');
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      form.style.display = 'none';
-      success.classList.add('show');
+    form.addEventListener('submit', function() {
+      setTimeout(function() {
+        form.style.display = 'none';
+        success.classList.add('show');
+      }, 100);
     });
   })();
   </script>

@@ -1125,6 +1125,86 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-lg);
 }
 
+.project-block {
+  margin-bottom: var(--space-16);
+}
+
+.project-block:last-child {
+  margin-bottom: 0;
+}
+
+.project-block__header {
+  margin-bottom: var(--space-8);
+}
+
+.project-block__label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+.project-block__title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-2);
+}
+
+.project-block__subtitle {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.countdown-container {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-12) var(--space-8);
+  text-align: center;
+}
+
+.countdown-date {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.countdown-unit__number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+}
+
+.countdown-unit__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
 /* ============================================
    CONTACT SECTION
    ============================================ */
@@ -1593,15 +1673,49 @@ h1, h2, h3, h4, h5, h6 {
         <div class="section__header reveal">
           <p class="section__label">Project</p>
           <h2 class="section__title">Music I Contributed To</h2>
-          <p class="section__subtitle">A&R</p>
         </div>
-        <div class="music__content reveal">
+
+        <!-- Executive Producer -->
+        <div class="project-block reveal">
+          <div class="project-block__header">
+            <p class="project-block__subtitle">Executive Producer</p>
+          </div>
+          <div class="countdown-container">
+            <p class="countdown-date">Coming 4/17/26</p>
+            <div class="countdown-timer" id="countdown">
+              <div class="countdown-unit">
+                <span class="countdown-unit__number" id="cd-days">00</span>
+                <span class="countdown-unit__label">Days</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="countdown-unit__number" id="cd-hours">00</span>
+                <span class="countdown-unit__label">Hours</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="countdown-unit__number" id="cd-minutes">00</span>
+                <span class="countdown-unit__label">Minutes</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="countdown-unit__number" id="cd-seconds">00</span>
+                <span class="countdown-unit__label">Seconds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- A&R -->
+        <div class="project-block reveal">
+          <div class="project-block__header">
+            <p class="project-block__subtitle">A&R</p>
+          </div>
+          <div class="music__content">
           <div class="music__embed">
             <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;overflow:hidden;border-radius:16px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/love-heat-death/1723977212"></iframe>
           </div>
           <div class="music__embed">
             <iframe style="border-radius:16px" src="https://open.spotify.com/embed/album/5AViQHleIvVDSnC3CLV89E?utm_source=generator" width="100%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -1850,6 +1964,31 @@ h1, h2, h3, h4, h5, h6 {
   </footer>
 
   <script>
+  /* ============================================
+     COUNTDOWN TIMER
+     ============================================ */
+  (function() {
+    const target = new Date('2026-04-17T00:00:00').getTime();
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      const d = document.getElementById('cd-days');
+      const h = document.getElementById('cd-hours');
+      const m = document.getElementById('cd-minutes');
+      const s = document.getElementById('cd-seconds');
+      if (d) d.textContent = String(days).padStart(2, '0');
+      if (h) h.textContent = String(hours).padStart(2, '0');
+      if (m) m.textContent = String(minutes).padStart(2, '0');
+      if (s) s.textContent = String(seconds).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  })();
+
   /* ============================================
      THEME TOGGLE
      ============================================ */

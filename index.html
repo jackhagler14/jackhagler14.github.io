@@ -944,15 +944,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .education__card ul ul li::before {
+  content: '•';
   border: none;
   background: none;
-  content: '–';
   width: auto;
   height: auto;
   border-radius: 0;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: var(--color-text-secondary);
   top: 0;
+}
+
+.education__card ul ul ul li::before {
+  content: '–';
+  font-size: 0.875rem;
 }
 
 .cert-download {

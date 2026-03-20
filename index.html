@@ -859,6 +859,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: var(--space-8);
 }
 
+.education__card--full {
+  grid-column: 1 / -1;
+}
+
 .education__card-icon {
   width: 44px;
   height: 44px;
@@ -878,6 +882,20 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--space-4);
 }
 
+.education__card h4 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-3);
+}
+
+.education__card h4:first-of-type {
+  margin-top: 0;
+}
+
 .education__card p,
 .education__card li {
   font-size: 0.9375rem;
@@ -892,12 +910,31 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--space-3);
 }
 
+.cert-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 var(--space-8);
+}
+
+.cert-grid ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
 .education__card ul li {
   padding-left: var(--space-5);
   position: relative;
 }
 
-.education__card ul li::before {
+.cert-grid ul li {
+  padding-left: var(--space-5);
+  position: relative;
+}
+
+.education__card ul li::before,
+.cert-grid ul li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -911,6 +948,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   .education__grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr; }
 }
 
 /* ============================================
@@ -1426,16 +1464,44 @@ h1, h2, h3, h4, h5, h6 {
               </svg>
             </div>
             <h3>Licenses & Certifications</h3>
+            <h4>Google / Coursera</h4>
             <ul>
-              <li>CSCMP Supply Chain Foundations — Customer Relationship Management: Professional Certificate</li>
-              <li>Contextual Marketing — HubSpot Academy</li>
-              <li>Zendesk Customer Service: Professional Certificate</li>
-              <li>Fundamentals of Agile Project Management — PMI</li>
-              <li>Fundamentals of Predictive Project Management — PMI</li>
-              <li>Microsoft 365 Fundamentals: Specialization Certificate</li>
+              <li>Google Project Management Professional Certificate</li>
               <li>Google/Gies College of Business Dual Credential</li>
+            </ul>
+            <h4>Microsoft / LinkedIn Learning</h4>
+            <ul>
+              <li>Microsoft 365 Fundamentals Specialization Certificate</li>
+              <li>AI for Organizational Leaders</li>
+              <li>Build Your Generative AI Productivity Skills</li>
+              <li>Career Essentials in Generative AI</li>
+              <li>Career Essentials in Business Analysis</li>
+              <li>Career Essentials in Administrative Assistance</li>
+              <li>Career Essentials in System Administration</li>
+              <li>Career Essentials in Sustainable Tech</li>
+            </ul>
+            <h4>University of Illinois Urbana-Champaign / Coursera</h4>
+            <ul>
+              <li>Global Challenges in Business Specialization</li>
+              <li>Innovation: From Creativity to Entrepreneurship Specialization</li>
+              <li>Professional Success Skills Specialization</li>
+            </ul>
+            <h4>IBM SkillsBuild</h4>
+            <ul>
+              <li>Customer Engagement Fundamentals</li>
+              <li>Customer Engagement: Problem Solving and Process Controls</li>
+            </ul>
+            <h4>HubSpot Academy</h4>
+            <ul>
+              <li>Contextual Marketing Certification</li>
+              <li>Email Marketing Certification</li>
+            </ul>
+            <h4>Other</h4>
+            <ul>
+              <li>CSCMP Supply Chain Foundations: Customer Relationship Management Professional Certificate</li>
+              <li>Zendesk Customer Service Professional Certificate</li>
               <li>Copper Level Coaching Certification — USA Wrestling</li>
-              <li>TEAL Certification in Coaching Girl's and Women's Wrestling — USA Wrestling</li>
+              <li>TEAL Certification in Coaching Girl’s and Women’s Wrestling — USA Wrestling</li>
             </ul>
           </div>
         </div>

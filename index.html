@@ -548,15 +548,76 @@ h1, h2, h3, h4, h5, h6 {
    SECTION STYLES (SHARED)
    ============================================ */
 .section {
-  padding: clamp(var(--space-16), 8vw, var(--space-32)) 0;
+  padding: clamp(5rem, 10vw, 10rem) 0;
+  position: relative;
 }
 
 .section--alt {
   background: var(--color-bg-alt);
 }
 
+/* Smooth gradient overlaps between sections */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: clamp(60px, 8vw, 120px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* About section (bg → bg): no gradient needed, just breathing room */
+#about::before { display: none; }
+
+/* Experience (bg-alt) ← About (bg): blend bg into bg-alt */
+#experience::before {
+  background: linear-gradient(to bottom, var(--color-bg), var(--color-bg-alt));
+}
+
+/* Projects (bg) ← Experience (bg-alt): blend bg-alt into bg */
+#projects::before {
+  background: linear-gradient(to bottom, var(--color-bg-alt), var(--color-bg));
+}
+
+/* Skills (bg-alt) ← Projects (bg): blend bg into bg-alt */
+#skills::before {
+  background: linear-gradient(to bottom, var(--color-bg), var(--color-bg-alt));
+}
+
+/* Education (bg) ← Skills (bg-alt): blend bg-alt into bg */
+#education::before {
+  background: linear-gradient(to bottom, var(--color-bg-alt), var(--color-bg));
+}
+
+/* Contact ← Education: dramatic gradient into teal */
+.contact::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: clamp(80px, 10vw, 160px);
+  background: linear-gradient(to bottom, var(--color-bg), var(--color-accent));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Footer ← Contact: clean fade */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-bg));
+  pointer-events: none;
+}
+
 .section__header {
-  margin-bottom: var(--space-12);
+  margin-bottom: clamp(var(--space-12), 5vw, var(--space-16));
 }
 
 .section__label {
@@ -987,7 +1048,6 @@ h1, h2, h3, h4, h5, h6 {
 .contact {
   background: var(--color-accent);
   color: #fff;
-  padding: clamp(var(--space-16), 8vw, var(--space-32)) 0;
 }
 
 .contact .section__label { color: rgba(255,255,255,0.7); }
@@ -1109,8 +1169,7 @@ h1, h2, h3, h4, h5, h6 {
    FOOTER
    ============================================ */
 .footer {
-  padding: var(--space-6) 0;
-  border-top: 1px solid var(--color-border-light);
+  padding: var(--space-8) 0;
   background: var(--color-bg);
 }
 
@@ -1141,30 +1200,125 @@ h1, h2, h3, h4, h5, h6 {
 .footer__attribution a:hover { color: var(--color-accent); }
 
 /* ============================================
-   SCROLL REVEAL
+   SCROLL REVEAL — Apple-inspired
    ============================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transform: translateY(50px) scale(0.96);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
+/* Stagger delay classes */
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+.reveal-delay-7 { transition-delay: 0.7s; }
+.reveal-delay-8 { transition-delay: 0.8s; }
+
+/* Card entrance: gentle lift + fade */
+.project-card.reveal,
+.stat-card.reveal,
+.education__card.reveal {
+  transform: translateY(40px) scale(0.97);
+}
+
+.project-card.reveal.visible,
+.stat-card.reveal.visible,
+.education__card.reveal.visible {
+  transform: translateY(0) scale(1);
+}
+
+/* Timeline items get a slide-in from left feel */
+.timeline__item.reveal {
+  transform: translateY(40px) translateX(-10px) scale(0.97);
+}
+
+.timeline__item.reveal.visible {
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Skill pills pop in */
+.skill-pill {
+  opacity: 0;
+  transform: translateY(12px) scale(0.92);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              background var(--transition-interactive),
+              border-color var(--transition-interactive),
+              color var(--transition-interactive);
+}
+
+.skills__pills.pills-visible .skill-pill {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ============================================
+   TIMELINE LINE DRAW ANIMATION
+   ============================================ */
+.timeline::before {
+  transition: none;
+}
+
+.timeline--animated::before {
+  bottom: auto;
+  height: 0;
+  transition: height 0.05s linear;
+}
+
+/* ============================================
+   STAT COUNTER ANIMATION
+   ============================================ */
+.stat-card__number {
+  transition: opacity 0.3s var(--ease-out);
+}
+
+/* ============================================
+   HERO PARALLAX
+   ============================================ */
+.hero__geo {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.hero__pattern::before,
+.hero__pattern::after {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* ============================================
+   FOOTER POSITION
+   ============================================ */
+.footer {
+  position: relative;
+}
+
+/* ============================================
+   CONTACT SECTION POSITION
+   ============================================ */
+.contact {
+  position: relative;
+  padding: clamp(5rem, 10vw, 10rem) 0;
+}
 
 /* ============================================
    REDUCED MOTION
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .skill-pill { opacity: 1; transform: none; }
+  .timeline--animated::before { height: auto !important; bottom: 8px !important; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
@@ -1746,16 +1900,61 @@ h1, h2, h3, h4, h5, h6 {
   })();
 
   /* ============================================
-     SCROLL REVEAL (IntersectionObserver)
+     SCROLL REVEAL (Enhanced IntersectionObserver)
      ============================================ */
   (function() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
+      // Show everything immediately
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        el.classList.add('visible');
+      });
+      document.querySelectorAll('.skills__pills').forEach(function(el) {
+        el.classList.add('pills-visible');
+      });
+      return;
+    }
 
-    const observer = new IntersectionObserver(function(entries) {
+    // Main reveal observer — lower threshold, larger rootMargin for earlier triggering
+    var revealObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px -60px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    // Stagger timeline items programmatically
+    var timelineItems = document.querySelectorAll('.timeline__item.reveal');
+    timelineItems.forEach(function(item, i) {
+      item.style.transitionDelay = (i * 0.12) + 's';
+    });
+
+    // Stagger project cards programmatically
+    var projectCards = document.querySelectorAll('.project-card.reveal');
+    projectCards.forEach(function(card, i) {
+      card.style.transitionDelay = (i * 0.08) + 's';
+    });
+
+    // Skill pills stagger — observe each .skills__pills container
+    var pillsObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var container = entry.target;
+          var pills = container.querySelectorAll('.skill-pill');
+          pills.forEach(function(pill, i) {
+            pill.style.transitionDelay = (i * 0.05) + 's';
+          });
+          container.classList.add('pills-visible');
+          pillsObserver.unobserve(container);
         }
       });
     }, {
@@ -1763,8 +1962,204 @@ h1, h2, h3, h4, h5, h6 {
       rootMargin: '0px 0px -40px 0px'
     });
 
-    document.querySelectorAll('.reveal').forEach(function(el) {
-      observer.observe(el);
+    document.querySelectorAll('.skills__pills').forEach(function(el) {
+      pillsObserver.observe(el);
+    });
+  })();
+
+  /* ============================================
+     HERO PARALLAX
+     ============================================ */
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var geo = document.querySelector('.hero__geo');
+    var patternEl = document.querySelector('.hero__pattern');
+    var hero = document.querySelector('.hero');
+    var ticking = false;
+
+    function updateParallax() {
+      var scrollY = window.scrollY;
+      var heroHeight = hero.offsetHeight;
+      if (scrollY > heroHeight) { ticking = false; return; }
+
+      var ratio = scrollY / heroHeight;
+      // Geo elements move slower than scroll
+      if (geo) {
+        geo.style.transform = 'translateY(' + (scrollY * 0.15) + 'px)';
+      }
+      // Radial gradient blobs move at different rate
+      if (patternEl) {
+        patternEl.style.transform = 'translateY(' + (scrollY * 0.08) + 'px)';
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+
+  /* ============================================
+     TIMELINE LINE DRAW ON SCROLL
+     ============================================ */
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var timeline = document.querySelector('.timeline');
+    if (!timeline) return;
+
+    var timelineLine = timeline;
+    // Get the ::before pseudo element's intended full height
+    var items = timeline.querySelectorAll('.timeline__item');
+    if (!items.length) return;
+
+    // Mark timeline for animated mode
+    timeline.classList.add('timeline--animated');
+
+    function updateTimelineDraw() {
+      var timelineRect = timeline.getBoundingClientRect();
+      var timelineTop = timelineRect.top;
+      var timelineHeight = timelineRect.height;
+      var viewportHeight = window.innerHeight;
+
+      // How far into the timeline the viewport trigger point is
+      var triggerPoint = viewportHeight * 0.7;
+      var drawn = triggerPoint - timelineTop;
+
+      if (drawn < 0) drawn = 0;
+      if (drawn > timelineHeight - 16) drawn = timelineHeight - 16;
+
+      timeline.style.setProperty('--timeline-draw', drawn + 'px');
+      // Use a CSS variable approach — directly set the height via style
+      var beforeEl = timeline;
+      // We need to set height on the ::before, so use a CSS custom property
+      timeline.style.setProperty('--tl-height', drawn + 'px');
+    }
+
+    // Override the ::before height with a CSS variable
+    var style = document.createElement('style');
+    style.textContent = '.timeline--animated::before { height: var(--tl-height, 0px) !important; }';
+    document.head.appendChild(style);
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          updateTimelineDraw();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial call
+    updateTimelineDraw();
+  })();
+
+  /* ============================================
+     STAT COUNTER ANIMATION
+     ============================================ */
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var statCards = document.querySelectorAll('.stat-card__number');
+    if (!statCards.length) return;
+
+    // Parse stat values
+    var stats = [];
+    statCards.forEach(function(el) {
+      var text = el.textContent.trim();
+      stats.push({
+        el: el,
+        original: text,
+        animated: false
+      });
+    });
+
+    function parseStatValue(text) {
+      // Extract numeric part, prefix ($), and suffix (+, M+, etc.)
+      var prefix = '';
+      var suffix = '';
+      var numStr = text;
+
+      if (numStr.charAt(0) === '$') {
+        prefix = '$';
+        numStr = numStr.substring(1);
+      }
+
+      // Find where digits end
+      var match = numStr.match(/^([\d,.]+)(.*)$/);
+      if (!match) return null;
+
+      var num = parseFloat(match[1].replace(/,/g, ''));
+      suffix = match[2] || '';
+
+      return { prefix: prefix, num: num, suffix: suffix, hasComma: match[1].indexOf(',') !== -1 };
+    }
+
+    function formatNumber(n, hasComma) {
+      if (hasComma) {
+        return n.toLocaleString('en-US');
+      }
+      return String(n);
+    }
+
+    function animateCounter(stat) {
+      var parsed = parseStatValue(stat.original);
+      if (!parsed) return;
+
+      var duration = 800;
+      var start = performance.now();
+      var startVal = 0;
+
+      function tick(now) {
+        var elapsed = now - start;
+        var progress = Math.min(elapsed / duration, 1);
+        // Ease out: 1 - (1-t)^3
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(startVal + (parsed.num - startVal) * eased);
+
+        stat.el.textContent = parsed.prefix + formatNumber(current, parsed.hasComma) + parsed.suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          stat.el.textContent = stat.original;
+        }
+      }
+
+      // Start from 0
+      stat.el.textContent = parsed.prefix + '0' + parsed.suffix;
+      requestAnimationFrame(tick);
+    }
+
+    var statObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          // Find which stat this is
+          stats.forEach(function(stat) {
+            if (stat.el === entry.target && !stat.animated) {
+              stat.animated = true;
+              // Small delay so the card reveal happens first
+              setTimeout(function() {
+                animateCounter(stat);
+              }, 300);
+            }
+          });
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px 0px -20px 0px'
+    });
+
+    statCards.forEach(function(el) {
+      statObserver.observe(el);
     });
   })();
 

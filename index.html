@@ -560,6 +560,11 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-bg-alt);
 }
 
+/* All sections need position relative for gradient pseudo-elements */
+.section, .contact, .footer {
+  position: relative;
+}
+
 /* Smooth gradient overlaps between sections */
 .section::before {
   content: '';
@@ -572,7 +577,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
 }
 
-/* About section (bg → bg): no gradient needed, just breathing room */
+/* About (bg) ← Hero: no gradient needed */
 #about::before { display: none; }
 
 /* Experience (bg-alt) ← About (bg): blend bg into bg-alt */
@@ -585,17 +590,18 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(to bottom, var(--color-bg-alt), var(--color-bg));
 }
 
-/* Skills (bg-alt) ← Projects (bg): blend bg into bg-alt */
+/* Education (bg) ← Projects (bg): same bg, no gradient */
+#education::before { display: none; }
+
+/* Skills (bg-alt) ← Education (bg): blend bg into bg-alt */
 #skills::before {
   background: linear-gradient(to bottom, var(--color-bg), var(--color-bg-alt));
 }
 
-/* Education (bg) ← Skills (bg-alt): blend bg-alt into bg */
-#education::before {
-  background: linear-gradient(to bottom, var(--color-bg-alt), var(--color-bg));
-}
+/* Recommendations (bg-alt) ← Skills (bg-alt): same bg, no gradient */
+#recommendations::before { display: none; }
 
-/* Contact ← Education: dramatic gradient into teal */
+/* Contact (teal) ← Recommendations (bg-alt): dramatic gradient into teal */
 .contact::before {
   content: '';
   position: absolute;
@@ -603,7 +609,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   height: clamp(80px, 10vw, 160px);
-  background: linear-gradient(to bottom, var(--color-bg), var(--color-accent));
+  background: linear-gradient(to bottom, var(--color-bg-alt), var(--color-accent));
   pointer-events: none;
   z-index: 1;
 }

@@ -585,10 +585,13 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(to bottom, var(--color-bg), var(--color-bg-alt));
 }
 
-/* Projects (bg) ← Experience (bg-alt): blend bg-alt into bg */
-#projects::before {
+/* Analytics (bg) ← Experience (bg-alt): blend bg-alt into bg */
+#analytics::before {
   background: linear-gradient(to bottom, var(--color-bg-alt), var(--color-bg));
 }
+
+/* Projects (bg, hidden) ← Analytics (bg): same bg, no gradient */
+#projects::before { display: none; }
 
 /* Education (bg) ← Projects (bg): same bg, no gradient */
 #education::before { display: none; }
@@ -1495,6 +1498,127 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
+   ANALYTICS SECTION
+   ============================================ */
+
+.analytics__intro {
+  text-align: center;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: -0.5rem auto 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+/* KPI Cards Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+.kpi-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-4);
+  text-align: center;
+  transition: box-shadow var(--transition-interactive), transform var(--transition-interactive);
+}
+
+.kpi-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.kpi-card__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+  font-weight: 500;
+  color: var(--color-accent);
+  line-height: 1.2;
+  margin-bottom: var(--space-1);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.kpi-card__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.kpi-card__delta {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #2e7d32;
+  margin-top: var(--space-1);
+}
+
+[data-theme="dark"] .kpi-card__delta {
+  color: #66bb6a;
+}
+
+/* Chart containers */
+.analytics__charts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.chart-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  transition: box-shadow var(--transition-interactive);
+}
+
+.chart-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.chart-card__title {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  margin-bottom: var(--space-1);
+  color: var(--color-text);
+}
+
+.chart-card__subtitle {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-5);
+}
+
+.chart-card__canvas-wrap {
+  position: relative;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .kpi-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+  .kpi-card {
+    padding: var(--space-4) var(--space-3);
+  }
+  .chart-card {
+    padding: var(--space-4);
+  }
+}
+
+/* ============================================
    REDUCED MOTION
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -1521,6 +1645,7 @@ h1, h2, h3, h4, h5, h6 {
         <li><a href="#home" class="nav__link active">Home</a></li>
         <li><a href="#about" class="nav__link">About</a></li>
         <li><a href="#experience" class="nav__link">Experience</a></li>
+        <li><a href="#analytics" class="nav__link">Analytics</a></li>
         <!-- <li><a href="#projects" class="nav__link">Projects</a></li> -->
         <li><a href="#education" class="nav__link">Education</a></li>
         <li><a href="#contact" class="nav__link">Contact</a></li>
@@ -1549,6 +1674,7 @@ h1, h2, h3, h4, h5, h6 {
       <li><a href="#home" class="mobile-nav__link">Home</a></li>
       <li><a href="#about" class="mobile-nav__link">About</a></li>
       <li><a href="#experience" class="mobile-nav__link">Experience</a></li>
+      <li><a href="#analytics" class="mobile-nav__link">Analytics</a></li>
       <!-- <li><a href="#projects" class="mobile-nav__link">Projects</a></li> -->
       <li><a href="#education" class="mobile-nav__link">Education</a></li>
       <li><a href="#contact" class="mobile-nav__link">Contact</a></li>
@@ -1663,6 +1789,68 @@ h1, h2, h3, h4, h5, h6 {
               <li>Spearheaded the expansion and renovation planning of 15,000 sq. ft. warehouse, improving layout efficiency, storage capacity, and operational flow.</li>
               <li>Implemented Lean Six Sigma methodologies to optimize warehouse operations, reducing waste, improving inventory accuracy, and increasing overall process efficiency.</li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== DATA & ANALYTICS ======== -->
+    <section class="section" id="analytics">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="section__label">Data &amp; Analytics</p>
+          <h2 class="section__title">Emtek Hardware Sales Analysis</h2>
+          <p class="analytics__intro">Aggregate sales data from 2022–2023, visualized to surface trends in volume, product mix, and geographic distribution.</p>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid reveal">
+          <div class="kpi-card">
+            <div class="kpi-card__value">516,420</div>
+            <div class="kpi-card__label">Total Units Sold</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__value">+10.8%</div>
+            <div class="kpi-card__label">YoY Growth</div>
+            <div class="kpi-card__delta">244,970 → 271,450</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__value">7+</div>
+            <div class="kpi-card__label">States Covered</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__value">50+</div>
+            <div class="kpi-card__label">Product Categories</div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="analytics__charts">
+          <!-- Chart 1: Monthly Sales Volume -->
+          <div class="chart-card reveal">
+            <h3 class="chart-card__title">Monthly Sales Volume</h3>
+            <p class="chart-card__subtitle">Units sold per month, Jan 2022 – Dec 2023</p>
+            <div class="chart-card__canvas-wrap">
+              <canvas id="chartMonthlySales"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 2: Top 10 Product Categories -->
+          <div class="chart-card reveal">
+            <h3 class="chart-card__title">Top 10 Product Categories</h3>
+            <p class="chart-card__subtitle">Total units sold by category, 2022–2023</p>
+            <div class="chart-card__canvas-wrap">
+              <canvas id="chartProductCategories"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 3: Sales by State -->
+          <div class="chart-card reveal">
+            <h3 class="chart-card__title">Sales by State</h3>
+            <p class="chart-card__subtitle">Total units by state, 2022–2023</p>
+            <div class="chart-card__canvas-wrap">
+              <canvas id="chartSalesByState"></canvas>
+            </div>
           </div>
         </div>
       </div>
@@ -2381,6 +2569,304 @@ h1, h2, h3, h4, h5, h6 {
         success.classList.add('show');
       }, 100);
     });
+  })();
+  </script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  /* ============================================
+     DATA & ANALYTICS CHARTS
+     ============================================ */
+  (function() {
+    // ---- Helpers ----
+    function getTheme() {
+      return document.documentElement.getAttribute('data-theme') || 'light';
+    }
+
+    function themeColors() {
+      var isDark = getTheme() === 'dark';
+      return {
+        accent:       isDark ? '#3a9e9e' : '#1a5c5c',
+        accentLight:  isDark ? 'rgba(58,158,158,0.18)' : 'rgba(26,92,92,0.10)',
+        accentMid:    isDark ? 'rgba(58,158,158,0.55)' : 'rgba(26,92,92,0.45)',
+        grid:         isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)',
+        text:         isDark ? '#b0a99f' : '#6b6560',
+        textStrong:   isDark ? '#f0ece7' : '#2c2a27',
+        cardBg:       isDark ? '#2c2a27' : '#ffffff',
+        barColors: isDark
+          ? ['#3a9e9e','#358c8c','#2f7a7a','#2a6868','#245656','#1f4545','#1a3636','#152828','#111e1e','#0d1515']
+          : ['#1a5c5c','#246868','#2e7474','#388080','#428c8c','#4c9898','#56a4a4','#60b0b0','#6abcbc','#74c8c8']
+      };
+    }
+
+    function fontStack() {
+      return "'Helvetica Neue', Helvetica, Arial, sans-serif";
+    }
+
+    // ---- Shared defaults ----
+    Chart.defaults.font.family = fontStack();
+    Chart.defaults.font.size = 12;
+    Chart.defaults.animation.duration = 700;
+    Chart.defaults.animation.easing = 'easeOutQuart';
+
+    // ---- Data ----
+    var monthlyLabels = [
+      'Jan 22','Feb 22','Mar 22','Apr 22','May 22','Jun 22',
+      'Jul 22','Aug 22','Sep 22','Oct 22','Nov 22','Dec 22',
+      'Jan 23','Feb 23','Mar 23','Apr 23','May 23','Jun 23',
+      'Jul 23','Aug 23','Sep 23','Oct 23','Nov 23','Dec 23'
+    ];
+    var monthlyData = [17734,19704,22129,19688,19859,23650,20135,22907,23533,21749,19338,14548,21191,21626,26365,20807,23381,23220,20764,25508,27744,23935,19840,17073];
+
+    var categoryLabels = ['Cabinet Hardware','Hinges','Door Accessories','Modern Levers & Knobs','Brass Door Sets','Bronze Door Sets','Cabinet Hw – Select','Deadbolts','Crystal Sets','Multipoint Locksets'];
+    var categoryData = [137221,73953,68375,48161,41134,18045,17352,14126,12466,11504];
+
+    var stateLabels = ['SC','NC','GA','TX','VA','PA','NY'];
+    var stateData = [170023,158478,157019,18026,7605,3072,2085];
+
+    // ---- Chart instances ----
+    var chartMonthlySales, chartProductCategories, chartSalesByState;
+
+    function buildLineChart() {
+      var tc = themeColors();
+      var ctx = document.getElementById('chartMonthlySales');
+      if (!ctx) return;
+
+      if (chartMonthlySales) chartMonthlySales.destroy();
+
+      chartMonthlySales = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: monthlyLabels,
+          datasets: [{
+            label: 'Units Sold',
+            data: monthlyData,
+            borderColor: tc.accent,
+            backgroundColor: tc.accentLight,
+            fill: true,
+            tension: 0.35,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            pointBackgroundColor: tc.accent,
+            pointBorderColor: tc.cardBg,
+            pointBorderWidth: 2,
+            borderWidth: 2.5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2.2,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: tc.textStrong,
+              titleColor: tc.cardBg,
+              bodyColor: tc.cardBg,
+              titleFont: { family: fontStack(), weight: '500' },
+              bodyFont: { family: fontStack() },
+              padding: 10,
+              cornerRadius: 6,
+              displayColors: false,
+              callbacks: {
+                label: function(ctx) { return ctx.parsed.y.toLocaleString() + ' units'; }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: {
+                color: tc.text,
+                font: { size: 11, family: fontStack() },
+                maxRotation: 45,
+                autoSkip: true,
+                maxTicksLimit: 12
+              },
+              border: { display: false }
+            },
+            y: {
+              beginAtZero: false,
+              min: 12000,
+              grid: { color: tc.grid },
+              ticks: {
+                color: tc.text,
+                font: { size: 11, family: fontStack() },
+                callback: function(v) { return (v / 1000) + 'k'; }
+              },
+              border: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    function buildCategoryChart() {
+      var tc = themeColors();
+      var ctx = document.getElementById('chartProductCategories');
+      if (!ctx) return;
+
+      if (chartProductCategories) chartProductCategories.destroy();
+
+      chartProductCategories = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: categoryLabels,
+          datasets: [{
+            label: 'Units Sold',
+            data: categoryData,
+            backgroundColor: tc.barColors,
+            borderRadius: 4,
+            borderSkipped: false,
+            barPercentage: 0.75,
+            categoryPercentage: 0.85
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1.4,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: tc.textStrong,
+              titleColor: tc.cardBg,
+              bodyColor: tc.cardBg,
+              titleFont: { family: fontStack(), weight: '500' },
+              bodyFont: { family: fontStack() },
+              padding: 10,
+              cornerRadius: 6,
+              displayColors: false,
+              callbacks: {
+                label: function(ctx) { return ctx.parsed.x.toLocaleString() + ' units'; }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: tc.grid },
+              ticks: {
+                color: tc.text,
+                font: { size: 11, family: fontStack() },
+                callback: function(v) { return (v / 1000) + 'k'; }
+              },
+              border: { display: false }
+            },
+            y: {
+              grid: { display: false },
+              ticks: {
+                color: tc.text,
+                font: { size: 11, family: fontStack() }
+              },
+              border: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    function buildStateChart() {
+      var tc = themeColors();
+      var ctx = document.getElementById('chartSalesByState');
+      if (!ctx) return;
+
+      if (chartSalesByState) chartSalesByState.destroy();
+
+      chartSalesByState = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: stateLabels,
+          datasets: [{
+            label: 'Units Sold',
+            data: stateData,
+            backgroundColor: tc.barColors.slice(0, 7),
+            borderRadius: 4,
+            borderSkipped: false,
+            barPercentage: 0.7,
+            categoryPercentage: 0.8
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1.6,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: tc.textStrong,
+              titleColor: tc.cardBg,
+              bodyColor: tc.cardBg,
+              titleFont: { family: fontStack(), weight: '500' },
+              bodyFont: { family: fontStack() },
+              padding: 10,
+              cornerRadius: 6,
+              displayColors: false,
+              callbacks: {
+                label: function(ctx) { return ctx.parsed.x.toLocaleString() + ' units'; }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: tc.grid },
+              ticks: {
+                color: tc.text,
+                font: { size: 11, family: fontStack() },
+                callback: function(v) { return (v / 1000) + 'k'; }
+              },
+              border: { display: false }
+            },
+            y: {
+              grid: { display: false },
+              ticks: {
+                color: tc.text,
+                font: { size: 12, family: fontStack(), weight: '500' }
+              },
+              border: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    // ---- Build all charts ----
+    function buildAllCharts() {
+      buildLineChart();
+      buildCategoryChart();
+      buildStateChart();
+    }
+
+    // ---- Init with IntersectionObserver for lazy load ----
+    var analyticsSection = document.getElementById('analytics');
+    var chartsBuilt = false;
+
+    if (analyticsSection) {
+      var chartObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !chartsBuilt) {
+            chartsBuilt = true;
+            buildAllCharts();
+            chartObserver.unobserve(analyticsSection);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '200px 0px' });
+
+      chartObserver.observe(analyticsSection);
+    }
+
+    // ---- Listen for theme toggle ----
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        if (m.attributeName === 'data-theme' && chartsBuilt) {
+          buildAllCharts();
+        }
+      });
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   })();
   </script>
 </body>

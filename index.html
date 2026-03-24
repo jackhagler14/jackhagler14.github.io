@@ -1224,6 +1224,76 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
+   VOLUNTEER WORK
+   ============================================ */
+.volunteer-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  margin-bottom: var(--space-8);
+  overflow: hidden;
+  transition: box-shadow var(--transition-interactive), transform var(--transition-interactive);
+}
+
+.volunteer-card:last-child {
+  margin-bottom: 0;
+}
+
+.volunteer-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.volunteer-card__logo {
+  width: 160px;
+  margin: 0 auto var(--space-6);
+}
+
+.volunteer-card__logo img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
+.volunteer-card__content {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.volunteer-card__org {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin-bottom: var(--space-2);
+}
+
+.volunteer-card__duration {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.volunteer-card__desc {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.volunteer-card__image {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.volunteer-card__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+/* ============================================
    CONTACT SECTION
    ============================================ */
 .contact {
@@ -2057,6 +2127,62 @@ h1, h2, h3, h4, h5, h6 {
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ======== VOLUNTEER WORK ======== -->
+    <section class="section" id="volunteer">
+      <div class="container">
+        <div class="section__header reveal">
+          <p class="section__label">Giving Back</p>
+          <h2 class="section__title">Volunteer Work</h2>
+        </div>
+
+        <!-- Charity: Water -->
+        <div class="volunteer-card reveal">
+          <div class="volunteer-card__logo">
+            <img src="./volunteer/charity-water-logo-2.jpg" alt="charity: water logo" loading="lazy">
+          </div>
+          <div class="volunteer-card__content">
+            <h3 class="volunteer-card__org">charity: water</h3>
+            <p class="volunteer-card__duration">15+ Years of Partnership</p>
+            <p class="volunteer-card__desc">Partnered with charity: water over 15 years to fund over 20 water projects worldwide. Organized and participated in fundraising events, including a 2018 fundraiser that raised over $12,000 to fund a water project.</p>
+          </div>
+          <div class="volunteer-card__image">
+            <img src="./volunteer/charity-water-2018.jpg" alt="Charity: Water fundraiser 2018" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Special Olympics New Hampshire -->
+        <div class="volunteer-card reveal">
+          <div class="volunteer-card__logo">
+            <img src="./volunteer/special-olympics-logo-3.jpg" alt="Special Olympics logo" loading="lazy">
+          </div>
+          <div class="volunteer-card__content">
+            <h3 class="volunteer-card__org">Special Olympics New Hampshire</h3>
+            <p class="volunteer-card__duration">6 Years / 6 Charity Livestreams</p>
+            <p class="volunteer-card__desc">Organized and hosted 24-hour charity livestreams over 6 years, raising a combined $50,000 for Special Olympics New Hampshire. Conducted interviews with SONH leadership including Senior Manager of Communications Mark Ericson.</p>
+          </div>
+          <div class="volunteer-card__image">
+            <img src="./volunteer/marc-ericson-interview.jpg" alt="Interviewing Mark Ericson during charity livestream" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Mimms Museum -->
+        <div class="volunteer-card reveal">
+          <div class="volunteer-card__logo">
+            <img src="./volunteer/mimms-museum-logo.jpg" alt="Mimms Museum of Technology and Art logo" loading="lazy">
+          </div>
+          <div class="volunteer-card__content">
+            <h3 class="volunteer-card__org">Mimms Museum of Technology and Art</h3>
+            <p class="volunteer-card__duration">Formerly the Computer Museum of America</p>
+            <p class="volunteer-card__desc">Volunteered at the museum supporting exhibits and events celebrating the history of computing and technology.</p>
+          </div>
+          <div class="volunteer-card__image">
+            <img src="./volunteer/Computer-Museum-with-Alma.jpg" alt="Volunteering at the Computer Museum of America" loading="lazy">
+          </div>
+        </div>
+
       </div>
     </section>
 

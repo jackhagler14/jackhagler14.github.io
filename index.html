@@ -2610,6 +2610,414 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
+   MICROSOFT DYNAMICS 365 DASHBOARD
+   ============================================ */
+.dynamics-demo {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  font-family: 'Segoe UI', var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  transition: background-color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+/* ---- Dynamics Header Bar ---- */
+.dynamics-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: #1B1B3A;
+  color: #fff;
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.dynamics-header svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.dynamics-header span {
+  opacity: 0.65;
+  font-weight: 400;
+  margin-left: var(--space-1);
+}
+
+/* ---- Dynamics Layout ---- */
+.dynamics-body {
+  display: flex;
+  min-height: 0;
+}
+
+.dynamics-sidebar {
+  width: 44px;
+  background: #1B1B3A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--space-3);
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+.dynamics-sidebar__icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+
+.dynamics-sidebar__icon:hover,
+.dynamics-sidebar__icon.active {
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+}
+
+.dynamics-content {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ---- Dynamics KPI Row ---- */
+.dynamics-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.dynamics-kpi {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-3);
+  text-align: center;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dynamics-kpi:hover {
+  border-color: #0078D4;
+  box-shadow: 0 0 0 1px rgba(0,120,212,0.15);
+}
+
+.dynamics-kpi__value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0078D4;
+  line-height: 1.2;
+}
+
+[data-theme="dark"] .dynamics-kpi__value {
+  color: #4CA6E8;
+}
+
+.dynamics-kpi__label {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Dynamics Panels Grid ---- */
+.dynamics-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.dynamics-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.dynamics-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-3);
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.dynamics-panel__header svg {
+  color: var(--color-text-muted);
+}
+
+/* ---- Funnel Chart ---- */
+.dynamics-funnel {
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dynamics-funnel__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dynamics-funnel__label {
+  width: 52px;
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.dynamics-funnel__bar-wrap {
+  flex: 1;
+  height: 26px;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.dynamics-funnel__bar {
+  height: 100%;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--space-2);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #fff;
+  transition: filter 0.15s, transform 0.15s;
+  cursor: default;
+}
+
+.dynamics-funnel__bar:hover {
+  filter: brightness(1.12);
+  transform: scaleX(1.01);
+}
+
+.dynamics-funnel__bar--qualify  { background: #0078D4; width: 100%; }
+.dynamics-funnel__bar--develop  { background: #0063B1; width: 78%; }
+.dynamics-funnel__bar--propose  { background: #004E8C; width: 52%; }
+.dynamics-funnel__bar--close    { background: #003966; width: 34%; }
+.dynamics-funnel__bar--won      { background: #107C10; width: 22%; }
+
+[data-theme="dark"] .dynamics-funnel__bar--qualify  { background: #4CA6E8; }
+[data-theme="dark"] .dynamics-funnel__bar--develop  { background: #3B8FD4; }
+[data-theme="dark"] .dynamics-funnel__bar--propose  { background: #2A78B8; }
+[data-theme="dark"] .dynamics-funnel__bar--close    { background: #1E619C; }
+[data-theme="dark"] .dynamics-funnel__bar--won      { background: #2EA043; }
+
+/* ---- Accounts Table ---- */
+.dynamics-table-wrap {
+  max-height: 260px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.dynamics-table-wrap::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dynamics-table-wrap::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.dynamics-search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 3px var(--space-2);
+  transition: border-color 0.15s;
+}
+
+.dynamics-search:focus-within {
+  border-color: #0078D4;
+}
+
+[data-theme="dark"] .dynamics-search:focus-within {
+  border-color: #4CA6E8;
+}
+
+.dynamics-search svg {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+}
+
+.dynamics-search input {
+  border: none;
+  background: transparent;
+  font-size: 0.72rem;
+  font-family: inherit;
+  color: var(--color-text);
+  outline: none;
+  width: 100%;
+  padding: 2px 0;
+}
+
+.dynamics-search input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.dynamics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;
+}
+
+.dynamics-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.dynamics-table th {
+  background: var(--color-bg-alt);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  text-align: left;
+  padding: var(--space-1) var(--space-2);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.dynamics-table td {
+  padding: var(--space-1) var(--space-2);
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text);
+}
+
+.dynamics-table tbody tr {
+  transition: background 0.1s;
+}
+
+.dynamics-table tbody tr:hover {
+  background: var(--color-accent-light);
+}
+
+.dynamics-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.dynamics-badge--active {
+  background: rgba(16,124,16,0.12);
+  color: #107C10;
+}
+
+[data-theme="dark"] .dynamics-badge--active {
+  background: rgba(46,160,67,0.18);
+  color: #5BCC5B;
+}
+
+.dynamics-badge--pending {
+  background: rgba(255,185,0,0.14);
+  color: #986F0B;
+}
+
+[data-theme="dark"] .dynamics-badge--pending {
+  background: rgba(255,185,0,0.18);
+  color: #FFB900;
+}
+
+.dynamics-badge--atrisk {
+  background: rgba(209,52,56,0.10);
+  color: #D13438;
+}
+
+[data-theme="dark"] .dynamics-badge--atrisk {
+  background: rgba(209,52,56,0.18);
+  color: #F1707B;
+}
+
+/* ---- Revenue Chart ---- */
+.dynamics-chart-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.dynamics-chart-panel__header {
+  padding: var(--space-3);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.dynamics-chart-panel__body {
+  padding: var(--space-3);
+  height: 180px;
+}
+
+/* ---- Dynamics Empty State ---- */
+.dynamics-empty {
+  display: none;
+  text-align: center;
+  padding: var(--space-6) var(--space-3);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+}
+
+.dynamics-empty.visible {
+  display: block;
+}
+
+/* ---- Dynamics Responsive ---- */
+@media (max-width: 640px) {
+  .dynamics-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dynamics-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .dynamics-sidebar {
+    display: none;
+  }
+
+  .dynamics-funnel__label {
+    width: 44px;
+    font-size: 0.65rem;
+  }
+
+  .dynamics-table {
+    font-size: 0.68rem;
+  }
+
+  .dynamics-table th,
+  .dynamics-table td {
+    padding: var(--space-1) var(--space-2);
+  }
+}
+
+/* ============================================
    REDUCED MOTION
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -2840,6 +3248,142 @@ h1, h2, h3, h4, h5, h6 {
             <p class="chart-card__subtitle">Total units by state, 2022–2023</p>
             <div class="chart-card__canvas-wrap">
               <canvas id="chartSalesByState"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Microsoft Dynamics 365 -->
+        <div class="section__header reveal" style="margin-top: clamp(var(--space-16), 8vw, var(--space-32));">
+          <h2 class="section__title">Microsoft Dynamics 365</h2>
+          <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Brought to MPH Sales, Inc.</p>
+          <p class="analytics__intro" style="margin-top: var(--space-6);">Managed 750+ active accounts across seven states using Microsoft Dynamics 365 for CRM operations, sales pipeline tracking, and performance reporting at a $750M corporation. Oversaw timelines, vendor coordination, and budget reconciliation to drive operational efficiency.</p>
+        </div>
+        <div class="dynamics-demo reveal">
+          <!-- Header Bar -->
+          <div class="dynamics-header">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" fill="currentColor" opacity="0.9"/><rect x="9" y="1" width="6" height="6" rx="1" fill="currentColor" opacity="0.6"/><rect x="1" y="9" width="6" height="6" rx="1" fill="currentColor" opacity="0.6"/><rect x="9" y="9" width="6" height="6" rx="1" fill="currentColor" opacity="0.35"/></svg>
+            Dynamics 365 <span>— MPH Sales, Inc.</span>
+          </div>
+          <!-- Body -->
+          <div class="dynamics-body">
+            <!-- Sidebar -->
+            <div class="dynamics-sidebar">
+              <div class="dynamics-sidebar__icon active" title="Dashboard">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </div>
+              <div class="dynamics-sidebar__icon" title="Accounts">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="dynamics-sidebar__icon" title="Opportunities">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="dynamics-sidebar__icon" title="Reports">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <div class="dynamics-sidebar__icon" title="Settings">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+            </div>
+            <!-- Content -->
+            <div class="dynamics-content">
+              <!-- KPI Row -->
+              <div class="dynamics-kpis">
+                <div class="dynamics-kpi">
+                  <div class="dynamics-kpi__value">47</div>
+                  <div class="dynamics-kpi__label">Open Opportunities</div>
+                </div>
+                <div class="dynamics-kpi">
+                  <div class="dynamics-kpi__value">$2.4M</div>
+                  <div class="dynamics-kpi__label">Revenue Pipeline</div>
+                </div>
+                <div class="dynamics-kpi">
+                  <div class="dynamics-kpi__value">750+</div>
+                  <div class="dynamics-kpi__label">Accounts Managed</div>
+                </div>
+                <div class="dynamics-kpi">
+                  <div class="dynamics-kpi__value">68%</div>
+                  <div class="dynamics-kpi__label">Win Rate</div>
+                </div>
+              </div>
+
+              <!-- Panels: Funnel + Table -->
+              <div class="dynamics-panels">
+                <!-- Sales Pipeline Funnel -->
+                <div class="dynamics-panel">
+                  <div class="dynamics-panel__header">
+                    Sales Pipeline
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  </div>
+                  <div class="dynamics-funnel">
+                    <div class="dynamics-funnel__row">
+                      <div class="dynamics-funnel__label">Qualify</div>
+                      <div class="dynamics-funnel__bar-wrap">
+                        <div class="dynamics-funnel__bar dynamics-funnel__bar--qualify">23</div>
+                      </div>
+                    </div>
+                    <div class="dynamics-funnel__row">
+                      <div class="dynamics-funnel__label">Develop</div>
+                      <div class="dynamics-funnel__bar-wrap">
+                        <div class="dynamics-funnel__bar dynamics-funnel__bar--develop">15</div>
+                      </div>
+                    </div>
+                    <div class="dynamics-funnel__row">
+                      <div class="dynamics-funnel__label">Propose</div>
+                      <div class="dynamics-funnel__bar-wrap">
+                        <div class="dynamics-funnel__bar dynamics-funnel__bar--propose">8</div>
+                      </div>
+                    </div>
+                    <div class="dynamics-funnel__row">
+                      <div class="dynamics-funnel__label">Close</div>
+                      <div class="dynamics-funnel__bar-wrap">
+                        <div class="dynamics-funnel__bar dynamics-funnel__bar--close">5</div>
+                      </div>
+                    </div>
+                    <div class="dynamics-funnel__row">
+                      <div class="dynamics-funnel__label">Won</div>
+                      <div class="dynamics-funnel__bar-wrap">
+                        <div class="dynamics-funnel__bar dynamics-funnel__bar--won">3</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Top Accounts Table -->
+                <div class="dynamics-panel">
+                  <div class="dynamics-panel__header">
+                    Top Accounts
+                    <div class="dynamics-search">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                      <input type="text" id="dynamicsSearch" placeholder="Search accounts...">
+                    </div>
+                  </div>
+                  <div class="dynamics-table-wrap">
+                    <table class="dynamics-table">
+                      <thead>
+                        <tr>
+                          <th>Account</th>
+                          <th>State</th>
+                          <th>Revenue</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dynamicsAccountsBody">
+                      </tbody>
+                    </table>
+                    <div class="dynamics-empty" id="dynamicsEmpty">
+                      No matching accounts found.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Monthly Revenue Chart -->
+              <div class="dynamics-chart-panel">
+                <div class="dynamics-chart-panel__header">Monthly Revenue (Last 6 Months)</div>
+                <div class="dynamics-chart-panel__body">
+                  <canvas id="chartDynamicsRevenue"></canvas>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -4240,6 +4784,144 @@ h1, h2, h3, h4, h5, h6 {
           buildAllCharts();
         }
       });
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+
+  // ============================================
+  // DYNAMICS 365 DASHBOARD
+  // ============================================
+  (function() {
+    'use strict';
+
+    var ACCOUNTS = [
+      { name: 'Bird Sales Inc.', state: 'SC', revenue: '$485K', status: 'Active' },
+      { name: 'Blackhawk Hardware', state: 'GA', revenue: '$412K', status: 'Active' },
+      { name: 'Masterpiece Lighting', state: 'NC', revenue: '$378K', status: 'Active' },
+      { name: 'Foxworth Decorative', state: 'TX', revenue: '$334K', status: 'Active' },
+      { name: 'Vintage Shutters & Hdwe', state: 'SC', revenue: '$298K', status: 'Pending' },
+      { name: 'ProSource LLC', state: 'GA', revenue: '$267K', status: 'Active' },
+      { name: 'JR International Group', state: 'NC', revenue: '$245K', status: 'At Risk' },
+      { name: 'Grayco Home Center', state: 'VA', revenue: '$198K', status: 'Active' }
+    ];
+
+    var body = document.getElementById('dynamicsAccountsBody');
+    var emptyEl = document.getElementById('dynamicsEmpty');
+    var searchInput = document.getElementById('dynamicsSearch');
+
+    function statusClass(s) {
+      if (s === 'Active') return 'active';
+      if (s === 'Pending') return 'pending';
+      return 'atrisk';
+    }
+
+    function renderTable(query) {
+      if (!body) return;
+      var q = (query || '').toLowerCase();
+      var filtered = ACCOUNTS.filter(function(a) {
+        if (!q) return true;
+        return a.name.toLowerCase().indexOf(q) !== -1 ||
+               a.state.toLowerCase().indexOf(q) !== -1 ||
+               a.status.toLowerCase().indexOf(q) !== -1;
+      });
+
+      var html = '';
+      for (var i = 0; i < filtered.length; i++) {
+        var a = filtered[i];
+        html += '<tr>';
+        html += '<td>' + a.name + '</td>';
+        html += '<td>' + a.state + '</td>';
+        html += '<td>' + a.revenue + '</td>';
+        html += '<td><span class="dynamics-badge dynamics-badge--' + statusClass(a.status) + '">' + a.status + '</span></td>';
+        html += '</tr>';
+      }
+      body.innerHTML = html;
+
+      if (emptyEl) {
+        emptyEl.className = filtered.length === 0 ? 'dynamics-empty visible' : 'dynamics-empty';
+      }
+    }
+
+    // Search
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        renderTable(this.value.trim());
+      });
+    }
+
+    renderTable('');
+
+    // ---- Revenue Bar Chart ----
+    var canvas = document.getElementById('chartDynamicsRevenue');
+    if (!canvas) return;
+
+    function getTheme() {
+      return document.documentElement.getAttribute('data-theme') || 'light';
+    }
+
+    function chartColors() {
+      var isDark = getTheme() === 'dark';
+      return {
+        bar:  isDark ? '#4CA6E8' : '#0078D4',
+        barHover: isDark ? '#6BBAF0' : '#106EBE',
+        grid: isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)',
+        text: isDark ? '#b0a99f' : '#6b6560'
+      };
+    }
+
+    var ctx = canvas.getContext('2d');
+    var colors = chartColors();
+    var dynamicsChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
+        datasets: [{
+          label: 'Revenue ($M)',
+          data: [1.8, 1.6, 1.2, 1.9, 2.1, 2.4],
+          backgroundColor: colors.bar,
+          hoverBackgroundColor: colors.barHover,
+          borderRadius: 4,
+          maxBarThickness: 36
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) { return '$' + ctx.parsed.y + 'M'; }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: colors.text, font: { size: 11 } }
+          },
+          y: {
+            beginAtZero: true,
+            grid: { color: colors.grid },
+            ticks: {
+              color: colors.text,
+              font: { size: 11 },
+              callback: function(v) { return '$' + v + 'M'; }
+            }
+          }
+        }
+      }
+    });
+
+    // Dark mode observer
+    var observer = new MutationObserver(function() {
+      var c = chartColors();
+      dynamicsChart.data.datasets[0].backgroundColor = c.bar;
+      dynamicsChart.data.datasets[0].hoverBackgroundColor = c.barHover;
+      dynamicsChart.options.scales.x.ticks.color = c.text;
+      dynamicsChart.options.scales.y.ticks.color = c.text;
+      dynamicsChart.options.scales.y.grid.color = c.grid;
+      dynamicsChart.update('none');
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   })();

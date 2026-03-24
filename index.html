@@ -2180,6 +2180,425 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
+   TAXDOME CRM DASHBOARD
+   ============================================ */
+.taxdome-demo {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+/* ---- TaxDome Header Bar ---- */
+.taxdome-header {
+  background: #1B2559;
+  color: #fff;
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="dark"] .taxdome-header {
+  background: #111840;
+}
+
+.taxdome-header svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+/* ---- TaxDome Tabs ---- */
+.taxdome-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+  transition: background-color 0.4s var(--ease-out);
+}
+
+.taxdome-tab {
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition-interactive), border-color var(--transition-interactive);
+}
+
+.taxdome-tab:hover {
+  color: var(--color-text-secondary);
+}
+
+.taxdome-tab.active {
+  color: #1B2559;
+  border-bottom-color: #1B2559;
+}
+
+[data-theme="dark"] .taxdome-tab.active {
+  color: #7B8CDE;
+  border-bottom-color: #7B8CDE;
+}
+
+/* ---- TaxDome Controls ---- */
+.taxdome-controls {
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.taxdome-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  flex: 1;
+}
+
+.taxdome-filter {
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border-light);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all var(--transition-interactive);
+  white-space: nowrap;
+}
+
+.taxdome-filter:hover {
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.taxdome-filter.active {
+  background: #1B2559;
+  color: #fff;
+  border-color: #1B2559;
+}
+
+[data-theme="dark"] .taxdome-filter.active {
+  background: #2A3578;
+  border-color: #2A3578;
+}
+
+.taxdome-search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3);
+  transition: border-color var(--transition-interactive), background-color 0.4s var(--ease-out);
+}
+
+.taxdome-search:focus-within {
+  border-color: #1B2559;
+}
+
+[data-theme="dark"] .taxdome-search:focus-within {
+  border-color: #7B8CDE;
+}
+
+.taxdome-search svg {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.taxdome-search input {
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--color-text);
+  width: 130px;
+  outline: none;
+}
+
+.taxdome-search input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ---- TaxDome Table ---- */
+.taxdome-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.taxdome-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.taxdome-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.taxdome-table th {
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-light);
+  white-space: nowrap;
+  transition: background-color 0.4s var(--ease-out);
+}
+
+.taxdome-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text);
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.taxdome-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.taxdome-table tbody tr:hover {
+  background: var(--color-bg-alt);
+}
+
+.taxdome-client-name {
+  font-weight: 500;
+}
+
+/* ---- TaxDome Status Badges ---- */
+.taxdome-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.taxdome-badge--in-progress {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.taxdome-badge--awaiting-client {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.taxdome-badge--completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.taxdome-badge--overdue {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.taxdome-badge--new-intake {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+[data-theme="dark"] .taxdome-badge--in-progress {
+  background: #1e3a5f;
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .taxdome-badge--awaiting-client {
+  background: #422006;
+  color: #fcd34d;
+}
+
+[data-theme="dark"] .taxdome-badge--completed {
+  background: #064e3b;
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .taxdome-badge--overdue {
+  background: #450a0a;
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .taxdome-badge--new-intake {
+  background: #2e1065;
+  color: #c4b5fd;
+}
+
+/* ---- TaxDome Pipeline / Kanban ---- */
+.taxdome-pipeline {
+  display: none;
+  padding: var(--space-4);
+  gap: var(--space-3);
+}
+
+.taxdome-pipeline.active {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.taxdome-pipe-col {
+  min-width: 0;
+}
+
+.taxdome-pipe-header {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-2);
+  text-align: center;
+  color: #fff;
+}
+
+.taxdome-pipe-header--new-intake {
+  background: #7c3aed;
+}
+
+.taxdome-pipe-header--in-progress {
+  background: #2563eb;
+}
+
+.taxdome-pipe-header--awaiting-client {
+  background: #d97706;
+}
+
+.taxdome-pipe-header--completed {
+  background: #059669;
+}
+
+.taxdome-pipe-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-2);
+  transition: box-shadow var(--transition-interactive), background-color 0.4s var(--ease-out);
+}
+
+.taxdome-pipe-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.taxdome-pipe-card__name {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.taxdome-pipe-card__service {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+}
+
+.taxdome-pipe-card__due {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.taxdome-pipe-count {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.75);
+  font-weight: 400;
+  margin-left: var(--space-1);
+}
+
+/* ---- TaxDome Client List ---- */
+.taxdome-client-list {
+  display: block;
+}
+
+.taxdome-client-list.hidden {
+  display: none;
+}
+
+/* ---- TaxDome Empty State ---- */
+.taxdome-empty {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-10) var(--space-4);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.taxdome-empty.visible {
+  display: flex;
+}
+
+.taxdome-empty svg {
+  opacity: 0.4;
+}
+
+/* ---- TaxDome Responsive ---- */
+@media (max-width: 640px) {
+  .taxdome-pipeline.active {
+    grid-template-columns: 1fr;
+  }
+
+  .taxdome-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .taxdome-search {
+    width: 100%;
+  }
+
+  .taxdome-search input {
+    width: 100%;
+  }
+
+  .taxdome-filters {
+    justify-content: flex-start;
+  }
+
+  .taxdome-table {
+    font-size: 0.75rem;
+  }
+
+  .taxdome-table th,
+  .taxdome-table td {
+    padding: var(--space-2);
+  }
+
+  .taxdome-tab {
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.78rem;
+  }
+}
+
+/* ============================================
    REDUCED MOTION
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -2491,6 +2910,66 @@ h1, h2, h3, h4, h5, h6 {
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               No items match your search.
             </div>
+          </div>
+        </div>
+
+        <!-- TaxDome Implementation -->
+        <div class="section__header reveal" style="margin-top: clamp(var(--space-16), 8vw, var(--space-32));">
+          <h2 class="section__title">TaxDome CRM Implementation</h2>
+          <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Brought to Red Clay CPAs LLC</p>
+          <p class="analytics__intro" style="margin-top: var(--space-6);">Managed client relationships, project milestones, and communications using TaxDome CRM as primary escalation contact. Tracked progress, reconciled accounts, and delivered data-driven reports to all management levels, increasing client satisfaction and retention in a high-accountability environment.</p>
+        </div>
+        <div class="taxdome-demo reveal">
+          <!-- Header -->
+          <div class="taxdome-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg>
+            TaxDome &mdash; Red Clay CPAs
+          </div>
+          <!-- Tabs -->
+          <div class="taxdome-tabs">
+            <button class="taxdome-tab active" data-taxdome-tab="list">Client List</button>
+            <button class="taxdome-tab" data-taxdome-tab="pipeline">Pipeline</button>
+          </div>
+          <!-- Client List View -->
+          <div class="taxdome-client-list" id="taxdomeClientList">
+            <div class="taxdome-controls">
+              <div class="taxdome-filters" id="taxdomeFilters">
+                <button class="taxdome-filter active" data-status="All">All</button>
+                <button class="taxdome-filter" data-status="In Progress">In Progress</button>
+                <button class="taxdome-filter" data-status="Awaiting Client">Awaiting Client</button>
+                <button class="taxdome-filter" data-status="Completed">Completed</button>
+                <button class="taxdome-filter" data-status="Overdue">Overdue</button>
+                <button class="taxdome-filter" data-status="New Intake">New Intake</button>
+              </div>
+              <div class="taxdome-search">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="taxdomeSearch" placeholder="Search clients...">
+              </div>
+            </div>
+            <div class="taxdome-table-wrap">
+              <table class="taxdome-table">
+                <thead>
+                  <tr>
+                    <th>Client Name</th>
+                    <th>Service</th>
+                    <th>Status</th>
+                    <th>Due Date</th>
+                    <th>Assigned To</th>
+                  </tr>
+                </thead>
+                <tbody id="taxdomeBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+            <div class="taxdome-empty" id="taxdomeEmpty">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              No clients match your search.
+            </div>
+          </div>
+          <!-- Pipeline View -->
+          <div class="taxdome-pipeline" id="taxdomePipeline">
+            <!-- Populated by JS -->
           </div>
         </div>
 
@@ -3911,6 +4390,154 @@ h1, h2, h3, h4, h5, h6 {
 
     // Initial render
     render();
+  })();
+
+  // TAXDOME CRM DASHBOARD
+  (function() {
+    var TAXDOME_DATA = [
+      { name: "Johnson Family Trust", service: "Tax Return - 1040", status: "In Progress", due: "Apr 15, 2024", assigned: "Jack H." },
+      { name: "Peachtree Dental Group", service: "Business Tax - 1120S", status: "In Progress", due: "Mar 15, 2024", assigned: "Jack H." },
+      { name: "Sarah Mitchell", service: "Tax Return - 1040", status: "Awaiting Client", due: "Apr 15, 2024", assigned: "Jack H." },
+      { name: "Riverside Properties LLC", service: "Business Tax - 1065", status: "Completed", due: "Mar 15, 2024", assigned: "Jack H." },
+      { name: "Chen & Associates", service: "Quarterly Estimated Tax", status: "Overdue", due: "Jan 15, 2024", assigned: "Jack H." },
+      { name: "Blue Ridge Contracting", service: "Business Tax - 1120S", status: "In Progress", due: "Mar 15, 2024", assigned: "Jack H." },
+      { name: "Atlanta Bakery Co.", service: "Payroll Processing", status: "Completed", due: "Feb 28, 2024", assigned: "Jack H." },
+      { name: "Maria Gonzalez", service: "Tax Return - 1040", status: "Awaiting Client", due: "Apr 15, 2024", assigned: "Jack H." },
+      { name: "Roswell Auto Repair", service: "Business Tax - 1120", status: "New Intake", due: "Apr 15, 2024", assigned: "Jack H." },
+      { name: "The Williams Group", service: "Financial Planning", status: "In Progress", due: "Mar 30, 2024", assigned: "Jack H." },
+      { name: "David Park, CPA", service: "Peer Review", status: "Completed", due: "Feb 15, 2024", assigned: "Jack H." },
+      { name: "Magnolia Events LLC", service: "Business Tax - 1065", status: "Awaiting Client", due: "Mar 15, 2024", assigned: "Jack H." },
+      { name: "Thompson Estate", service: "Estate Tax - 706", status: "New Intake", due: "Sep 15, 2024", assigned: "Jack H." },
+      { name: "Kennesaw Fitness Center", service: "Business Tax - 1120S", status: "Overdue", due: "Mar 15, 2024", assigned: "Jack H." }
+    ];
+
+    var body = document.getElementById('taxdomeBody');
+    var emptyEl = document.getElementById('taxdomeEmpty');
+    var searchInput = document.getElementById('taxdomeSearch');
+    var filtersWrap = document.getElementById('taxdomeFilters');
+    var clientListEl = document.getElementById('taxdomeClientList');
+    var pipelineEl = document.getElementById('taxdomePipeline');
+    var tabs = document.querySelectorAll('[data-taxdome-tab]');
+    var filterBtns = filtersWrap ? filtersWrap.querySelectorAll('.taxdome-filter') : [];
+
+    var activeFilter = 'All';
+    var searchQuery = '';
+    var activeView = 'list';
+
+    function statusClass(status) {
+      var map = {
+        'In Progress': 'in-progress',
+        'Awaiting Client': 'awaiting-client',
+        'Completed': 'completed',
+        'Overdue': 'overdue',
+        'New Intake': 'new-intake'
+      };
+      return map[status] || 'in-progress';
+    }
+
+    function getFiltered() {
+      return TAXDOME_DATA.filter(function(item) {
+        var matchFilter = activeFilter === 'All' || item.status === activeFilter;
+        var matchSearch = !searchQuery || item.name.toLowerCase().indexOf(searchQuery) !== -1 || item.service.toLowerCase().indexOf(searchQuery) !== -1;
+        return matchFilter && matchSearch;
+      });
+    }
+
+    function renderTable() {
+      if (!body) return;
+      var data = getFiltered();
+      if (data.length === 0) {
+        body.innerHTML = '';
+        if (emptyEl) emptyEl.classList.add('visible');
+        return;
+      }
+      if (emptyEl) emptyEl.classList.remove('visible');
+      var html = '';
+      for (var i = 0; i < data.length; i++) {
+        var d = data[i];
+        html += '<tr>';
+        html += '<td class="taxdome-client-name">' + d.name + '</td>';
+        html += '<td>' + d.service + '</td>';
+        html += '<td><span class="taxdome-badge taxdome-badge--' + statusClass(d.status) + '">' + d.status + '</span></td>';
+        html += '<td>' + d.due + '</td>';
+        html += '<td>' + d.assigned + '</td>';
+        html += '</tr>';
+      }
+      body.innerHTML = html;
+    }
+
+    function renderPipeline() {
+      if (!pipelineEl) return;
+      var columns = [
+        { key: 'New Intake', label: 'New Intake', cls: 'new-intake' },
+        { key: 'In Progress', label: 'In Progress', cls: 'in-progress' },
+        { key: 'Awaiting Client', label: 'Awaiting Client', cls: 'awaiting-client' },
+        { key: 'Completed', label: 'Completed', cls: 'completed' }
+      ];
+      var html = '';
+      for (var c = 0; c < columns.length; c++) {
+        var col = columns[c];
+        var items = TAXDOME_DATA.filter(function(d) { return d.status === col.key; });
+        html += '<div class="taxdome-pipe-col">';
+        html += '<div class="taxdome-pipe-header taxdome-pipe-header--' + col.cls + '">' + col.label + '<span class="taxdome-pipe-count">(' + items.length + ')</span></div>';
+        for (var i = 0; i < items.length; i++) {
+          html += '<div class="taxdome-pipe-card">';
+          html += '<div class="taxdome-pipe-card__name">' + items[i].name + '</div>';
+          html += '<div class="taxdome-pipe-card__service">' + items[i].service + '</div>';
+          html += '<div class="taxdome-pipe-card__due">Due: ' + items[i].due + '</div>';
+          html += '</div>';
+        }
+        html += '</div>';
+      }
+      pipelineEl.innerHTML = html;
+    }
+
+    // Tab switching
+    for (var t = 0; t < tabs.length; t++) {
+      tabs[t].addEventListener('click', (function(tab) {
+        return function() {
+          var view = tab.getAttribute('data-taxdome-tab');
+          activeView = view;
+          for (var j = 0; j < tabs.length; j++) {
+            tabs[j].classList.toggle('active', tabs[j] === tab);
+          }
+          if (view === 'list') {
+            clientListEl.classList.remove('hidden');
+            pipelineEl.classList.remove('active');
+          } else {
+            clientListEl.classList.add('hidden');
+            pipelineEl.classList.add('active');
+            renderPipeline();
+          }
+        };
+      })(tabs[t]));
+    }
+
+    // Filter buttons
+    for (var f = 0; f < filterBtns.length; f++) {
+      filterBtns[f].addEventListener('click', (function(btn) {
+        return function() {
+          activeFilter = btn.getAttribute('data-status');
+          for (var j = 0; j < filterBtns.length; j++) {
+            filterBtns[j].classList.toggle('active', filterBtns[j] === btn);
+          }
+          renderTable();
+        };
+      })(filterBtns[f]));
+    }
+
+    // Search
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        searchQuery = this.value.toLowerCase().trim();
+        renderTable();
+      });
+    }
+
+    // Also include Overdue items in pipeline (they show as separate)
+    // Initial renders
+    renderTable();
+    renderPipeline();
   })();
   </script>
 </body>

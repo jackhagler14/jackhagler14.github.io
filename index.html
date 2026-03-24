@@ -1293,6 +1293,108 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-md);
 }
 
+/* Volunteer Carousel */
+.volunteer-carousel-wrapper {
+  position: relative;
+}
+
+.volunteer-carousel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  gap: var(--space-4);
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: var(--space-2) 0;
+}
+
+.volunteer-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.volunteer-carousel.grabbing {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.volunteer-carousel.grabbing .volunteer-card {
+  transition: none;
+}
+
+.volunteer-carousel .volunteer-card {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.volunteer-carousel .volunteer-card img {
+  pointer-events: none;
+}
+
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.carousel-arrow {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-interactive), box-shadow var(--transition-interactive);
+  color: var(--color-text);
+  font-size: 1.125rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.carousel-arrow:hover {
+  background: var(--color-bg-alt);
+  box-shadow: var(--shadow-sm);
+}
+
+.carousel-arrow:active {
+  transform: scale(0.95);
+}
+
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border-light);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-dot.active {
+  background: var(--color-accent);
+  transform: scale(1.3);
+}
+
+.carousel-dot:hover:not(.active) {
+  background: var(--color-text-secondary);
+}
+
 /* ============================================
    CONTACT SECTION
    ============================================ */
@@ -2151,48 +2253,67 @@ h1, h2, h3, h4, h5, h6 {
           <h2 class="section__title">Volunteer Work</h2>
         </div>
 
-        <!-- Charity: Water -->
-        <div class="volunteer-card reveal">
-          <div class="volunteer-card__logo">
-            <img src="./volunteer/charity-water-logo-2.jpg" alt="charity: water logo" loading="lazy">
-          </div>
-          <div class="volunteer-card__content">
-            <h3 class="volunteer-card__org">charity: water</h3>
-            <p class="volunteer-card__duration">15+ Years of Partnership</p>
-            <p class="volunteer-card__desc">Partnered with charity: water over 15 years to fund over 20 water projects worldwide. Organized and participated in fundraising events, including a 2018 fundraiser that raised over $12,000 to fund a water project.</p>
-          </div>
-          <div class="volunteer-card__image">
-            <img src="./volunteer/charity-water-2018.jpg" alt="Charity: Water fundraiser 2018" loading="lazy">
-          </div>
-        </div>
+        <div class="volunteer-carousel-wrapper reveal" id="volunteerCarousel">
+          <div class="volunteer-carousel">
+            <!-- Charity: Water -->
+            <div class="volunteer-card" data-slide="0">
+              <div class="volunteer-card__logo">
+                <img src="./volunteer/charity-water-logo-2.jpg" alt="charity: water logo" loading="lazy">
+              </div>
+              <div class="volunteer-card__content">
+                <h3 class="volunteer-card__org">charity: water</h3>
+                <p class="volunteer-card__duration">15+ Years of Partnership</p>
+                <p class="volunteer-card__desc">Partnered with charity: water over 15 years to fund over 20 water projects worldwide. Organized and participated in fundraising events, including a 2018 fundraiser that raised over $12,000 to fund a water project.</p>
+              </div>
+              <div class="volunteer-card__image">
+                <img src="./volunteer/charity-water-2018.jpg" alt="Charity: Water fundraiser 2018" loading="lazy">
+              </div>
+            </div>
 
-        <!-- Special Olympics New Hampshire -->
-        <div class="volunteer-card reveal">
-          <div class="volunteer-card__logo">
-            <img src="./volunteer/special-olympics-logo-3.jpg" alt="Special Olympics logo" loading="lazy">
-          </div>
-          <div class="volunteer-card__content">
-            <h3 class="volunteer-card__org">Special Olympics New Hampshire</h3>
-            <p class="volunteer-card__duration">6 Years / 6 Charity Livestreams</p>
-            <p class="volunteer-card__desc">Organized and hosted 24-hour charity livestreams over 6 years, raising a combined $50,000 for Special Olympics New Hampshire. Conducted interviews with SONH leadership including Senior Manager of Communications Mark Ericson.</p>
-          </div>
-          <div class="volunteer-card__image">
-            <img src="./volunteer/marc-ericson-interview.jpg" alt="Interviewing Mark Ericson during charity livestream" loading="lazy">
-          </div>
-        </div>
+            <!-- Special Olympics New Hampshire -->
+            <div class="volunteer-card" data-slide="1">
+              <div class="volunteer-card__logo">
+                <img src="./volunteer/special-olympics-logo-3.jpg" alt="Special Olympics logo" loading="lazy">
+              </div>
+              <div class="volunteer-card__content">
+                <h3 class="volunteer-card__org">Special Olympics New Hampshire</h3>
+                <p class="volunteer-card__duration">6 Years / 6 Charity Livestreams</p>
+                <p class="volunteer-card__desc">Organized and hosted 24-hour charity livestreams over 6 years, raising a combined $50,000 for Special Olympics New Hampshire. Conducted interviews with SONH leadership including Senior Manager of Communications Mark Ericson.</p>
+              </div>
+              <div class="volunteer-card__image">
+                <img src="./volunteer/marc-ericson-interview.jpg" alt="Interviewing Mark Ericson during charity livestream" loading="lazy">
+              </div>
+            </div>
 
-        <!-- Mimms Museum -->
-        <div class="volunteer-card reveal">
-          <div class="volunteer-card__logo">
-            <img src="./volunteer/mimms-museum-logo.jpg" alt="Mimms Museum of Technology and Art logo" loading="lazy">
+            <!-- Mimms Museum -->
+            <div class="volunteer-card" data-slide="2">
+              <div class="volunteer-card__logo">
+                <img src="./volunteer/mimms-museum-logo.jpg" alt="Mimms Museum of Technology and Art logo" loading="lazy">
+              </div>
+              <div class="volunteer-card__content">
+                <h3 class="volunteer-card__org">Mimms Museum of Technology and Art</h3>
+                <p class="volunteer-card__duration">Formerly the Computer Museum of America</p>
+                <p class="volunteer-card__desc">Volunteered at the museum supporting exhibits and events celebrating the history of computing and technology.</p>
+              </div>
+              <div class="volunteer-card__image">
+                <img src="./volunteer/Computer-Museum-with-Alma.jpg" alt="Volunteering at the Computer Museum of America" loading="lazy">
+              </div>
+            </div>
           </div>
-          <div class="volunteer-card__content">
-            <h3 class="volunteer-card__org">Mimms Museum of Technology and Art</h3>
-            <p class="volunteer-card__duration">Formerly the Computer Museum of America</p>
-            <p class="volunteer-card__desc">Volunteered at the museum supporting exhibits and events celebrating the history of computing and technology.</p>
-          </div>
-          <div class="volunteer-card__image">
-            <img src="./volunteer/Computer-Museum-with-Alma.jpg" alt="Volunteering at the Computer Museum of America" loading="lazy">
+
+          <!-- Carousel Navigation -->
+          <div class="carousel-nav">
+            <button class="carousel-arrow carousel-arrow--prev" aria-label="Previous slide">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="carousel-dots">
+              <button class="carousel-dot active" data-index="0" aria-label="Go to slide 1"></button>
+              <button class="carousel-dot" data-index="1" aria-label="Go to slide 2"></button>
+              <button class="carousel-dot" data-index="2" aria-label="Go to slide 3"></button>
+            </div>
+            <button class="carousel-arrow carousel-arrow--next" aria-label="Next slide">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
+            </button>
           </div>
         </div>
 
@@ -2713,6 +2834,154 @@ h1, h2, h3, h4, h5, h6 {
         form.style.display = 'none';
         success.classList.add('show');
       }, 100);
+    });
+  })();
+
+  /* ============================================
+     VOLUNTEER CAROUSEL
+     ============================================ */
+  (function() {
+    var wrapper = document.getElementById('volunteerCarousel');
+    if (!wrapper) return;
+
+    var carousel = wrapper.querySelector('.volunteer-carousel');
+    var slides = carousel.querySelectorAll('.volunteer-card');
+    var dots = wrapper.querySelectorAll('.carousel-dot');
+    var prevBtn = wrapper.querySelector('.carousel-arrow--prev');
+    var nextBtn = wrapper.querySelector('.carousel-arrow--next');
+    var slideCount = slides.length;
+    var currentIndex = 0;
+
+    // ---- Scroll to a specific slide ----
+    function goToSlide(index) {
+      // Wrap around for infinite feel
+      if (index < 0) index = slideCount - 1;
+      if (index >= slideCount) index = 0;
+      currentIndex = index;
+
+      var slideWidth = slides[0].offsetWidth;
+      var gap = parseFloat(getComputedStyle(carousel).gap) || 0;
+      var targetScroll = index * (slideWidth + gap);
+
+      carousel.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+      });
+
+      updateDots();
+    }
+
+    // ---- Update active dot ----
+    function updateDots() {
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    // ---- Determine current slide from scroll position ----
+    function getActiveIndexFromScroll() {
+      var slideWidth = slides[0].offsetWidth;
+      var gap = parseFloat(getComputedStyle(carousel).gap) || 0;
+      var scrollLeft = carousel.scrollLeft;
+      return Math.round(scrollLeft / (slideWidth + gap));
+    }
+
+    // ---- Arrow click handlers ----
+    prevBtn.addEventListener('click', function() {
+      goToSlide(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', function() {
+      goToSlide(currentIndex + 1);
+    });
+
+    // ---- Dot click handlers ----
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        var index = parseInt(this.getAttribute('data-index'), 10);
+        goToSlide(index);
+      });
+    });
+
+    // ---- Update dots on scroll (for touch/native scroll) ----
+    var scrollTimeout;
+    carousel.addEventListener('scroll', function() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function() {
+        var newIndex = getActiveIndexFromScroll();
+        if (newIndex >= 0 && newIndex < slideCount && newIndex !== currentIndex) {
+          currentIndex = newIndex;
+          updateDots();
+        }
+      }, 50);
+    }, { passive: true });
+
+    // ---- Mouse drag support (desktop) ----
+    var isDragging = false;
+    var startX = 0;
+    var scrollLeftStart = 0;
+    var dragDistance = 0;
+
+    carousel.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      dragDistance = 0;
+      carousel.classList.add('grabbing');
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeftStart = carousel.scrollLeft;
+      e.preventDefault();
+    });
+
+    carousel.addEventListener('mousemove', function(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      var x = e.pageX - carousel.offsetLeft;
+      var walk = (x - startX) * 1.2; // drag speed multiplier
+      dragDistance = Math.abs(walk);
+      carousel.scrollLeft = scrollLeftStart - walk;
+    });
+
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      carousel.classList.remove('grabbing');
+
+      // Re-enable scroll-snap so it snaps to nearest
+      // Determine nearest slide and snap
+      var newIndex = getActiveIndexFromScroll();
+      if (newIndex < 0) newIndex = 0;
+      if (newIndex >= slideCount) newIndex = slideCount - 1;
+
+      // If dragged enough, go to next/prev
+      var slideWidth = slides[0].offsetWidth;
+      if (dragDistance > slideWidth * 0.15) {
+        var direction = (carousel.scrollLeft > scrollLeftStart) ? 1 : -1;
+        newIndex = currentIndex + direction;
+      }
+
+      goToSlide(newIndex);
+    }
+
+    carousel.addEventListener('mouseup', endDrag);
+    carousel.addEventListener('mouseleave', endDrag);
+
+    // Prevent click events after drag
+    carousel.addEventListener('click', function(e) {
+      if (dragDistance > 5) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+
+    // ---- Keyboard support ----
+    wrapper.setAttribute('tabindex', '0');
+    wrapper.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') {
+        goToSlide(currentIndex - 1);
+        e.preventDefault();
+      } else if (e.key === 'ArrowRight') {
+        goToSlide(currentIndex + 1);
+        e.preventDefault();
+      }
     });
   })();
   </script>

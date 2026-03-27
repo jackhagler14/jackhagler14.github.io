@@ -3018,6 +3018,307 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
+   TABLEAU ANALYTICS DASHBOARD
+   ============================================ */
+.tableau-demo {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ---- Tableau Header ---- */
+.tableau-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: #2C2C2C;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="dark"] .tableau-header {
+  background: #1a1a1a;
+}
+
+.tableau-header svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.tableau-header span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- Filter Bar ---- */
+.tableau-filters {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: #F3F3F3;
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+[data-theme="dark"] .tableau-filters {
+  background: #242320;
+}
+
+.tableau-filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.tableau-filter-group label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.tableau-filter-group select {
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: var(--space-1) var(--space-2);
+  padding-right: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%236b6560' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  min-width: 80px;
+  transition: border-color var(--transition-interactive);
+}
+
+.tableau-filter-group select:focus {
+  outline: none;
+  border-color: #4E79A7;
+  box-shadow: 0 0 0 2px rgba(78, 121, 167, 0.2);
+}
+
+.tableau-filter-group select:hover {
+  border-color: var(--color-text-muted);
+}
+
+/* ---- KPI Row ---- */
+.tableau-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.tableau-kpi {
+  text-align: center;
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+  transition: background var(--transition-interactive);
+}
+
+.tableau-kpi__value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4E79A7;
+  line-height: 1.2;
+}
+
+[data-theme="dark"] .tableau-kpi__value {
+  color: #7EB0D5;
+}
+
+.tableau-kpi__label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* ---- Chart Panels Grid ---- */
+.tableau-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+.tableau-panel {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.tableau-panel--full {
+  grid-column: 1 / -1;
+}
+
+.tableau-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+}
+
+.tableau-panel__body {
+  padding: var(--space-4);
+  position: relative;
+}
+
+.tableau-panel__body canvas {
+  width: 100% !important;
+  height: 220px !important;
+}
+
+.tableau-panel--full .tableau-panel__body canvas {
+  height: 200px !important;
+}
+
+/* ---- State Table ---- */
+.tableau-state-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.tableau-state-table thead th {
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.tableau-state-table thead th:last-child {
+  text-align: right;
+}
+
+.tableau-state-table tbody td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text);
+}
+
+.tableau-state-table tbody td:last-child {
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.tableau-state-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tableau-state-table tbody tr:hover {
+  background: var(--color-surface);
+}
+
+.tableau-state-bar {
+  display: inline-block;
+  height: 6px;
+  border-radius: 3px;
+  background: #4E79A7;
+  vertical-align: middle;
+  margin-right: var(--space-2);
+  transition: width 0.4s var(--ease-out);
+}
+
+[data-theme="dark"] .tableau-state-bar {
+  background: #7EB0D5;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .tableau-filters {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .tableau-filter-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tableau-filter-group select {
+    flex: 1;
+    max-width: 160px;
+  }
+
+  .tableau-kpis {
+    grid-template-columns: 1fr 1fr;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .tableau-panels {
+    grid-template-columns: 1fr;
+    padding: var(--space-4);
+  }
+
+  .tableau-panel__body canvas {
+    height: 180px !important;
+  }
+
+  .tableau-panel--full .tableau-panel__body canvas {
+    height: 160px !important;
+  }
+
+  .tableau-kpi__value {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .tableau-header {
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.75rem;
+  }
+
+  .tableau-kpis {
+    gap: var(--space-2);
+  }
+
+  .tableau-kpi {
+    padding: var(--space-2);
+  }
+
+  .tableau-kpi__value {
+    font-size: 0.95rem;
+  }
+}
+
+/* ============================================
    REDUCED MOTION
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -3383,6 +3684,112 @@ h1, h2, h3, h4, h5, h6 {
                 <div class="dynamics-chart-panel__body">
                   <canvas id="chartDynamicsRevenue"></canvas>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tableau -->
+        <div class="section__header reveal" style="margin-top: clamp(var(--space-16), 8vw, var(--space-32));">
+          <h2 class="section__title">Tableau</h2>
+          <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Utilized at MPH Sales, Inc.</p>
+          <p class="analytics__intro" style="margin-top: var(--space-6);">Built sales analytics dashboards using Tableau and Excel Pivot Tables to track performance metrics across 750+ accounts and drive data-informed decisions. Conducted post-project reviews using visual reporting to gather feedback, implement improvements, and ensure compliance. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Tableau.</p>
+        </div>
+        <div class="tableau-demo reveal">
+          <!-- Header -->
+          <div class="tableau-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="12" width="4" height="9" rx="0.5"/>
+              <rect x="10" y="6" width="4" height="15" rx="0.5"/>
+              <rect x="17" y="3" width="4" height="18" rx="0.5"/>
+            </svg>
+            <span>Tableau — MPH Sales, Inc.</span>
+          </div>
+
+          <!-- Filter Bar -->
+          <div class="tableau-filters">
+            <div class="tableau-filter-group">
+              <label for="tableauFilterYear">Year</label>
+              <select id="tableauFilterYear">
+                <option value="all">All</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </select>
+            </div>
+            <div class="tableau-filter-group">
+              <label for="tableauFilterState">State</label>
+              <select id="tableauFilterState">
+                <option value="all">All</option>
+                <option value="GA">GA</option>
+                <option value="SC">SC</option>
+                <option value="NC">NC</option>
+                <option value="TX">TX</option>
+                <option value="VA">VA</option>
+                <option value="PA">PA</option>
+                <option value="NY">NY</option>
+              </select>
+            </div>
+            <div class="tableau-filter-group">
+              <label for="tableauFilterCategory">Category</label>
+              <select id="tableauFilterCategory">
+                <option value="all">All</option>
+                <option value="Cabinet Hardware">Cabinet Hardware</option>
+                <option value="Hinges">Hinges</option>
+                <option value="Door Accessories">Door Accessories</option>
+                <option value="Brass Door Sets">Brass Door Sets</option>
+                <option value="Modern Levers">Modern Levers</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- KPI Row -->
+          <div class="tableau-kpis">
+            <div class="tableau-kpi">
+              <div class="tableau-kpi__value" id="tableauKpiUnits">516,308</div>
+              <div class="tableau-kpi__label">Total Units</div>
+            </div>
+            <div class="tableau-kpi">
+              <div class="tableau-kpi__value" id="tableauKpiAvg">21,513</div>
+              <div class="tableau-kpi__label">Avg Monthly Vol</div>
+            </div>
+            <div class="tableau-kpi">
+              <div class="tableau-kpi__value" id="tableauKpiTop">Cabinet Hdwe</div>
+              <div class="tableau-kpi__label">Top Category</div>
+            </div>
+            <div class="tableau-kpi">
+              <div class="tableau-kpi__value" id="tableauKpiStates">7</div>
+              <div class="tableau-kpi__label">States Active</div>
+            </div>
+          </div>
+
+          <!-- Chart Panels -->
+          <div class="tableau-panels">
+            <!-- Area Chart - Full Width -->
+            <div class="tableau-panel tableau-panel--full">
+              <div class="tableau-panel__header">Monthly Sales Volume</div>
+              <div class="tableau-panel__body">
+                <canvas id="tableauAreaChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Bar Chart -->
+            <div class="tableau-panel">
+              <div class="tableau-panel__header">Top Categories by Volume</div>
+              <div class="tableau-panel__body">
+                <canvas id="tableauBarChart"></canvas>
+              </div>
+            </div>
+
+            <!-- State Breakdown Table -->
+            <div class="tableau-panel">
+              <div class="tableau-panel__header">Units by State</div>
+              <div class="tableau-panel__body" style="padding: 0;">
+                <table class="tableau-state-table">
+                  <thead>
+                    <tr><th>State</th><th>Units</th></tr>
+                  </thead>
+                  <tbody id="tableauStateBody"></tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -4922,6 +5329,383 @@ h1, h2, h3, h4, h5, h6 {
       dynamicsChart.options.scales.y.ticks.color = c.text;
       dynamicsChart.options.scales.y.grid.color = c.grid;
       dynamicsChart.update('none');
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+
+  // ============================================
+  // TABLEAU ANALYTICS DASHBOARD
+  // ============================================
+  (function() {
+    'use strict';
+
+    /* ---- Raw Data ---- */
+    var MONTHLY = {
+      2022: [17734,19704,22129,19688,19859,23650,20135,22907,23533,21749,19338,14548],
+      2023: [21191,21626,26365,20807,23381,23220,20764,25508,27744,23935,19840,17073]
+    };
+
+    var CATEGORIES = [
+      { name: 'Cabinet Hardware', qty: 137221 },
+      { name: 'Hinges', qty: 73953 },
+      { name: 'Door Accessories', qty: 68375 },
+      { name: 'Modern Levers', qty: 48161 },
+      { name: 'Brass Door Sets', qty: 41134 },
+      { name: 'Bronze Door Sets', qty: 18045 },
+      { name: 'Cabinet Hardware Select', qty: 17352 },
+      { name: 'Deadbolts', qty: 14126 }
+    ];
+
+    var STATES = [
+      { code: 'SC', qty: 170023 },
+      { code: 'NC', qty: 158478 },
+      { code: 'GA', qty: 157019 },
+      { code: 'TX', qty: 18026 },
+      { code: 'VA', qty: 7605 },
+      { code: 'PA', qty: 3072 },
+      { code: 'NY', qty: 2085 }
+    ];
+
+    /* Distribution weights for filtering (approximate share per state/category per year) */
+    var STATE_WEIGHTS = { SC: 0.329, NC: 0.307, GA: 0.304, TX: 0.035, VA: 0.015, PA: 0.006, NY: 0.004 };
+    var CAT_WEIGHTS = { 'Cabinet Hardware': 0.327, 'Hinges': 0.176, 'Door Accessories': 0.163, 'Modern Levers': 0.115, 'Brass Door Sets': 0.098, 'Bronze Door Sets': 0.043, 'Cabinet Hardware Select': 0.041, 'Deadbolts': 0.034 };
+    var MONTH_LABELS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    /* ---- DOM Refs ---- */
+    var filterYear = document.getElementById('tableauFilterYear');
+    var filterState = document.getElementById('tableauFilterState');
+    var filterCategory = document.getElementById('tableauFilterCategory');
+    var kpiUnits = document.getElementById('tableauKpiUnits');
+    var kpiAvg = document.getElementById('tableauKpiAvg');
+    var kpiTop = document.getElementById('tableauKpiTop');
+    var kpiStates = document.getElementById('tableauKpiStates');
+    var stateBody = document.getElementById('tableauStateBody');
+
+    if (!filterYear) return;
+
+    /* ---- Helpers ---- */
+    function fmt(n) {
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    function getTheme() {
+      return document.documentElement.getAttribute('data-theme') || 'light';
+    }
+
+    function themeColors() {
+      var dark = getTheme() === 'dark';
+      return {
+        primary: dark ? '#7EB0D5' : '#4E79A7',
+        secondary: dark ? '#F28E8E' : '#E15759',
+        tertiary: dark ? '#8FBF7F' : '#59A14F',
+        grid: dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)',
+        text: dark ? '#b0a99f' : '#6b6560',
+        barBg: dark ? 'rgba(126,176,213,0.15)' : 'rgba(78,121,167,0.08)'
+      };
+    }
+
+    /* ---- Filtering Logic ---- */
+    function getFilteredMonthly() {
+      var year = filterYear.value;
+      var state = filterState.value;
+      var cat = filterCategory.value;
+
+      var years = year === 'all' ? ['2022','2023'] : [year];
+      var stateMult = state === 'all' ? 1 : (STATE_WEIGHTS[state] || 0);
+      var catMult = cat === 'all' ? 1 : (CAT_WEIGHTS[cat] || 0);
+
+      var result = {};
+      for (var y = 0; y < years.length; y++) {
+        var yr = years[y];
+        var data = MONTHLY[yr];
+        result[yr] = [];
+        for (var m = 0; m < 12; m++) {
+          result[yr].push(Math.round(data[m] * stateMult * catMult));
+        }
+      }
+      return result;
+    }
+
+    function getFilteredCategories() {
+      var year = filterYear.value;
+      var state = filterState.value;
+
+      var yearMult = 1;
+      if (year !== 'all') {
+        var totalAll = 0; var totalYear = 0;
+        for (var k in MONTHLY) { for (var i = 0; i < 12; i++) totalAll += MONTHLY[k][i]; }
+        var yd = MONTHLY[year];
+        for (var j = 0; j < 12; j++) totalYear += yd[j];
+        yearMult = totalYear / totalAll;
+      }
+
+      var stateMult = state === 'all' ? 1 : (STATE_WEIGHTS[state] || 0);
+
+      return CATEGORIES.map(function(c) {
+        return { name: c.name, qty: Math.round(c.qty * yearMult * stateMult) };
+      });
+    }
+
+    function getFilteredStates() {
+      var year = filterYear.value;
+      var cat = filterCategory.value;
+      var state = filterState.value;
+
+      var yearMult = 1;
+      if (year !== 'all') {
+        var totalAll = 0; var totalYear = 0;
+        for (var k in MONTHLY) { for (var i = 0; i < 12; i++) totalAll += MONTHLY[k][i]; }
+        var yd = MONTHLY[year];
+        for (var j = 0; j < 12; j++) totalYear += yd[j];
+        yearMult = totalYear / totalAll;
+      }
+
+      var catMult = cat === 'all' ? 1 : (CAT_WEIGHTS[cat] || 0);
+
+      var filtered = STATES.map(function(s) {
+        return { code: s.code, qty: Math.round(s.qty * yearMult * catMult) };
+      });
+
+      if (state !== 'all') {
+        filtered = filtered.filter(function(s) { return s.code === state; });
+      }
+
+      return filtered;
+    }
+
+    /* ---- KPI Update ---- */
+    function updateKPIs() {
+      var monthly = getFilteredMonthly();
+      var total = 0; var months = 0;
+      for (var yr in monthly) {
+        for (var i = 0; i < monthly[yr].length; i++) {
+          total += monthly[yr][i];
+          months++;
+        }
+      }
+      kpiUnits.textContent = fmt(total);
+      kpiAvg.textContent = fmt(months > 0 ? Math.round(total / months) : 0);
+
+      var cats = getFilteredCategories();
+      var catFilter = filterCategory.value;
+      if (catFilter !== 'all') {
+        kpiTop.textContent = catFilter === 'Modern Levers' ? 'Modern Lvrs' : catFilter.length > 12 ? catFilter.substring(0,11) + '.' : catFilter;
+      } else {
+        var topCat = cats[0];
+        for (var c = 1; c < cats.length; c++) {
+          if (cats[c].qty > topCat.qty) topCat = cats[c];
+        }
+        var label = topCat.name;
+        if (label === 'Cabinet Hardware') label = 'Cabinet Hdwe';
+        if (label === 'Door Accessories') label = 'Door Access.';
+        if (label === 'Modern Levers') label = 'Modern Lvrs';
+        kpiTop.textContent = label;
+      }
+
+      var states = getFilteredStates();
+      kpiStates.textContent = states.length;
+    }
+
+    /* ---- Area Chart ---- */
+    var areaCanvas = document.getElementById('tableauAreaChart');
+    var areaCtx = areaCanvas ? areaCanvas.getContext('2d') : null;
+    var areaChart = null;
+
+    function buildAreaChart() {
+      var colors = themeColors();
+      var monthly = getFilteredMonthly();
+      var datasets = [];
+      var yearKeys = Object.keys(monthly).sort();
+
+      for (var y = 0; y < yearKeys.length; y++) {
+        var yr = yearKeys[y];
+        var color = y === 0 ? colors.primary : colors.secondary;
+        var gradient = areaCtx.createLinearGradient(0, 0, 0, 200);
+        gradient.addColorStop(0, y === 0 ? (getTheme() === 'dark' ? 'rgba(126,176,213,0.35)' : 'rgba(78,121,167,0.3)') : (getTheme() === 'dark' ? 'rgba(242,142,142,0.2)' : 'rgba(225,87,89,0.15)'));
+        gradient.addColorStop(1, 'rgba(0,0,0,0)');
+
+        datasets.push({
+          label: yr,
+          data: monthly[yr],
+          borderColor: color,
+          backgroundColor: gradient,
+          fill: true,
+          tension: 0.35,
+          pointRadius: 3,
+          pointHoverRadius: 5,
+          pointBackgroundColor: color,
+          borderWidth: 2
+        });
+      }
+
+      if (!areaChart) {
+        areaChart = new Chart(areaCtx, {
+          type: 'line',
+          data: { labels: MONTH_LABELS, datasets: datasets },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: {
+                display: yearKeys.length > 1,
+                position: 'top',
+                align: 'end',
+                labels: { boxWidth: 12, padding: 12, font: { size: 11 }, color: colors.text }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(ctx) { return ctx.dataset.label + ': ' + fmt(ctx.parsed.y) + ' units'; }
+                }
+              }
+            },
+            scales: {
+              x: { grid: { display: false }, ticks: { color: colors.text, font: { size: 10 } } },
+              y: {
+                beginAtZero: true,
+                grid: { color: colors.grid },
+                ticks: { color: colors.text, font: { size: 10 }, callback: function(v) { return v >= 1000 ? (v/1000).toFixed(0) + 'K' : v; } }
+              }
+            },
+            animation: { duration: 600 }
+          }
+        });
+      } else {
+        areaChart.data.datasets = datasets;
+        areaChart.options.plugins.legend.display = yearKeys.length > 1;
+        areaChart.options.plugins.legend.labels.color = colors.text;
+        areaChart.options.scales.x.ticks.color = colors.text;
+        areaChart.options.scales.y.ticks.color = colors.text;
+        areaChart.options.scales.y.grid.color = colors.grid;
+        areaChart.update();
+      }
+    }
+
+    /* ---- Horizontal Bar Chart ---- */
+    var barCanvas = document.getElementById('tableauBarChart');
+    var barCtx = barCanvas ? barCanvas.getContext('2d') : null;
+    var barChart = null;
+
+    function buildBarChart() {
+      var colors = themeColors();
+      var cats = getFilteredCategories();
+      var catFilter = filterCategory.value;
+
+      if (catFilter !== 'all') {
+        cats = cats.filter(function(c) { return c.name === catFilter; });
+      }
+
+      cats.sort(function(a, b) { return b.qty - a.qty; });
+      var labels = cats.map(function(c) {
+        var n = c.name;
+        if (n === 'Cabinet Hardware Select') n = 'Cab Hdwe Select';
+        if (n === 'Modern Levers') n = 'Modern Levers';
+        return n;
+      });
+      var data = cats.map(function(c) { return c.qty; });
+
+      var barColors = [colors.primary, colors.secondary, colors.tertiary, '#EDC948', '#B07AA1', '#FF9DA7', '#9C755F', '#BAB0AC'];
+      if (getTheme() === 'dark') {
+        barColors = ['#7EB0D5', '#F28E8E', '#8FBF7F', '#F5D76E', '#C9A0D0', '#FFB4B4', '#B89A82', '#D0C8C2'];
+      }
+
+      if (!barChart) {
+        barChart = new Chart(barCtx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Units',
+              data: data,
+              backgroundColor: barColors.slice(0, data.length),
+              borderRadius: 3,
+              maxBarThickness: 24
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(ctx) { return fmt(ctx.parsed.x) + ' units'; }
+                }
+              }
+            },
+            scales: {
+              x: {
+                beginAtZero: true,
+                grid: { color: colors.grid },
+                ticks: { color: colors.text, font: { size: 10 }, callback: function(v) { return v >= 1000 ? (v/1000).toFixed(0) + 'K' : v; } }
+              },
+              y: {
+                grid: { display: false },
+                ticks: { color: colors.text, font: { size: 10 } }
+              }
+            },
+            animation: { duration: 600 }
+          }
+        });
+      } else {
+        barChart.data.labels = labels;
+        barChart.data.datasets[0].data = data;
+        barChart.data.datasets[0].backgroundColor = barColors.slice(0, data.length);
+        barChart.options.scales.x.grid.color = colors.grid;
+        barChart.options.scales.x.ticks.color = colors.text;
+        barChart.options.scales.y.ticks.color = colors.text;
+        barChart.update();
+      }
+    }
+
+    /* ---- State Table ---- */
+    function buildStateTable() {
+      if (!stateBody) return;
+      var states = getFilteredStates();
+      var maxQty = 0;
+      for (var i = 0; i < states.length; i++) {
+        if (states[i].qty > maxQty) maxQty = states[i].qty;
+      }
+
+      var html = '';
+      for (var j = 0; j < states.length; j++) {
+        var s = states[j];
+        var pct = maxQty > 0 ? Math.round((s.qty / maxQty) * 100) : 0;
+        html += '<tr>';
+        html += '<td><span class="tableau-state-bar" style="width: ' + pct + 'px;"></span>' + s.code + '</td>';
+        html += '<td>' + fmt(s.qty) + '</td>';
+        html += '</tr>';
+      }
+      stateBody.innerHTML = html;
+    }
+
+    /* ---- Master Update ---- */
+    function updateAll() {
+      updateKPIs();
+      buildAreaChart();
+      buildBarChart();
+      buildStateTable();
+    }
+
+    /* ---- Event Listeners ---- */
+    filterYear.addEventListener('change', updateAll);
+    filterState.addEventListener('change', updateAll);
+    filterCategory.addEventListener('change', updateAll);
+
+    /* ---- Initial Render ---- */
+    updateAll();
+
+    /* ---- Theme Observer ---- */
+    var observer = new MutationObserver(function() {
+      /* Rebuild charts with new gradient/colors */
+      areaChart = null;
+      barChart = null;
+      var ac = document.getElementById('tableauAreaChart');
+      var bc = document.getElementById('tableauBarChart');
+      if (ac) { var parent = ac.parentNode; parent.removeChild(ac); var nc = document.createElement('canvas'); nc.id = 'tableauAreaChart'; parent.appendChild(nc); areaCtx = nc.getContext('2d'); }
+      if (bc) { var parent2 = bc.parentNode; parent2.removeChild(bc); var nc2 = document.createElement('canvas'); nc2.id = 'tableauBarChart'; parent2.appendChild(nc2); barCtx = nc2.getContext('2d'); }
+      updateAll();
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   })();

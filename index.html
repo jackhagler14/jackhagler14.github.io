@@ -2171,6 +2171,257 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+
+/* ============================================
+   FORMULA LOOKUP SIMULATORS
+   ============================================ */
+
+.formula-section {
+  margin-top: var(--space-8);
+}
+
+.formula-section-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-5);
+  letter-spacing: -0.01em;
+}
+
+.formula-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.formula-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.formula-card-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.formula-card-title .formula-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15em 0.5em;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* Formula bar mimicking Excel */
+.formula-bar {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.75rem;
+  font-family: 'Consolas', 'SF Mono', 'Fira Code', 'Monaco', monospace;
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: #1f2937;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  min-height: 44px;
+}
+
+[data-theme="dark"] .formula-bar {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+.formula-bar .formula-text {
+  white-space: nowrap;
+  user-select: none;
+}
+
+.formula-bar .formula-text.formula-fn {
+  color: #047857;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .formula-bar .formula-text.formula-fn {
+  color: #34d399;
+}
+
+.formula-bar .formula-text.formula-paren {
+  color: #7c3aed;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .formula-bar .formula-text.formula-paren {
+  color: #a78bfa;
+}
+
+.formula-bar .formula-text.formula-comma {
+  color: #6b7280;
+  margin-right: 0.15em;
+}
+
+.formula-bar select.formula-dropdown {
+  font-family: 'Consolas', 'SF Mono', 'Fira Code', 'Monaco', monospace;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1px solid #93c5fd;
+  border-radius: 4px;
+  padding: 0.125rem 1.25rem 0.125rem 0.375rem;
+  margin: 0 0.1em;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%232563eb'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.35rem center;
+  background-size: 8px 5px;
+  max-width: 160px;
+  text-overflow: ellipsis;
+}
+
+[data-theme="dark"] .formula-bar select.formula-dropdown {
+  color: #60a5fa;
+  background-color: #1e3a5f;
+  border-color: #3b82f6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2360a5fa'/%3E%3C/svg%3E");
+}
+
+.formula-bar select.formula-dropdown:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(20,184,166,0.18);
+}
+
+.formula-bar input.formula-input {
+  font-family: 'Consolas', 'SF Mono', 'Fira Code', 'Monaco', monospace;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1px solid #93c5fd;
+  border-radius: 4px;
+  padding: 0.125rem 0.375rem;
+  margin: 0 0.1em;
+  outline: none;
+  max-width: 120px;
+  width: 100px;
+}
+
+[data-theme="dark"] .formula-bar input.formula-input {
+  color: #60a5fa;
+  background-color: #1e3a5f;
+  border-color: #3b82f6;
+}
+
+.formula-bar input.formula-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(20,184,166,0.18);
+}
+
+/* Result cell */
+.formula-result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+.formula-result-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.formula-result-cell {
+  font-family: 'Consolas', 'SF Mono', 'Fira Code', 'Monaco', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #065f46;
+  background: #d1fae5;
+  border: 1px solid #6ee7b7;
+  border-radius: 4px;
+  padding: 0.35rem 0.75rem;
+  min-width: 80px;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+[data-theme="dark"] .formula-result-cell {
+  color: #6ee7b7;
+  background: #064e3b;
+  border-color: #047857;
+}
+
+.formula-result-cell.formula-result-empty {
+  color: #9ca3af;
+  background: #f9fafb;
+  border-color: #e5e7eb;
+  font-style: italic;
+  font-weight: 400;
+}
+
+[data-theme="dark"] .formula-result-cell.formula-result-empty {
+  color: #6b7280;
+  background: #1e293b;
+  border-color: #334155;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .formula-panels {
+    grid-template-columns: 1fr;
+  }
+  .formula-bar {
+    font-size: 0.75rem;
+  }
+  .formula-bar select.formula-dropdown,
+  .formula-bar input.formula-input {
+    font-size: 0.75rem;
+    max-width: 120px;
+  }
+  .formula-result-cell {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .formula-card {
+    padding: var(--space-3);
+  }
+  .formula-bar {
+    font-size: 0.6875rem;
+    padding: 0.375rem 0.5rem;
+  }
+  .formula-bar select.formula-dropdown,
+  .formula-bar input.formula-input {
+    font-size: 0.6875rem;
+    max-width: 90px;
+  }
+}
+
 /* ============================================
    SORTLY DEMO DASHBOARD
    ============================================ */
@@ -3930,6 +4181,71 @@ h1, h2, h3, h4, h5, h6 {
           </div>
           <div class="pivot-chart-canvas-wrap">
             <canvas id="pivotChartCanvas"></canvas>
+          </div>
+        </div>
+
+        <!-- Formula Lookup Simulators -->
+        <div class="formula-section reveal">
+          <h3 class="formula-section-title">Formula Lookups</h3>
+          <div class="formula-panels">
+
+            <!-- VLOOKUP Panel -->
+            <div class="formula-card" id="formulaVlookup">
+              <div class="formula-card-title"><span class="formula-badge">Excel</span> VLOOKUP Simulator</div>
+              <div class="formula-bar">
+                <span class="formula-text formula-fn">=VLOOKUP(</span>
+                <select class="formula-dropdown" id="vlookupValue" aria-label="Lookup value"></select>
+                <span class="formula-text formula-comma">,</span>
+                <span class="formula-text"> data</span>
+                <span class="formula-text formula-comma">,</span>
+                <select class="formula-dropdown" id="vlookupCol" aria-label="Column index">
+                  <option value="total">Total Qty</option>
+                  <option value="y2022">2022 Qty</option>
+                  <option value="y2023">2023 Qty</option>
+                  <option value="topState">Top State</option>
+                  <option value="monthCount">Month Count</option>
+                </select>
+                <span class="formula-text formula-comma">,</span>
+                <span class="formula-text"> FALSE</span>
+                <span class="formula-text formula-paren">)</span>
+              </div>
+              <div class="formula-result">
+                <span class="formula-result-label">Result:</span>
+                <span class="formula-result-cell" id="vlookupResult">—</span>
+              </div>
+            </div>
+
+            <!-- INDEX/MATCH Panel -->
+            <div class="formula-card" id="formulaIndexMatch">
+              <div class="formula-card-title"><span class="formula-badge">Excel</span> INDEX / MATCH Simulator</div>
+              <div class="formula-bar">
+                <span class="formula-text formula-fn">=INDEX(</span>
+                <select class="formula-dropdown" id="indexReturnCol" aria-label="Return column">
+                  <option value="category">Category</option>
+                  <option value="state">State</option>
+                  <option value="year">Year</option>
+                  <option value="totalQty">Total Qty</option>
+                </select>
+                <span class="formula-text formula-comma">,</span>
+                <span class="formula-text formula-fn"> MATCH(</span>
+                <select class="formula-dropdown" id="indexLookupValue" aria-label="Lookup value"></select>
+                <span class="formula-text formula-comma">,</span>
+                <select class="formula-dropdown" id="indexLookupCol" aria-label="Lookup column">
+                  <option value="category">Category</option>
+                  <option value="state">State</option>
+                  <option value="year">Year</option>
+                </select>
+                <span class="formula-text formula-comma">,</span>
+                <span class="formula-text"> 0</span>
+                <span class="formula-text formula-paren">)</span>
+                <span class="formula-text formula-paren">)</span>
+              </div>
+              <div class="formula-result">
+                <span class="formula-result-label">Result:</span>
+                <span class="formula-result-cell" id="indexMatchResult">—</span>
+              </div>
+            </div>
+
           </div>
         </div>
             </div>
@@ -5826,6 +6142,256 @@ h1, h2, h3, h4, h5, h6 {
       });
     });
     themeObs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    // ---- Expose aggregated data for Formula Lookup simulators ----
+    (function() {
+      var categoryTotals = {};
+      var stateTotals = {};
+      var yearTotals = {};
+
+      PIVOT_DATA.forEach(function(r) {
+        var c = r.category;
+        var s = r.state;
+        var y = r.year;
+        var q = r.qty;
+
+        if (!categoryTotals[c]) {
+          categoryTotals[c] = { total: 0, y2022: 0, y2023: 0, _byState: {}, _months: {} };
+        }
+        categoryTotals[c].total += q;
+        if (y === '2022') categoryTotals[c].y2022 += q;
+        if (y === '2023') categoryTotals[c].y2023 += q;
+        if (!categoryTotals[c]._byState[s]) categoryTotals[c]._byState[s] = 0;
+        categoryTotals[c]._byState[s] += q;
+        categoryTotals[c]._months[y + '-' + r.month] = true;
+
+        if (!stateTotals[s]) stateTotals[s] = 0;
+        stateTotals[s] += q;
+
+        if (!yearTotals[y]) yearTotals[y] = 0;
+        yearTotals[y] += q;
+      });
+
+      // Finalize: round totals, find topState, count months
+      Object.keys(categoryTotals).forEach(function(c) {
+        var e = categoryTotals[c];
+        e.total = Math.round(e.total);
+        e.y2022 = Math.round(e.y2022);
+        e.y2023 = Math.round(e.y2023);
+        e.monthCount = Object.keys(e._months).length;
+        // Top state
+        var topS = '';
+        var topQ = 0;
+        Object.keys(e._byState).forEach(function(s) {
+          if (e._byState[s] > topQ) {
+            topQ = e._byState[s];
+            topS = s;
+          }
+        });
+        e.topState = topS;
+      });
+
+      Object.keys(stateTotals).forEach(function(s) {
+        stateTotals[s] = Math.round(stateTotals[s]);
+      });
+      Object.keys(yearTotals).forEach(function(y) {
+        yearTotals[y] = Math.round(yearTotals[y]);
+      });
+
+      window.__FORMULA_LOOKUP_DATA__ = {
+        categoryTotals: categoryTotals,
+        stateTotals: stateTotals,
+        yearTotals: yearTotals
+      };
+    })();
+
+  })();
+
+
+  /* ============================================
+     FORMULA LOOKUP SIMULATORS
+     ============================================ */
+  (function() {
+    'use strict';
+
+    // Wait for PIVOT_DATA to be available from the pivot IIFE scope
+    // We re-parse it from the existing global-ish approach or re-derive from DOM
+    // Actually PIVOT_DATA is local to the pivot IIFE, so we need to recompute
+    // We'll just inline the aggregation from the known data structure
+
+    // Grab PIVOT_DATA — it's in the closure above, so we embed a copy reference
+    // by reading it from the page's script context. Since both IIFEs share the same
+    // <script> tag, we can access it if we restructure. Instead, let's aggregate
+    // by parsing the pivot table, OR simply re-declare the reference.
+    // The simplest approach: promote PIVOT_DATA to the shared script scope.
+    // But to avoid modifying the existing IIFE, we'll read from a shared variable.
+
+    // Actually, the cleanest way: we build lookup tables by collecting from the
+    // pivot table DOM. But the spec says to pre-aggregate from PIVOT_DATA.
+    // Since PIVOT_DATA is scoped to the IIFE, we'll need a bridge.
+    // Let's use window.__PIVOT_DATA__ set from the pivot IIFE.
+
+    // Fallback: we'll reference window.__FORMULA_DATA__ which we set below.
+
+    var data = window.__FORMULA_LOOKUP_DATA__;
+    if (!data) return;
+
+    var categoryTotals = data.categoryTotals;
+    var stateTotals = data.stateTotals;
+    var yearTotals = data.yearTotals;
+
+    // ---- VLOOKUP ----
+    var vlVal = document.getElementById('vlookupValue');
+    var vlCol = document.getElementById('vlookupCol');
+    var vlRes = document.getElementById('vlookupResult');
+
+    if (!vlVal || !vlCol || !vlRes) return;
+
+    // Populate categories dropdown
+    var cats = Object.keys(categoryTotals).sort();
+    cats.forEach(function(c) {
+      var opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c;
+      vlVal.appendChild(opt);
+    });
+
+    function fmtNum(n) {
+      if (typeof n === 'number') {
+        return n % 1 === 0 ? n.toLocaleString() : n.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+      }
+      return String(n);
+    }
+
+    function computeVlookup() {
+      var cat = vlVal.value;
+      var col = vlCol.value;
+      var entry = categoryTotals[cat];
+      if (!entry) {
+        vlRes.textContent = '#N/A';
+        vlRes.classList.add('formula-result-empty');
+        return;
+      }
+      var val;
+      if (col === 'total') val = fmtNum(entry.total);
+      else if (col === 'y2022') val = fmtNum(entry.y2022);
+      else if (col === 'y2023') val = fmtNum(entry.y2023);
+      else if (col === 'topState') val = entry.topState;
+      else if (col === 'monthCount') val = String(entry.monthCount);
+      else val = '#N/A';
+
+      vlRes.textContent = val;
+      vlRes.classList.remove('formula-result-empty');
+    }
+
+    vlVal.addEventListener('change', computeVlookup);
+    vlCol.addEventListener('change', computeVlookup);
+
+    // Init
+    computeVlookup();
+
+    // ---- INDEX / MATCH ----
+    var imReturn = document.getElementById('indexReturnCol');
+    var imValue  = document.getElementById('indexLookupValue');
+    var imCol    = document.getElementById('indexLookupCol');
+    var imRes    = document.getElementById('indexMatchResult');
+
+    if (!imReturn || !imValue || !imCol || !imRes) return;
+
+    // Build the "table" used by INDEX/MATCH
+    // Each row: { category, state, year, totalQty }
+    // We use three separate lookup domains:
+    //   - category -> categoryTotals keys
+    //   - state -> stateTotals keys
+    //   - year -> yearTotals keys
+    // The "table" for INDEX/MATCH:
+    //   When lookup_col = category, rows = category table
+    //   When lookup_col = state, rows = state table
+    //   When lookup_col = year, rows = year table
+
+    var catRows = cats.map(function(c) {
+      var e = categoryTotals[c];
+      return { category: c, state: e.topState, year: '—', totalQty: e.total };
+    });
+
+    var states = Object.keys(stateTotals).sort();
+    var stateRows = states.map(function(s) {
+      // Find top category for this state
+      var topCat = '';
+      var topQty = 0;
+      cats.forEach(function(c) {
+        var e = categoryTotals[c];
+        if (e._byState && e._byState[s] && e._byState[s] > topQty) {
+          topQty = e._byState[s];
+          topCat = c;
+        }
+      });
+      return { category: topCat || '—', state: s, year: '—', totalQty: stateTotals[s] };
+    });
+
+    var years = Object.keys(yearTotals).sort();
+    var yearRows = years.map(function(y) {
+      return { category: '—', state: '—', year: y, totalQty: yearTotals[y] };
+    });
+
+    var lookupDomains = {
+      category: { rows: catRows, values: cats },
+      state:    { rows: stateRows, values: states },
+      year:     { rows: yearRows, values: years }
+    };
+
+    function populateLookupValues() {
+      var col = imCol.value;
+      var domain = lookupDomains[col];
+      imValue.innerHTML = '';
+      domain.values.forEach(function(v) {
+        var opt = document.createElement('option');
+        opt.value = v;
+        opt.textContent = v;
+        imValue.appendChild(opt);
+      });
+      computeIndexMatch();
+    }
+
+    function computeIndexMatch() {
+      var retCol = imReturn.value;
+      var lookupVal = imValue.value;
+      var lookupCol = imCol.value;
+      var domain = lookupDomains[lookupCol];
+
+      // MATCH: find the row
+      var matchedRow = null;
+      for (var i = 0; i < domain.rows.length; i++) {
+        var row = domain.rows[i];
+        var cellVal = lookupCol === 'totalQty' ? String(row.totalQty) : row[lookupCol];
+        if (cellVal === lookupVal) {
+          matchedRow = row;
+          break;
+        }
+      }
+
+      if (!matchedRow) {
+        imRes.textContent = '#N/A';
+        imRes.classList.add('formula-result-empty');
+        return;
+      }
+
+      // INDEX: return the value from return_col
+      var result;
+      if (retCol === 'totalQty') result = fmtNum(matchedRow.totalQty);
+      else result = matchedRow[retCol] || '#N/A';
+
+      imRes.textContent = result;
+      imRes.classList.remove('formula-result-empty');
+    }
+
+    imReturn.addEventListener('change', computeIndexMatch);
+    imValue.addEventListener('change', computeIndexMatch);
+    imCol.addEventListener('change', populateLookupValues);
+
+    // Init
+    populateLookupValues();
+
   })();
 
   // ============================================

@@ -5706,7 +5706,7 @@ h1, h2, h3, h4, h5, h6 {
           return { idx: li, label: l, total: t };
         });
         totals.sort(function(a, b) { return b.total - a.total; });
-        var topN = totals.slice(0, 20);
+        var topN = totals.slice(0, 10);
         var topIndices = topN.map(function(t) { return t.idx; });
         labels = topN.map(function(t) { return t.label; });
         datasets = datasets.map(function(ds) {
@@ -5714,7 +5714,7 @@ h1, h2, h3, h4, h5, h6 {
           var newBg = Array.isArray(ds.backgroundColor) ? topIndices.map(function(i) { return ds.backgroundColor[i] || ds.backgroundColor[0]; }) : ds.backgroundColor;
           return Object.assign({}, ds, { data: newData, backgroundColor: newBg });
         });
-        titleText += ' (Top 20)';
+        titleText += ' (Top 10)';
         chartTitleEl.textContent = titleText;
       }
 

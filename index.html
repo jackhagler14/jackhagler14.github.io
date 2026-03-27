@@ -1405,6 +1405,142 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-dot:hover:not(.active) {
   background: var(--color-text-secondary);
 }
+/* ============================================
+   MPH PROJECTS CAROUSEL
+   ============================================ */
+.mph-carousel-wrapper {
+  position: relative;
+  margin-top: var(--space-8);
+}
+
+.mph-carousel-intro {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.mph-carousel-intro .section__title {
+  margin-top: var(--space-2);
+}
+
+.mph-carousel-intro .volunteer-card__duration {
+  margin-top: var(--space-2);
+}
+
+.mph-carousel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  gap: 0;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0;
+}
+
+.mph-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.mph-carousel.grabbing {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.mph-carousel.grabbing .mph-slide {
+  transition: none;
+}
+
+.mph-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* Remove top margin from project headers inside slides */
+.mph-slide .section__header {
+  margin-top: 0 !important;
+}
+
+.mph-carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  flex-wrap: nowrap;
+}
+
+.mph-carousel-arrow {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-interactive), box-shadow var(--transition-interactive);
+  color: var(--color-text);
+  font-size: 1.125rem;
+  line-height: 1;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.mph-carousel-arrow:hover {
+  background: var(--color-bg-alt);
+  box-shadow: var(--shadow-sm);
+}
+
+.mph-carousel-arrow:active {
+  transform: scale(0.95);
+}
+
+.mph-carousel-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mph-carousel-pill {
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border-light);
+  background: var(--color-bg-card);
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.mph-carousel-pill.active {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.mph-carousel-pill:hover:not(.active) {
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+}
+
+@media (max-width: 600px) {
+  .mph-carousel-pills {
+    gap: 6px;
+  }
+  .mph-carousel-pill {
+    padding: 5px 12px;
+    font-size: 0.75rem;
+  }
+}
+
 
 /* ============================================
    CONTACT SECTION
@@ -3715,12 +3851,20 @@ h1, h2, h3, h4, h5, h6 {
       <div class="container">
         <div class="section__header reveal">
           <p class="section__label">Projects</p>
-          <h2 class="section__title">Hardware Sales Analysis</h2>
-          <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Utilized at MPH Sales, Inc.</p>
-          <p class="analytics__intro" style="margin-top: var(--space-6);">Brought Data Analysis &amp; Visualization to MPH Sales, Inc. Explore 2022–2023 aggregate sales data through an interactive pivot table below — select row and column dimensions, apply filters, sort columns, and toggle chart types to surface trends in volume, product mix, and geographic distribution. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Excel.</p>
+          <h2 class="section__title">MPH Sales, Inc.</h2>
+          <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Utilized Tools &amp; Dashboards</p>
         </div>
 
-        <!-- Interactive Pivot Table -->
+        <div class="mph-carousel-wrapper reveal" id="mphCarousel">
+          <div class="mph-carousel">
+            <!-- Slide 0: Hardware Sales Analysis -->
+            <div class="mph-slide" data-slide="0">
+              <div class="section__header">
+                <h2 class="section__title">Hardware Sales Analysis</h2>
+                <p class="analytics__intro">Brought Data Analysis &amp; Visualization to MPH Sales, Inc. Explore 2022&#8211;2023 aggregate sales data through an interactive pivot table below &#8212; select row and column dimensions, apply filters, sort columns, and toggle chart types to surface trends in volume, product mix, and geographic distribution. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Excel.</p>
+              </div>
+
+<!-- Interactive Pivot Table -->
         <div class="pivot-controls reveal" id="pivotControls">
           <div class="pivot-control-group">
             <label for="pivotRows">Rows</label>
@@ -3788,15 +3932,15 @@ h1, h2, h3, h4, h5, h6 {
             <canvas id="pivotChartCanvas"></canvas>
           </div>
         </div>
+            </div>
 
-
-        <!-- Microsoft Dynamics 365 -->
-        <div class="section__header reveal" style="margin-top: clamp(var(--space-16), 8vw, var(--space-32));">
-          <h2 class="section__title">Microsoft Dynamics 365</h2>
-          <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Utilized at MPH Sales, Inc.</p>
-          <p class="analytics__intro" style="margin-top: var(--space-6);">Managed 750+ active accounts across seven states using Microsoft Dynamics 365 for CRM operations, sales pipeline tracking, and performance reporting at a $750M corporation. Oversaw timelines, vendor coordination, and budget reconciliation to drive operational efficiency. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Dynamics.</p>
-        </div>
-        <div class="dynamics-demo reveal">
+            <!-- Slide 1: Microsoft Dynamics 365 -->
+            <div class="mph-slide" data-slide="1">
+              <div class="section__header">
+                <h2 class="section__title">Microsoft Dynamics 365</h2>
+                <p class="analytics__intro">Managed 750+ active accounts across seven states using Microsoft Dynamics 365 for CRM operations, sales pipeline tracking, and performance reporting at a $750M corporation. Oversaw timelines, vendor coordination, and budget reconciliation to drive operational efficiency. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Dynamics.</p>
+              </div>
+<div class="dynamics-demo reveal">
           <!-- Header Bar -->
           <div class="dynamics-header">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" fill="currentColor" opacity="0.9"/><rect x="9" y="1" width="6" height="6" rx="1" fill="currentColor" opacity="0.6"/><rect x="1" y="9" width="6" height="6" rx="1" fill="currentColor" opacity="0.6"/><rect x="9" y="9" width="6" height="6" rx="1" fill="currentColor" opacity="0.35"/></svg>
@@ -3925,14 +4069,15 @@ h1, h2, h3, h4, h5, h6 {
             </div>
           </div>
         </div>
+            </div>
 
-        <!-- Tableau -->
-        <div class="section__header reveal" style="margin-top: clamp(var(--space-16), 8vw, var(--space-32));">
-          <h2 class="section__title">Tableau</h2>
-          <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Utilized at MPH Sales, Inc.</p>
-          <p class="analytics__intro" style="margin-top: var(--space-6);">Built sales analytics dashboards using Tableau and Excel Pivot Tables to track performance metrics across 750+ accounts and drive data-informed decisions. Conducted post-project reviews using visual reporting to gather feedback, implement improvements, and ensure compliance. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Tableau.</p>
-        </div>
-        <div class="tableau-demo reveal">
+            <!-- Slide 2: Tableau -->
+            <div class="mph-slide" data-slide="2">
+              <div class="section__header">
+                <h2 class="section__title">Tableau</h2>
+                <p class="analytics__intro">Built sales analytics dashboards using Tableau and Excel Pivot Tables to track performance metrics across 750+ accounts and drive data-informed decisions. Conducted post-project reviews using visual reporting to gather feedback, implement improvements, and ensure compliance. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Tableau.</p>
+              </div>
+<div class="tableau-demo reveal">
           <!-- Header -->
           <div class="tableau-header">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4031,14 +4176,15 @@ h1, h2, h3, h4, h5, h6 {
             </div>
           </div>
         </div>
+            </div>
 
-        <!-- Sortly Implementation -->
-        <div class="section__header reveal" style="margin-top: clamp(var(--space-16), 8vw, var(--space-32));">
-          <h2 class="section__title">Sortly Implementation</h2>
-          <p class="volunteer-card__duration">Utilized at MPH Sales, Inc.</p>
-          <p class="analytics__intro">Identified, proposed, and implemented Sortly inventory management software to streamline hardware distribution tracking across 7 states. Replaced manual spreadsheet-based processes with a centralized digital inventory system, improving visibility, reducing errors, and enabling real-time reporting. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Sortly.</p>
-        </div>
-        <div class="sortly-demo reveal">
+            <!-- Slide 3: Sortly Implementation -->
+            <div class="mph-slide" data-slide="3">
+              <div class="section__header">
+                <h2 class="section__title">Sortly Implementation</h2>
+                <p class="analytics__intro">Identified, proposed, and implemented Sortly inventory management software to streamline hardware distribution tracking across 7 states. Replaced manual spreadsheet-based processes with a centralized digital inventory system, improving visibility, reducing errors, and enabling real-time reporting. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Sortly.</p>
+              </div>
+<div class="sortly-demo reveal">
           <!-- Sidebar -->
           <div class="sortly-sidebar">
             <div class="sortly-header">
@@ -4111,8 +4257,22 @@ h1, h2, h3, h4, h5, h6 {
             </div>
           </div>
         </div>
+            </div>
+          </div>
 
-        <!-- TaxDome Implementation -->
+          <div class="mph-carousel-nav">
+            <button class="mph-carousel-arrow mph-carousel-arrow--prev" aria-label="Previous slide">&#8592;</button>
+            <div class="mph-carousel-pills">
+              <button class="mph-carousel-pill active" data-index="0">Hardware Sales</button>
+              <button class="mph-carousel-pill" data-index="1">Dynamics 365</button>
+              <button class="mph-carousel-pill" data-index="2">Tableau</button>
+              <button class="mph-carousel-pill" data-index="3">Sortly</button>
+            </div>
+            <button class="mph-carousel-arrow mph-carousel-arrow--next" aria-label="Next slide">&#8594;</button>
+          </div>
+        </div>
+
+<!-- TaxDome Implementation -->
         <div class="section__header reveal" style="margin-top: clamp(var(--space-16), 8vw, var(--space-32));">
           <h2 class="section__title">TaxDome CRM Implementation</h2>
           <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Brought to Red Clay CPAs LLC</p>
@@ -6491,5 +6651,181 @@ h1, h2, h3, h4, h5, h6 {
     renderPipeline();
   })();
   </script>
+  <script>
+
+  /* ============================================
+     MPH PROJECTS CAROUSEL
+     ============================================ */
+  (function() {
+    var wrapper = document.getElementById('mphCarousel');
+    if (!wrapper) return;
+
+    var carousel = wrapper.querySelector('.mph-carousel');
+    var slides = carousel.querySelectorAll('.mph-slide');
+    var pills = wrapper.querySelectorAll('.mph-carousel-pill');
+    var prevBtn = wrapper.querySelector('.mph-carousel-arrow--prev');
+    var nextBtn = wrapper.querySelector('.mph-carousel-arrow--next');
+    var slideCount = slides.length;
+    var currentIndex = 0;
+
+    // ---- Resize Chart.js canvases in a slide ----
+    function resizeChartsInSlide(index) {
+      var slide = slides[index];
+      if (!slide) return;
+      var canvases = slide.querySelectorAll('canvas');
+      canvases.forEach(function(canvas) {
+        // Find Chart.js instance for this canvas
+        var chartInstance = Chart.getChart(canvas);
+        if (chartInstance) {
+          chartInstance.resize();
+        }
+      });
+    }
+
+    // ---- Scroll to a specific slide ----
+    function goToSlide(index) {
+      if (index < 0) index = slideCount - 1;
+      if (index >= slideCount) index = 0;
+      currentIndex = index;
+
+      var slideWidth = slides[0].offsetWidth;
+      var gap = parseFloat(getComputedStyle(carousel).gap) || 0;
+      var targetScroll = index * (slideWidth + gap);
+
+      carousel.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+      });
+
+      updatePills();
+
+      // Resize charts after animation
+      setTimeout(function() {
+        resizeChartsInSlide(index);
+      }, 400);
+    }
+
+    // ---- Update active pill ----
+    function updatePills() {
+      pills.forEach(function(pill, i) {
+        pill.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    // ---- Determine current slide from scroll position ----
+    function getActiveIndexFromScroll() {
+      var slideWidth = slides[0].offsetWidth;
+      var gap = parseFloat(getComputedStyle(carousel).gap) || 0;
+      var scrollLeft = carousel.scrollLeft;
+      return Math.round(scrollLeft / (slideWidth + gap));
+    }
+
+    // ---- Arrow click handlers ----
+    prevBtn.addEventListener('click', function() {
+      goToSlide(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', function() {
+      goToSlide(currentIndex + 1);
+    });
+
+    // ---- Pill click handlers ----
+    pills.forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        var index = parseInt(this.getAttribute('data-index'), 10);
+        goToSlide(index);
+      });
+    });
+
+    // ---- Update pills on scroll (for touch/native scroll) ----
+    var scrollTimeout;
+    carousel.addEventListener('scroll', function() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function() {
+        var newIndex = getActiveIndexFromScroll();
+        if (newIndex >= 0 && newIndex < slideCount && newIndex !== currentIndex) {
+          currentIndex = newIndex;
+          updatePills();
+          resizeChartsInSlide(newIndex);
+        }
+      }, 50);
+    }, { passive: true });
+
+    // ---- Mouse drag support (desktop) ----
+    var isDragging = false;
+    var startX = 0;
+    var scrollLeftStart = 0;
+    var dragDistance = 0;
+
+    carousel.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      dragDistance = 0;
+      carousel.classList.add('grabbing');
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeftStart = carousel.scrollLeft;
+      e.preventDefault();
+    });
+
+    carousel.addEventListener('mousemove', function(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      var x = e.pageX - carousel.offsetLeft;
+      var walk = (x - startX) * 1.2;
+      dragDistance = Math.abs(walk);
+      carousel.scrollLeft = scrollLeftStart - walk;
+    });
+
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      carousel.classList.remove('grabbing');
+
+      var newIndex = getActiveIndexFromScroll();
+      if (newIndex < 0) newIndex = 0;
+      if (newIndex >= slideCount) newIndex = slideCount - 1;
+
+      var slideWidth = slides[0].offsetWidth;
+      if (dragDistance > slideWidth * 0.15) {
+        var direction = (carousel.scrollLeft > scrollLeftStart) ? 1 : -1;
+        newIndex = currentIndex + direction;
+      }
+
+      goToSlide(newIndex);
+    }
+
+    carousel.addEventListener('mouseup', endDrag);
+    carousel.addEventListener('mouseleave', endDrag);
+
+    // Prevent click events after drag
+    carousel.addEventListener('click', function(e) {
+      if (dragDistance > 5) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+
+    // ---- Keyboard support ----
+    wrapper.setAttribute('tabindex', '0');
+    wrapper.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') {
+        goToSlide(currentIndex - 1);
+        e.preventDefault();
+      } else if (e.key === 'ArrowRight') {
+        goToSlide(currentIndex + 1);
+        e.preventDefault();
+      }
+    });
+
+    // ---- Initial chart resize for slide 0 ----
+    // Wait for charts to be initialized, then resize
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        resizeChartsInSlide(0);
+      }, 500);
+    });
+  })();
+
+  </script>
+
 </body>
 </html>

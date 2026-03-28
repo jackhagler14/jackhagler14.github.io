@@ -4585,14 +4585,34 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
   }
 
-  /* Reduce section vertical padding on mobile — spacious but not excessive */
+  /* Section vertical padding on mobile — generous for breathing room */
   .section {
-    padding: clamp(3rem, 8vw, 5rem) 0;
+    padding: clamp(4rem, 10vw, 6rem) 0;
   }
 
-  /* Contact section also gets reduced padding */
+  /* Contact section */
   .contact {
-    padding: clamp(3rem, 8vw, 5rem) 0;
+    padding: clamp(4rem, 10vw, 6rem) 0;
+  }
+
+  /* Section header needs more bottom margin on mobile */
+  .section__header {
+    margin-bottom: var(--space-8);
+  }
+
+  /* Timeline items need more spacing between roles */
+  .timeline__item {
+    padding-bottom: var(--space-10);
+  }
+
+  /* Timeline role title */
+  .timeline__role {
+    font-size: 1.15rem;
+  }
+
+  /* More space between carousel section header and slide content */
+  .mph-carousel-wrapper {
+    margin-top: var(--space-6);
   }
 
   /* Hero title: ensure it scales well on small screens */

@@ -4566,6 +4566,368 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ============================================
+   MOBILE OPTIMIZATION — Apple-inspired spacing
+   ============================================ */
+@media (max-width: 600px) {
+  /* Container: slightly tighter padding for breathing room */
+  .container {
+    padding: 0 20px;
+  }
+
+  /* Section titles: scale down aggressively */
+  .section__title {
+    font-size: 1.5rem;
+  }
+
+  /* Project block titles: scale down */
+  .project-block__title {
+    font-size: 1.5rem;
+  }
+
+  /* Reduce section vertical padding on mobile — spacious but not excessive */
+  .section {
+    padding: clamp(3rem, 8vw, 5rem) 0;
+  }
+
+  /* Contact section also gets reduced padding */
+  .contact {
+    padding: clamp(3rem, 8vw, 5rem) 0;
+  }
+
+  /* Hero title: ensure it scales well on small screens */
+  .hero__title {
+    font-size: clamp(2.25rem, 10vw, 3.5rem);
+  }
+
+  .hero__subtitle {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+  }
+
+  /* Hero section: reduce vertical padding */
+  .hero {
+    padding: calc(var(--nav-height) + var(--space-10)) 0 var(--space-10);
+    min-height: auto;
+  }
+
+  /* Carousel pills: smaller, allow wrapping */
+  .mph-carousel-pills {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .mph-carousel-pill {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+  }
+
+  /* Sortly demo: stack sidebar above table */
+  .sortly-demo {
+    flex-direction: column;
+    max-height: none;
+    min-height: auto;
+  }
+
+  .sortly-sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-light);
+    max-height: 140px;
+  }
+
+  /* Dynamics demo: hide sidebar, expand content */
+  .dynamics-sidebar {
+    display: none;
+  }
+
+  .dynamics-content {
+    margin-left: 0;
+  }
+
+  /* Dynamics KPI cards: 2x2 grid */
+  .dynamics-kpis {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Dynamics panels: single column */
+  .dynamics-panels {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tableau filters: stack vertically */
+  .tableau-filters {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .tableau-filter-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tableau-filter-group select {
+    flex: 1;
+    max-width: 180px;
+  }
+
+  /* Tableau KPIs: 2x2 grid */
+  .tableau-kpis {
+    grid-template-columns: 1fr 1fr;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  /* Tableau panels: single column */
+  .tableau-panels {
+    grid-template-columns: 1fr;
+    padding: var(--space-4);
+  }
+
+  /* Pivot controls: ensure selects stack full-width */
+  .pivot-controls {
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+
+  .pivot-control-group {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  /* TaxDome: table scrolls horizontally, filters wrap */
+  .taxdome-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .taxdome-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .taxdome-filters {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .taxdome-search {
+    width: 100%;
+  }
+
+  .taxdome-search input {
+    width: 100%;
+  }
+
+  /* TaxDome pipeline: single column on mobile */
+  .taxdome-pipeline.active {
+    grid-template-columns: 1fr;
+  }
+
+  /* Form inputs: larger touch targets (48px min) */
+  .contact__form input,
+  .contact__form textarea {
+    min-height: 48px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  .contact__form .btn {
+    min-height: 48px;
+    font-size: 16px;
+    padding: var(--space-3) var(--space-8);
+  }
+
+  /* Volunteer card images: full bleed on mobile */
+  .volunteer-card__image {
+    margin: 0 calc(-1 * var(--space-8));
+    border-radius: 0;
+  }
+
+  .volunteer-card__image img {
+    border-radius: 0;
+  }
+
+  /* Volunteer card: slightly less padding on mobile */
+  .volunteer-card {
+    padding: var(--space-6);
+  }
+
+  /* Timeline bullets: slightly smaller text */
+  .timeline__bullets li {
+    font-size: 0.875rem;
+  }
+
+  .timeline__role {
+    font-size: 1.15rem;
+  }
+
+  /* Chart containers: ensure they don't overflow */
+  .chart-card,
+  .pivot-table-container,
+  .pivot-chart-wrap,
+  .pivot-table-wrap {
+    overflow-x: auto;
+  }
+
+  /* Stat cards: full width on smallest screens */
+  .about__stats {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .stat-card {
+    padding: var(--space-4);
+  }
+
+  .stat-card__number {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  /* Project cards: slightly less padding */
+  .project-card {
+    padding: var(--space-6);
+  }
+
+  /* Education card: slightly less padding */
+  .education__card {
+    padding: var(--space-6);
+  }
+
+  /* Section header: tighter bottom margin */
+  .section__header {
+    margin-bottom: var(--space-8);
+  }
+
+  /* Countdown units: reduce min-width */
+  .countdown-unit {
+    min-width: 60px;
+  }
+
+  .countdown-unit__number {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  /* Recommendation cards: less padding */
+  .recommendation-card {
+    padding: var(--space-6);
+  }
+
+  /* Google Suite tabs: ensure they scroll */
+  .gsuite-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .gsuite-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Carousel arrows: ensure minimum touch targets */
+  .carousel-arrow,
+  .mph-carousel-arrow {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Carousel dots: larger touch targets */
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    padding: 4px;
+  }
+
+  /* MPH carousel nav: ensure it wraps on mobile */
+  .mph-carousel-nav {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  /* Mobile nav links: ensure 48px touch targets */
+  .mobile-nav__link {
+    padding: var(--space-4) 0;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Buttons: ensure min touch target */
+  .btn {
+    min-height: 44px;
+    padding: var(--space-3) var(--space-5);
+  }
+
+  /* Formula panels: already stacks at 768px, reinforce */
+  .formula-panels {
+    grid-template-columns: 1fr;
+  }
+
+  /* Dynamics chart panel body: shorter on mobile */
+  .dynamics-chart-panel__body {
+    height: 150px;
+  }
+
+  /* Section label: slightly smaller */
+  .section__label {
+    font-size: 0.6875rem;
+  }
+
+  /* Footer: stack on mobile */
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-2);
+  }
+}
+
+/* Additional small-phone refinements */
+@media (max-width: 400px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 11vw, 2.75rem);
+  }
+
+  .section__title {
+    font-size: 1.35rem;
+  }
+
+  .project-block__title {
+    font-size: 1.35rem;
+  }
+
+  .about__stats {
+    grid-template-columns: 1fr;
+  }
+
+  /* Volunteer card full-bleed adjustment */
+  .volunteer-card {
+    padding: var(--space-5);
+  }
+
+  .volunteer-card__image {
+    margin: 0 calc(-1 * var(--space-5));
+  }
+
+  /* Countdown: tighter on small phones */
+  .countdown-timer {
+    gap: var(--space-3);
+  }
+
+  .countdown-unit {
+    min-width: 50px;
+  }
+
+  .countdown-unit__number {
+    font-size: clamp(1.5rem, 10vw, 2.5rem);
+  }
+}
+
 </style>
 </head>
 <body>

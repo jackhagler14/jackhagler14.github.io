@@ -5205,10 +5205,18 @@ h1, h2, h3, h4, h5, h6 {
           </div>
         </div>
 
-<!-- TaxDome Implementation -->
+<!-- Red Clay CPAs Carousel -->
         <div class="section__header reveal" style="margin-top: clamp(var(--space-16), 8vw, var(--space-32));">
-          <h2 class="section__title">TaxDome CRM Implementation</h2>
-          <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Brought to Red Clay CPAs LLC</p>
+          <h2 class="section__title">Red Clay CPAs LLC</h2>
+          <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Utilized Tools & Dashboards</p>
+        </div>
+
+        <div class="mph-carousel-wrapper reveal" id="redclayCarousel">
+          <div class="mph-carousel">
+            <!-- Slide 0: TaxDome -->
+            <div class="mph-slide" data-slide="0">
+              <div class="section__header">
+                <h2 class="section__title">TaxDome CRM Implementation</h2>
           <p class="analytics__intro" style="margin-top: var(--space-6);">Managed client relationships, project milestones, and communications using TaxDome CRM as primary escalation contact. Tracked progress, reconciled accounts, and delivered data-driven reports to all management levels, increasing client satisfaction and retention in a high-accountability environment. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in TaxDome.</p>
         </div>
         <div class="taxdome-demo reveal">
@@ -5263,13 +5271,12 @@ h1, h2, h3, h4, h5, h6 {
           <div class="taxdome-pipeline" id="taxdomePipeline">
             <!-- Populated by JS -->
           </div>
-        </div>
+            </div>
 
-
-<!-- Google Suite -->
-        <div class="section__header reveal" style="margin-top: clamp(var(--space-16), 8vw, var(--space-32));">
-          <h2 class="section__title">Google Suite</h2>
-          <p class="volunteer-card__duration" style="margin-top: var(--space-3);">Utilized at Red Clay CPAs LLC</p>
+            <!-- Slide 1: Google Suite -->
+            <div class="mph-slide" data-slide="1">
+              <div class="section__header">
+                <h2 class="section__title">Google Suite</h2>
           <p class="analytics__intro" style="margin-top: var(--space-6);">Managed client communications, scheduling, document storage, and collaborative reporting using Google Workspace. Coordinated scheduling and actionable insights for client needs across Gmail, Sheets, Drive, and Calendar. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Google Suite.</p>
         </div>
         <div class="gsuite-demo reveal">
@@ -5336,6 +5343,16 @@ h1, h2, h3, h4, h5, h6 {
                 <!-- Populated by JS -->
               </div>
             </div>
+          </div>
+
+          <!-- Carousel Navigation -->
+          <div class="mph-carousel-nav">
+            <button class="mph-carousel-arrow mph-carousel-arrow--prev" aria-label="Previous slide">&#8592;</button>
+            <div class="mph-carousel-pills">
+              <button class="mph-carousel-pill active" data-index="0">TaxDome</button>
+              <button class="mph-carousel-pill" data-index="1">Google Suite</button>
+            </div>
+            <button class="mph-carousel-arrow mph-carousel-arrow--next" aria-label="Next slide">&#8594;</button>
           </div>
         </div>
 
@@ -8285,6 +8302,86 @@ h1, h2, h3, h4, h5, h6 {
       setTimeout(function() {
         resizeChartsInSlide(0);
       }, 500);
+    });
+  })();
+
+  /* ============================================
+     RED CLAY CPAS CAROUSEL
+     ============================================ */
+  (function() {
+    var wrapper = document.getElementById('redclayCarousel');
+    if (!wrapper) return;
+    var carousel = wrapper.querySelector('.mph-carousel');
+    var slides = wrapper.querySelectorAll('.mph-slide');
+    var pills = wrapper.querySelectorAll('.mph-carousel-pill');
+    var prevBtn = wrapper.querySelector('.mph-carousel-arrow--prev');
+    var nextBtn = wrapper.querySelector('.mph-carousel-arrow--next');
+    var currentIndex = 0;
+    var slideCount = slides.length;
+    var isDragging = false, startX = 0, scrollStart = 0;
+
+    function goToSlide(index) {
+      if (index < 0) index = slideCount - 1;
+      if (index >= slideCount) index = 0;
+      currentIndex = index;
+      var target = slides[index];
+      carousel.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+      pills.forEach(function(p, i) {
+        p.classList.toggle('active', i === index);
+      });
+      setTimeout(function() {
+        var canvases = target.querySelectorAll('canvas');
+        canvases.forEach(function(c) {
+          var chart = Chart.getChart(c);
+          if (chart) chart.resize();
+        });
+      }, 400);
+    }
+
+    pills.forEach(function(pill, i) {
+      pill.addEventListener('click', function() { goToSlide(i); });
+    });
+    prevBtn.addEventListener('click', function() { goToSlide(currentIndex - 1); });
+    nextBtn.addEventListener('click', function() { goToSlide(currentIndex + 1); });
+
+    carousel.addEventListener('scroll', function() {
+      if (isDragging) return;
+      var scrollLeft = carousel.scrollLeft;
+      var slideWidth = slides[0].offsetWidth;
+      var idx = Math.round(scrollLeft / slideWidth);
+      if (idx !== currentIndex && idx >= 0 && idx < slideCount) {
+        currentIndex = idx;
+        pills.forEach(function(p, i) { p.classList.toggle('active', i === idx); });
+      }
+    }, { passive: true });
+
+    carousel.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollStart = carousel.scrollLeft;
+      carousel.classList.add('grabbing');
+    });
+    carousel.addEventListener('mousemove', function(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      var x = e.pageX - carousel.offsetLeft;
+      carousel.scrollLeft = scrollStart - (x - startX);
+    });
+    carousel.addEventListener('mouseup', function() {
+      isDragging = false;
+      carousel.classList.remove('grabbing');
+      var slideWidth = slides[0].offsetWidth;
+      var idx = Math.round(carousel.scrollLeft / slideWidth);
+      goToSlide(idx);
+    });
+    carousel.addEventListener('mouseleave', function() {
+      if (isDragging) {
+        isDragging = false;
+        carousel.classList.remove('grabbing');
+        var slideWidth = slides[0].offsetWidth;
+        var idx = Math.round(carousel.scrollLeft / slideWidth);
+        goToSlide(idx);
+      }
     });
   })();
 

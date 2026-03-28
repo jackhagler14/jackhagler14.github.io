@@ -5638,18 +5638,14 @@ h1, h2, h3, h4, h5, h6 {
           </div>
 
           <!-- Carousel Navigation -->
-          <div class="carousel-nav">
-            <button class="carousel-arrow carousel-arrow--prev" aria-label="Previous slide">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-            <div class="carousel-dots">
-              <button class="carousel-dot active" data-index="0" aria-label="Go to slide 1"></button>
-              <button class="carousel-dot" data-index="1" aria-label="Go to slide 2"></button>
-              <button class="carousel-dot" data-index="2" aria-label="Go to slide 3"></button>
+          <div class="mph-carousel-nav">
+            <button class="mph-carousel-arrow mph-carousel-arrow--prev" aria-label="Previous slide">&#8592;</button>
+            <div class="mph-carousel-pills">
+              <button class="mph-carousel-pill active" data-index="0">Special Olympics</button>
+              <button class="mph-carousel-pill" data-index="1">Charity: Water</button>
+              <button class="mph-carousel-pill" data-index="2">Mimms Museum</button>
             </div>
-            <button class="carousel-arrow carousel-arrow--next" aria-label="Next slide">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>
-            </button>
+            <button class="mph-carousel-arrow mph-carousel-arrow--next" aria-label="Next slide">&#8594;</button>
           </div>
         </div>
 
@@ -6225,9 +6221,9 @@ h1, h2, h3, h4, h5, h6 {
 
     var carousel = wrapper.querySelector('.volunteer-carousel');
     var slides = carousel.querySelectorAll('.volunteer-card');
-    var dots = wrapper.querySelectorAll('.carousel-dot');
-    var prevBtn = wrapper.querySelector('.carousel-arrow--prev');
-    var nextBtn = wrapper.querySelector('.carousel-arrow--next');
+    var dots = wrapper.querySelectorAll('.mph-carousel-pill');
+    var prevBtn = wrapper.querySelector('.mph-carousel-arrow--prev');
+    var nextBtn = wrapper.querySelector('.mph-carousel-arrow--next');
     var slideCount = slides.length;
     var currentIndex = 0;
 

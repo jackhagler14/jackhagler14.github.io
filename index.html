@@ -2814,6 +2814,647 @@ h1, h2, h3, h4, h5, h6 {
 /* ============================================
    TAXDOME CRM DASHBOARD
    ============================================ */
+
+/* ============================================
+   ASANA PROJECT DASHBOARD
+   ============================================ */
+.asana-demo {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+  position: relative;
+}
+
+/* ---- Asana Header Bar ---- */
+.asana-topbar {
+  background: #1e1f21;
+  color: #fff;
+  padding: var(--space-2) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+[data-theme="dark"] .asana-topbar {
+  background: #111113;
+}
+.asana-topbar__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.asana-topbar__logo svg { flex-shrink: 0; }
+.asana-topbar__nav {
+  display: flex;
+  gap: var(--space-4);
+  margin-left: var(--space-4);
+}
+.asana-topbar__nav span {
+  color: #a2a0a2;
+  font-size: 0.78rem;
+  cursor: default;
+  transition: color 0.15s;
+}
+.asana-topbar__nav span:hover { color: #fff; }
+.asana-topbar__nav span.active { color: #fff; }
+.asana-topbar__search {
+  margin-left: auto;
+  background: #2e2e30;
+  border: 1px solid #3a3a3c;
+  border-radius: 6px;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #a2a0a2;
+  font-size: 0.72rem;
+  min-width: 140px;
+}
+.asana-topbar__search svg { opacity: 0.6; }
+.asana-topbar__avatar {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: #e8384f;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* ---- Asana Sidebar + Content Layout ---- */
+.asana-layout {
+  display: flex;
+  min-height: 420px;
+  max-height: 520px;
+}
+.asana-sidebar {
+  width: 210px;
+  min-width: 210px;
+  background: #1e1f21;
+  border-right: 1px solid #2e2e30;
+  padding: var(--space-3) 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+[data-theme="dark"] .asana-sidebar {
+  background: #111113;
+  border-right-color: #222;
+}
+.asana-sidebar__section {
+  padding: var(--space-1) var(--space-4);
+  color: #a2a0a2;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: var(--space-2);
+}
+.asana-sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 5px var(--space-4);
+  color: #d1d1d1;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background-color 0.12s, color 0.12s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+}
+.asana-sidebar__item:hover { background: #2e2e30; color: #fff; }
+.asana-sidebar__item.active { background: #36363a; color: #fff; }
+.asana-sidebar__item svg { opacity: 0.6; flex-shrink: 0; }
+.asana-sidebar__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ---- Asana Main Content ---- */
+.asana-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-bg-card);
+}
+
+/* Project header */
+.asana-project-header {
+  padding: var(--space-4) var(--space-5) var(--space-2);
+  border-bottom: 1px solid var(--color-border-light);
+}
+.asana-project-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.asana-project-title__dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #e8384f;
+  flex-shrink: 0;
+}
+
+/* View tabs */
+.asana-view-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 var(--space-5);
+  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+}
+.asana-view-tab {
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.asana-view-tab:hover { color: var(--color-text-secondary); }
+.asana-view-tab.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}
+.asana-view-tab svg { opacity: 0.5; }
+
+/* ---- Toolbar ---- */
+.asana-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-5);
+  border-bottom: 1px solid var(--color-border-light);
+  flex-wrap: wrap;
+}
+.asana-toolbar__btn {
+  padding: 3px var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
+.asana-toolbar__btn:hover {
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+}
+.asana-toolbar__btn.active {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.asana-toolbar__search {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border-light);
+  border-radius: 6px;
+  padding: 3px 10px;
+  min-width: 120px;
+}
+.asana-toolbar__search svg { opacity: 0.5; }
+.asana-toolbar__search input {
+  border: none;
+  background: none;
+  font-size: 0.72rem;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  outline: none;
+  width: 100%;
+}
+.asana-toolbar__search input::placeholder { color: var(--color-text-muted); }
+
+/* ---- Board View ---- */
+.asana-board {
+  flex: 1;
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.asana-board.hidden { display: none; }
+
+.asana-board__col {
+  min-width: 220px;
+  max-width: 260px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.asana-board__col-header {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+  padding: var(--space-1) var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-bottom: 2px solid transparent;
+  padding-bottom: var(--space-2);
+}
+.asana-board__col-header--todo { border-bottom-color: #a2a0a2; }
+.asana-board__col-header--in-progress { border-bottom-color: #4573d2; }
+.asana-board__col-header--review { border-bottom-color: #f1bd6c; }
+.asana-board__col-header--done { border-bottom-color: #5da283; }
+.asana-board__col-count {
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.asana-board__card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s;
+  position: relative;
+}
+.asana-board__card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border);
+  transform: translateY(-1px);
+}
+.asana-board__card-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.3;
+  margin-bottom: var(--space-2);
+}
+.asana-board__card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.asana-board__card-assignee {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+}
+.asana-board__card-due {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.asana-board__card-due.overdue { color: #e8384f; }
+.asana-board__card-priority {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.asana-board__card-priority--high { background: #e8384f; }
+.asana-board__card-priority--medium { background: #f1bd6c; }
+.asana-board__card-priority--low { background: #5da283; }
+.asana-board__card-tags {
+  display: flex;
+  gap: 4px;
+  margin-top: var(--space-2);
+  flex-wrap: wrap;
+}
+.asana-board__card-tag {
+  font-size: 0.62rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.asana-board__card-subtask {
+  font-size: 0.66rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.asana-board__card-subtask svg { opacity: 0.5; }
+
+/* ---- List View ---- */
+.asana-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+.asana-list.hidden { display: none; }
+
+.asana-list__section-header {
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.asana-list__section-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.asana-list__row {
+  display: grid;
+  grid-template-columns: 24px 1fr 100px 90px 80px;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-5);
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background-color 0.12s;
+}
+.asana-list__row:hover { background: var(--color-bg-alt); }
+.asana-list__check {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.asana-list__check:hover { border-color: #5da283; }
+.asana-list__check.completed {
+  background: #5da283;
+  border-color: #5da283;
+}
+.asana-list__check.completed::after {
+  content: '\2713';
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+.asana-list__task-name {
+  font-weight: 500;
+  color: var(--color-text);
+}
+.asana-list__task-name.completed {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+.asana-list__assignee-cell {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.asana-list__assignee-dot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+}
+.asana-list__due {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+.asana-list__due.overdue { color: #e8384f; font-weight: 500; }
+.asana-list__priority-badge {
+  font-size: 0.65rem;
+  padding: 1px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-align: center;
+}
+.asana-list__priority-badge--high { background: rgba(232,56,79,0.12); color: #e8384f; }
+.asana-list__priority-badge--medium { background: rgba(241,189,108,0.15); color: #c49330; }
+.asana-list__priority-badge--low { background: rgba(93,162,131,0.12); color: #5da283; }
+[data-theme="dark"] .asana-list__priority-badge--high { background: rgba(232,56,79,0.2); }
+[data-theme="dark"] .asana-list__priority-badge--medium { background: rgba(241,189,108,0.2); color: #f1bd6c; }
+[data-theme="dark"] .asana-list__priority-badge--low { background: rgba(93,162,131,0.2); }
+
+/* ---- Task Detail Panel ---- */
+.asana-detail {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 340px;
+  background: var(--color-bg-card);
+  border-left: 1px solid var(--color-border);
+  box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+  transform: translateX(100%);
+  transition: transform 0.25s var(--ease-out);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+[data-theme="dark"] .asana-detail {
+  box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+}
+.asana-detail.open { transform: translateX(0); }
+.asana-detail__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.12s, color 0.12s;
+}
+.asana-detail__close:hover {
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+}
+.asana-detail__header {
+  padding: var(--space-5);
+  border-bottom: 1px solid var(--color-border-light);
+}
+.asana-detail__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+  padding-right: var(--space-8);
+}
+.asana-detail__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.asana-detail__meta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.78rem;
+}
+.asana-detail__meta-label {
+  color: var(--color-text-muted);
+  min-width: 72px;
+  font-weight: 500;
+}
+.asana-detail__meta-value {
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.asana-detail__body {
+  padding: var(--space-5);
+  flex: 1;
+}
+.asana-detail__description {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-5);
+}
+.asana-detail__subtasks-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+.asana-detail__subtask {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+}
+.asana-detail__subtask-check {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.asana-detail__subtask-check.done {
+  background: #5da283;
+  border-color: #5da283;
+}
+.asana-detail__subtask-check.done::after {
+  content: '\2713';
+  color: #fff;
+  font-size: 0.5rem;
+  font-weight: 700;
+}
+.asana-detail__subtask-text.done {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+.asana-detail__activity {
+  border-top: 1px solid var(--color-border-light);
+  padding: var(--space-4) var(--space-5);
+}
+.asana-detail__activity-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-3);
+}
+.asana-detail__activity-item {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+.asana-detail__activity-avatar {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .asana-layout { flex-direction: column; min-height: auto; max-height: none; }
+  .asana-sidebar { width: 100%; min-width: 100%; flex-direction: row; overflow-x: auto; padding: var(--space-2) var(--space-3); border-right: none; border-bottom: 1px solid #2e2e30; }
+  .asana-sidebar__section { display: none; }
+  .asana-sidebar__item { white-space: nowrap; padding: 4px var(--space-3); font-size: 0.72rem; }
+  .asana-board { padding: var(--space-3); gap: var(--space-2); }
+  .asana-board__col { min-width: 180px; }
+  .asana-topbar__nav { display: none; }
+  .asana-topbar__search { display: none; }
+  .asana-list__row { grid-template-columns: 20px 1fr 80px; }
+  .asana-list__assignee-cell,
+  .asana-list__priority-badge { display: none; }
+  .asana-detail { width: 100%; }
+  .asana-toolbar { padding: var(--space-2) var(--space-3); }
+  .asana-toolbar__search { min-width: 80px; }
+}
+
+@media (max-width: 480px) {
+  .asana-board__col { min-width: 160px; }
+  .asana-board__card { padding: var(--space-2); }
+  .asana-board__card-tags { display: none; }
+}
+
 .taxdome-demo {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
@@ -5731,12 +6372,145 @@ h1, h2, h3, h4, h5, h6 {
           </div>
           </div>
 
+
+            <!-- Slide 2: Asana -->
+            <div class="mph-slide" data-slide="2">
+              <div class="section__header" style="margin-bottom: var(--space-6);">
+                <h2 class="section__title">Asana Project Management</h2>
+                <p class="analytics__intro" style="margin-top: var(--space-6);">Managed project workflows, task assignments, and deadline tracking using Asana as the primary project management tool for Red Clay CPAs. Coordinated cross-functional tasks across tax preparation, client onboarding, and quarterly reviews with board and list views for full visibility. These numbers draw from real examples, but are fabricated to showcase the functionality of my skill set in Asana.</p>
+              </div>
+              <div class="asana-demo" id="asanaDemo">
+                <!-- Top Bar -->
+                <div class="asana-topbar">
+                  <div class="asana-topbar__logo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="6" r="4.5" fill="#f06a6a"/><circle cx="5" cy="16.5" r="4.5" fill="#f06a6a"/><circle cx="19" cy="16.5" r="4.5" fill="#f06a6a"/></svg>
+                    <span style="font-weight:600;">Asana</span>
+                  </div>
+                  <div class="asana-topbar__nav">
+                    <span class="active">Home</span>
+                    <span>My Tasks</span>
+                    <span>Inbox</span>
+                    <span>Reporting</span>
+                  </div>
+                  <div class="asana-topbar__search">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    Search
+                  </div>
+                  <div class="asana-topbar__avatar">JH</div>
+                </div>
+
+                <!-- Layout: Sidebar + Main -->
+                <div class="asana-layout">
+                  <!-- Sidebar -->
+                  <div class="asana-sidebar">
+                    <div class="asana-sidebar__section">Favorites</div>
+                    <button class="asana-sidebar__item active">
+                      <div class="asana-sidebar__dot" style="background:#e8384f;"></div>
+                      Tax Season 2024
+                    </button>
+                    <button class="asana-sidebar__item">
+                      <div class="asana-sidebar__dot" style="background:#4573d2;"></div>
+                      Client Onboarding
+                    </button>
+                    <button class="asana-sidebar__item">
+                      <div class="asana-sidebar__dot" style="background:#5da283;"></div>
+                      Quarterly Reviews
+                    </button>
+                    <div class="asana-sidebar__section" style="margin-top:var(--space-4);">Projects</div>
+                    <button class="asana-sidebar__item">
+                      <div class="asana-sidebar__dot" style="background:#f1bd6c;"></div>
+                      Payroll Processing
+                    </button>
+                    <button class="asana-sidebar__item">
+                      <div class="asana-sidebar__dot" style="background:#9e7cc1;"></div>
+                      IRS Compliance
+                    </button>
+                    <button class="asana-sidebar__item">
+                      <div class="asana-sidebar__dot" style="background:#e8384f;"></div>
+                      New Client Pipeline
+                    </button>
+                    <div class="asana-sidebar__section" style="margin-top:var(--space-4);">Team</div>
+                    <button class="asana-sidebar__item">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                      Red Clay CPAs
+                    </button>
+                  </div>
+
+                  <!-- Main Content -->
+                  <div class="asana-main">
+                    <!-- Project Header -->
+                    <div class="asana-project-header">
+                      <div class="asana-project-title">
+                        <span class="asana-project-title__dot"></span>
+                        Tax Season 2024
+                      </div>
+                    </div>
+
+                    <!-- View Tabs -->
+                    <div class="asana-view-tabs">
+                      <button class="asana-view-tab active" data-asana-view="board">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Board
+                      </button>
+                      <button class="asana-view-tab" data-asana-view="list">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                        List
+                      </button>
+                    </div>
+
+                    <!-- Toolbar -->
+                    <div class="asana-toolbar">
+                      <button class="asana-toolbar__btn" id="asanaFilterAll" style="display:none;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                        Filter
+                      </button>
+                      <button class="asana-toolbar__btn" id="asanaSortBtn">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="16" y2="12"/><line x1="4" y1="18" x2="10" y2="18"/></svg>
+                        Sort
+                      </button>
+                      <div class="asana-toolbar__search">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="asanaSearch" placeholder="Search tasks...">
+                      </div>
+                    </div>
+
+                    <!-- Board View -->
+                    <div class="asana-board" id="asanaBoard">
+                      <!-- Populated by JS -->
+                    </div>
+
+                    <!-- List View -->
+                    <div class="asana-list hidden" id="asanaList">
+                      <!-- Populated by JS -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Task Detail Panel -->
+                <div class="asana-detail" id="asanaDetail">
+                  <button class="asana-detail__close" id="asanaDetailClose">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                  <div class="asana-detail__header" id="asanaDetailHeader">
+                    <!-- Populated by JS -->
+                  </div>
+                  <div class="asana-detail__body" id="asanaDetailBody">
+                    <!-- Populated by JS -->
+                  </div>
+                  <div class="asana-detail__activity" id="asanaDetailActivity">
+                    <!-- Populated by JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
           <!-- Carousel Navigation -->
           <div class="mph-carousel-nav">
             <button class="mph-carousel-arrow mph-carousel-arrow--prev" aria-label="Previous slide">&#8592;</button>
             <div class="mph-carousel-pills">
               <button class="mph-carousel-pill active" data-index="0">TaxDome</button>
               <button class="mph-carousel-pill" data-index="1">Google Suite</button>
+              <button class="mph-carousel-pill" data-index="2">Asana</button>
             </div>
             <button class="mph-carousel-arrow mph-carousel-arrow--next" aria-label="Next slide">&#8594;</button>
           </div>
@@ -8685,6 +9459,231 @@ h1, h2, h3, h4, h5, h6 {
         resizeChartsInSlide(0);
       }, 500);
     });
+  })();
+
+
+  /* ============================================
+     ASANA PROJECT DASHBOARD
+     ============================================ */
+  (function() {
+    var demo = document.getElementById('asanaDemo');
+    if (!demo) return;
+
+    var ASANA_TASKS = [
+      { id: 1, title: "Prepare Johnson Family Trust 1040", section: "In Progress", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Apr 10, 2024", priority: "high", tags: [{text:"Tax Return",bg:"rgba(232,56,79,0.1)",color:"#e8384f"},{text:"Individual",bg:"rgba(69,115,210,0.1)",color:"#4573d2"}], subtasks: [{text:"Gather W-2 and 1099 forms",done:true},{text:"Review charitable deductions",done:true},{text:"Calculate estimated tax liability",done:false},{text:"Submit for partner review",done:false}], description: "Complete federal and state tax return preparation for the Johnson Family Trust. Includes review of investment income, rental properties, and charitable contributions for FY2023." },
+      { id: 2, title: "Peachtree Dental Group 1120S", section: "In Progress", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Mar 15, 2024", priority: "high", tags: [{text:"Business Tax",bg:"rgba(241,189,108,0.15)",color:"#c49330"}], subtasks: [{text:"Reconcile QuickBooks to bank statements",done:true},{text:"Prepare depreciation schedule",done:false},{text:"Review officer compensation",done:false}], description: "S-Corporation tax return for Peachtree Dental Group. Multi-location practice with equipment depreciation and payroll complexities." },
+      { id: 3, title: "Onboard Roswell Auto Repair", section: "To Do", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Apr 1, 2024", priority: "medium", tags: [{text:"New Client",bg:"rgba(158,124,193,0.12)",color:"#9e7cc1"}], subtasks: [{text:"Send engagement letter",done:false},{text:"Request prior year returns",done:false},{text:"Set up in TaxDome",done:false}], description: "New client onboarding for Roswell Auto Repair. C-Corporation structure, first year with the firm. Need prior 3 years of returns for review." },
+      { id: 4, title: "Blue Ridge Contracting 1120S filing", section: "In Progress", assignee: "Sarah M.", assigneeColor: "#4573d2", due: "Mar 15, 2024", priority: "high", tags: [{text:"Business Tax",bg:"rgba(241,189,108,0.15)",color:"#c49330"},{text:"S-Corp",bg:"rgba(93,162,131,0.12)",color:"#5da283"}], subtasks: [{text:"Review subcontractor 1099s",done:true},{text:"Verify job costing allocations",done:true},{text:"Prepare K-1 schedules",done:false}], description: "Annual S-Corp filing for Blue Ridge Contracting. Construction company with multiple subcontractor relationships and job cost accounting." },
+      { id: 5, title: "Q1 estimated payments - all clients", section: "To Do", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Apr 15, 2024", priority: "high", tags: [{text:"Quarterly",bg:"rgba(69,115,210,0.1)",color:"#4573d2"}], subtasks: [{text:"Calculate estimates for individual clients",done:false},{text:"Calculate estimates for business clients",done:false},{text:"Send payment vouchers",done:false},{text:"File electronic payments",done:false}], description: "Prepare and file Q1 2024 estimated tax payments for all applicable individual and business clients." },
+      { id: 6, title: "Mitchell family W-2 follow-up", section: "Review", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Mar 20, 2024", priority: "medium", tags: [{text:"Client Follow-Up",bg:"rgba(241,189,108,0.15)",color:"#c49330"}], subtasks: [{text:"Email client for missing W-2",done:true},{text:"Verify brokerage statements received",done:true},{text:"Confirm mortgage interest deduction",done:false}], description: "Awaiting final W-2 from client's secondary employer. Brokerage statements received and reviewed. Need to confirm mortgage interest amounts." },
+      { id: 7, title: "Atlanta Bakery payroll reconciliation", section: "Done", assignee: "Sarah M.", assigneeColor: "#4573d2", due: "Feb 28, 2024", priority: "low", tags: [{text:"Payroll",bg:"rgba(93,162,131,0.12)",color:"#5da283"}], subtasks: [{text:"Reconcile Q4 payroll reports",done:true},{text:"Verify 941 deposits",done:true},{text:"File W-3 summary",done:true}], description: "Quarterly payroll reconciliation for Atlanta Bakery Co. All W-2s issued, 941 deposits verified, W-3 summary filed with SSA." },
+      { id: 8, title: "Magnolia Events partnership return", section: "Review", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Mar 15, 2024", priority: "medium", tags: [{text:"Business Tax",bg:"rgba(241,189,108,0.15)",color:"#c49330"},{text:"Partnership",bg:"rgba(158,124,193,0.12)",color:"#9e7cc1"}], subtasks: [{text:"Review partner capital accounts",done:true},{text:"Allocate income per agreement",done:true},{text:"Prepare K-1 distributions",done:false},{text:"Submit for final review",done:false}], description: "Form 1065 partnership return for Magnolia Events LLC. Two-member partnership with complex profit sharing arrangement." },
+      { id: 9, title: "Thompson Estate 706 intake", section: "To Do", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Sep 15, 2024", priority: "low", tags: [{text:"Estate Tax",bg:"rgba(158,124,193,0.12)",color:"#9e7cc1"}], subtasks: [{text:"Obtain date-of-death valuations",done:false},{text:"Inventory real property",done:false},{text:"Schedule meeting with executor",done:false}], description: "Estate tax return (Form 706) for the Thompson Estate. Significant real property holdings and investment portfolio requiring professional appraisals." },
+      { id: 10, title: "Riverside Properties 1065 - Filed", section: "Done", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Mar 15, 2024", priority: "low", tags: [{text:"Business Tax",bg:"rgba(241,189,108,0.15)",color:"#c49330"},{text:"Filed",bg:"rgba(93,162,131,0.12)",color:"#5da283"}], subtasks: [{text:"Reconcile rental income",done:true},{text:"Calculate depreciation",done:true},{text:"Prepare K-1s",done:true},{text:"E-file return",done:true}], description: "Partnership return for Riverside Properties LLC successfully filed. Three rental properties with combined gross income of $340K. K-1s distributed to all partners." },
+      { id: 11, title: "David Park peer review wrap-up", section: "Done", assignee: "Sarah M.", assigneeColor: "#4573d2", due: "Feb 15, 2024", priority: "low", tags: [{text:"Internal",bg:"rgba(162,160,162,0.15)",color:"#a2a0a2"}], subtasks: [{text:"Complete review checklist",done:true},{text:"Document findings",done:true},{text:"Submit report",done:true}], description: "Peer review engagement completed for David Park, CPA. All work papers reviewed, no significant findings. Report submitted to state board." },
+      { id: 12, title: "Kennesaw Fitness 1120S - OVERDUE", section: "In Progress", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Mar 15, 2024", priority: "high", tags: [{text:"Business Tax",bg:"rgba(241,189,108,0.15)",color:"#c49330"},{text:"Overdue",bg:"rgba(232,56,79,0.1)",color:"#e8384f"}], subtasks: [{text:"Obtain final bank statements",done:true},{text:"Review loan amortization",done:false},{text:"Prepare extension if needed",done:false}], description: "S-Corp return for Kennesaw Fitness Center is past the March 15 deadline. Extension may be required. Awaiting final loan documentation from client." },
+      { id: 13, title: "Update TaxDome client portal access", section: "To Do", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Apr 5, 2024", priority: "medium", tags: [{text:"Internal",bg:"rgba(162,160,162,0.15)",color:"#a2a0a2"},{text:"TaxDome",bg:"rgba(69,115,210,0.1)",color:"#4573d2"}], subtasks: [{text:"Audit current user permissions",done:false},{text:"Add new clients to portal",done:false},{text:"Send login instructions",done:false}], description: "Review and update all client portal access in TaxDome. Ensure new clients have been provisioned and existing clients have correct permission levels." },
+      { id: 14, title: "Chen & Associates extension filed", section: "Done", assignee: "Jack H.", assigneeColor: "#e8384f", due: "Mar 15, 2024", priority: "medium", tags: [{text:"Extension",bg:"rgba(241,189,108,0.15)",color:"#c49330"},{text:"Filed",bg:"rgba(93,162,131,0.12)",color:"#5da283"}], subtasks: [{text:"Prepare Form 7004",done:true},{text:"Calculate estimated tax payment",done:true},{text:"E-file extension",done:true},{text:"Notify client of new deadline",done:true}], description: "6-month extension filed for Chen & Associates quarterly estimated taxes. Client notified of September 15 extended deadline and Q2 estimated payment requirements." }
+    ];
+
+    var SECTIONS = [
+      { key: "To Do", color: "#a2a0a2", cls: "todo" },
+      { key: "In Progress", color: "#4573d2", cls: "in-progress" },
+      { key: "Review", color: "#f1bd6c", cls: "review" },
+      { key: "Done", color: "#5da283", cls: "done" }
+    ];
+
+    var boardEl = document.getElementById('asanaBoard');
+    var listEl = document.getElementById('asanaList');
+    var detailEl = document.getElementById('asanaDetail');
+    var detailHeader = document.getElementById('asanaDetailHeader');
+    var detailBody = document.getElementById('asanaDetailBody');
+    var detailActivity = document.getElementById('asanaDetailActivity');
+    var detailClose = document.getElementById('asanaDetailClose');
+    var searchInput = document.getElementById('asanaSearch');
+    var viewTabs = demo.querySelectorAll('[data-asana-view]');
+    var activeView = 'board';
+    var searchQuery = '';
+
+    function getFiltered() {
+      return ASANA_TASKS.filter(function(t) {
+        if (!searchQuery) return true;
+        return t.title.toLowerCase().indexOf(searchQuery) !== -1 ||
+               t.assignee.toLowerCase().indexOf(searchQuery) !== -1;
+      });
+    }
+
+    function renderBoard() {
+      if (!boardEl) return;
+      var filtered = getFiltered();
+      var html = '';
+      for (var s = 0; s < SECTIONS.length; s++) {
+        var sec = SECTIONS[s];
+        var tasks = filtered.filter(function(t) { return t.section === sec.key; });
+        html += '<div class="asana-board__col">';
+        html += '<div class="asana-board__col-header asana-board__col-header--' + sec.cls + '">' + sec.key + ' <span class="asana-board__col-count">' + tasks.length + '</span></div>';
+        for (var i = 0; i < tasks.length; i++) {
+          var t = tasks[i];
+          var doneCount = t.subtasks.filter(function(s){return s.done;}).length;
+          var isOverdue = t.priority === 'high' && sec.key !== 'Done' && new Date(t.due) < new Date('2024-03-28');
+          html += '<div class="asana-board__card" data-task-id="' + t.id + '">';
+          html += '<span class="asana-board__card-priority asana-board__card-priority--' + t.priority + '"></span>';
+          html += '<div class="asana-board__card-title">' + t.title + '</div>';
+          if (t.tags && t.tags.length > 0) {
+            html += '<div class="asana-board__card-tags">';
+            for (var tg = 0; tg < t.tags.length; tg++) {
+              html += '<span class="asana-board__card-tag" style="background:' + t.tags[tg].bg + ';color:' + t.tags[tg].color + ';">' + t.tags[tg].text + '</span>';
+            }
+            html += '</div>';
+          }
+          html += '<div class="asana-board__card-subtask"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> ' + doneCount + '/' + t.subtasks.length + ' subtasks</div>';
+          html += '<div class="asana-board__card-meta">';
+          html += '<div class="asana-board__card-assignee" style="background:' + t.assigneeColor + ';">' + t.assignee.split(' ').map(function(w){return w[0];}).join('') + '</div>';
+          html += '<div class="asana-board__card-due' + (isOverdue ? ' overdue' : '') + '">';
+          if (isOverdue) html += '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+          html += t.due + '</div>';
+          html += '</div>';
+          html += '</div>';
+        }
+        html += '</div>';
+      }
+      boardEl.innerHTML = html;
+
+      // Attach click handlers
+      var cards = boardEl.querySelectorAll('.asana-board__card');
+      for (var c = 0; c < cards.length; c++) {
+        cards[c].addEventListener('click', (function(card) {
+          return function() { openDetail(parseInt(card.getAttribute('data-task-id'))); };
+        })(cards[c]));
+      }
+    }
+
+    function renderList() {
+      if (!listEl) return;
+      var filtered = getFiltered();
+      var html = '';
+      for (var s = 0; s < SECTIONS.length; s++) {
+        var sec = SECTIONS[s];
+        var tasks = filtered.filter(function(t) { return t.section === sec.key; });
+        if (tasks.length === 0) continue;
+        html += '<div class="asana-list__section-header"><span class="asana-list__section-dot" style="background:' + sec.color + ';"></span>' + sec.key + ' (' + tasks.length + ')</div>';
+        for (var i = 0; i < tasks.length; i++) {
+          var t = tasks[i];
+          var isDone = sec.key === 'Done';
+          var isOverdue = t.priority === 'high' && !isDone && new Date(t.due) < new Date('2024-03-28');
+          html += '<div class="asana-list__row" data-task-id="' + t.id + '">';
+          html += '<div class="asana-list__check' + (isDone ? ' completed' : '') + '"></div>';
+          html += '<div class="asana-list__task-name' + (isDone ? ' completed' : '') + '">' + t.title + '</div>';
+          html += '<div class="asana-list__assignee-cell"><span class="asana-list__assignee-dot" style="background:' + t.assigneeColor + ';">' + t.assignee.split(' ').map(function(w){return w[0];}).join('') + '</span>' + t.assignee + '</div>';
+          html += '<div class="asana-list__due' + (isOverdue ? ' overdue' : '') + '">' + t.due + '</div>';
+          html += '<span class="asana-list__priority-badge asana-list__priority-badge--' + t.priority + '">' + t.priority.charAt(0).toUpperCase() + t.priority.slice(1) + '</span>';
+          html += '</div>';
+        }
+      }
+      listEl.innerHTML = html;
+
+      // Attach click handlers
+      var rows = listEl.querySelectorAll('.asana-list__row');
+      for (var r = 0; r < rows.length; r++) {
+        rows[r].addEventListener('click', (function(row) {
+          return function() { openDetail(parseInt(row.getAttribute('data-task-id'))); };
+        })(rows[r]));
+      }
+    }
+
+    function openDetail(taskId) {
+      var task = ASANA_TASKS.find(function(t) { return t.id === taskId; });
+      if (!task) return;
+
+      // Header
+      var hHtml = '<div class="asana-detail__title">' + task.title + '</div>';
+      hHtml += '<div class="asana-detail__meta">';
+      hHtml += '<div class="asana-detail__meta-row"><span class="asana-detail__meta-label">Assignee</span><span class="asana-detail__meta-value"><span style="width:18px;height:18px;border-radius:50%;background:' + task.assigneeColor + ';color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:0.5rem;font-weight:600;">' + task.assignee.split(' ').map(function(w){return w[0];}).join('') + '</span> ' + task.assignee + '</span></div>';
+      hHtml += '<div class="asana-detail__meta-row"><span class="asana-detail__meta-label">Due Date</span><span class="asana-detail__meta-value">' + task.due + '</span></div>';
+      hHtml += '<div class="asana-detail__meta-row"><span class="asana-detail__meta-label">Priority</span><span class="asana-detail__meta-value"><span class="asana-list__priority-badge asana-list__priority-badge--' + task.priority + '">' + task.priority.charAt(0).toUpperCase() + task.priority.slice(1) + '</span></span></div>';
+      hHtml += '<div class="asana-detail__meta-row"><span class="asana-detail__meta-label">Section</span><span class="asana-detail__meta-value">' + task.section + '</span></div>';
+      if (task.tags && task.tags.length > 0) {
+        hHtml += '<div class="asana-detail__meta-row"><span class="asana-detail__meta-label">Tags</span><span class="asana-detail__meta-value" style="flex-wrap:wrap;gap:4px;">';
+        for (var tg = 0; tg < task.tags.length; tg++) {
+          hHtml += '<span class="asana-board__card-tag" style="background:' + task.tags[tg].bg + ';color:' + task.tags[tg].color + ';">' + task.tags[tg].text + '</span>';
+        }
+        hHtml += '</span></div>';
+      }
+      hHtml += '</div>';
+      detailHeader.innerHTML = hHtml;
+
+      // Body
+      var bHtml = '<div class="asana-detail__description">' + task.description + '</div>';
+      var doneCount = task.subtasks.filter(function(s){return s.done;}).length;
+      bHtml += '<div class="asana-detail__subtasks-title">Subtasks (' + doneCount + '/' + task.subtasks.length + ')</div>';
+      for (var i = 0; i < task.subtasks.length; i++) {
+        var st = task.subtasks[i];
+        bHtml += '<div class="asana-detail__subtask">';
+        bHtml += '<div class="asana-detail__subtask-check' + (st.done ? ' done' : '') + '"></div>';
+        bHtml += '<span class="asana-detail__subtask-text' + (st.done ? ' done' : '') + '">' + st.text + '</span>';
+        bHtml += '</div>';
+      }
+      detailBody.innerHTML = bHtml;
+
+      // Activity
+      var activities = [
+        { avatar: task.assigneeColor, initials: task.assignee.split(' ').map(function(w){return w[0];}).join(''), text: task.assignee + ' updated this task', time: '2 days ago' },
+        { avatar: '#4573d2', initials: 'SM', text: 'Sarah M. commented: "Looks good, moving forward."', time: '3 days ago' },
+        { avatar: task.assigneeColor, initials: task.assignee.split(' ').map(function(w){return w[0];}).join(''), text: task.assignee + ' created this task', time: '1 week ago' }
+      ];
+      var aHtml = '<div class="asana-detail__activity-title">Activity</div>';
+      for (var a = 0; a < activities.length; a++) {
+        var act = activities[a];
+        aHtml += '<div class="asana-detail__activity-item">';
+        aHtml += '<div class="asana-detail__activity-avatar" style="background:' + act.avatar + ';">' + act.initials + '</div>';
+        aHtml += '<div><span style="color:var(--color-text);">' + act.text + '</span> &middot; ' + act.time + '</div>';
+        aHtml += '</div>';
+      }
+      detailActivity.innerHTML = aHtml;
+
+      detailEl.classList.add('open');
+    }
+
+    // Close detail
+    if (detailClose) {
+      detailClose.addEventListener('click', function() {
+        detailEl.classList.remove('open');
+      });
+    }
+
+    // View switching
+    for (var v = 0; v < viewTabs.length; v++) {
+      viewTabs[v].addEventListener('click', (function(tab) {
+        return function() {
+          var view = tab.getAttribute('data-asana-view');
+          activeView = view;
+          for (var j = 0; j < viewTabs.length; j++) {
+            viewTabs[j].classList.toggle('active', viewTabs[j] === tab);
+          }
+          if (view === 'board') {
+            boardEl.classList.remove('hidden');
+            listEl.classList.add('hidden');
+          } else {
+            boardEl.classList.add('hidden');
+            listEl.classList.remove('hidden');
+          }
+          detailEl.classList.remove('open');
+        };
+      })(viewTabs[v]));
+    }
+
+    // Search
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        searchQuery = this.value.toLowerCase();
+        renderBoard();
+        renderList();
+      });
+    }
+
+    // Initial render
+    renderBoard();
+    renderList();
   })();
 
   /* ============================================

@@ -5861,9 +5861,9 @@ h1, h2, h3, h4, h5, h6 {
           <div class="pivot-chart-header">
             <span class="pivot-chart-title" id="pivotChartTitle">Pivot Chart</span>
             <div class="pivot-chart-type-btns">
-              <button class="pivot-chart-type-btn active" data-chart-type="grouped" type="button">Grouped</button>
+              <button class="pivot-chart-type-btn" data-chart-type="grouped" type="button">Grouped</button>
               <button class="pivot-chart-type-btn" data-chart-type="stacked" type="button">Stacked</button>
-              <button class="pivot-chart-type-btn" data-chart-type="bar" type="button">Bar</button>
+              <button class="pivot-chart-type-btn active" data-chart-type="bar" type="button">Bar</button>
             </div>
           </div>
           <div class="pivot-chart-canvas-wrap">
@@ -7633,7 +7633,7 @@ h1, h2, h3, h4, h5, h6 {
     var chartCanvas = document.getElementById('pivotChartCanvas');
     var chartTitleEl = document.getElementById('pivotChartTitle');
     var chartTypeBtns = document.querySelectorAll('.pivot-chart-type-btn');
-    var chartType = 'grouped';
+    var chartType = 'bar';
     var pivotChart = null;
 
     // Sort state

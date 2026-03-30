@@ -807,16 +807,11 @@ h1, h2, h3, h4, h5, h6 {
   height: 48px;
   object-fit: contain;
   border-radius: 8px;
-  border: 1px solid var(--color-border-light);
-  background: #fff;
-  padding: 4px;
+  border: none;
+  background: transparent;
+  padding: 0;
   flex-shrink: 0;
   margin-top: 2px;
-}
-
-[data-theme="dark"] .timeline__company-logo {
-  background: var(--color-bg-card);
-  border-color: var(--color-border);
 }
 
 .timeline__logo-text {
@@ -5780,13 +5775,18 @@ h1, h2, h3, h4, h5, h6 {
           <!-- Role 4 -->
           <div class="timeline__item reveal">
             <div class="timeline__dot"></div>
-            <div class="timeline__date">October 2017 – October 2019</div>
-            <h3 class="timeline__role">Owner</h3>
-            <p class="timeline__company">Jack Hagler Services, LLC.</p>
-            <ul class="timeline__bullets">
-              <li>Founded and scaled home services business to $50K annual sales, coordinating client scheduling, online payments, and vendor relationships while reconciling expenses and maintaining compliance.</li>
-              <li>Oversaw small-project logistics from planning to execution, negotiating contracts and ensuring timely, budget-conscious delivery as sole point of contact.</li>
-            </ul>
+            <div class="timeline__logo-row">
+              <img src="./logos/jh-logo.png" alt="Jack Hagler Services logo" class="timeline__company-logo" loading="lazy">
+              <div class="timeline__logo-text">
+                <div class="timeline__date">October 2017 – October 2019</div>
+                <h3 class="timeline__role">Owner</h3>
+                <p class="timeline__company">Jack Hagler Services, LLC.</p>
+                <ul class="timeline__bullets">
+                  <li>Founded and scaled home services business to $50K annual sales, coordinating client scheduling, online payments, and vendor relationships while reconciling expenses and maintaining compliance.</li>
+                  <li>Oversaw small-project logistics from planning to execution, negotiating contracts and ensuring timely, budget-conscious delivery as sole point of contact.</li>
+                </ul>
+              </div>
+            </div>
           </div>
           <!-- Role 5 -->
           <div class="timeline__item reveal">

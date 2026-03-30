@@ -757,7 +757,6 @@ h1, h2, h3, h4, h5, h6 {
 .timeline__item {
   position: relative;
   padding-bottom: var(--space-12);
-  padding-left: 60px;
 }
 
 .timeline__item:last-child { padding-bottom: 0; }
@@ -797,20 +796,32 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--space-4);
 }
 
-.timeline__company-logo {
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-  border-radius: var(--radius-sm);
-  opacity: 0.85;
-  transition: opacity 0.2s;
+.timeline__logo-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
 }
 
-.timeline__item:hover .timeline__company-logo {
-  opacity: 1;
+.timeline__company-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--color-border-light);
+  background: #fff;
+  padding: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+[data-theme="dark"] .timeline__company-logo {
+  background: var(--color-bg-card);
+  border-color: var(--color-border);
+}
+
+.timeline__logo-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .timeline__bullets {
@@ -5270,13 +5281,15 @@ h1, h2, h3, h4, h5, h6 {
   /* Timeline items need more spacing between roles */
   .timeline__item {
     padding-bottom: var(--space-10);
-    padding-left: 46px;
   }
 
   .timeline__company-logo {
-    width: 34px;
-    height: 34px;
-    top: 6px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .timeline__logo-row {
+    gap: var(--space-3);
   }
 
   /* Timeline role title */
@@ -5599,14 +5612,10 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr;
   }
 
-  .timeline__item {
-    padding-left: 40px;
-  }
-
   .timeline__company-logo {
-    width: 28px;
-    height: 28px;
-    top: 4px;
+    width: 36px;
+    height: 36px;
+    padding: 3px;
   }
 
   /* Volunteer card full-bleed adjustment */
@@ -5721,40 +5730,52 @@ h1, h2, h3, h4, h5, h6 {
           <!-- Role 1 -->
           <div class="timeline__item reveal">
             <div class="timeline__dot"></div>
-            <div class="timeline__date">July 2020 – Present</div>
-            <h3 class="timeline__role">Project Coordinator</h3>
-            <img src="./logos/mph-logo-3.jpg" alt="MPH Sales logo" class="timeline__company-logo" loading="lazy">
-            <p class="timeline__company">MPH Sales, Inc.</p>
-            <ul class="timeline__bullets">
-              <li>Managed 750+ active accounts across seven states, coordinating project inception, execution, and analysis for software implementations at a $750M corporation, providing logistical oversight, stakeholder alignment, and on-site support similar to meeting execution.</li>
-              <li>Oversaw timelines, vendor coordination, and budget reconciliation using Microsoft Dynamics, Excel Pivot Tables, and Tableau; conducted post-project reviews to gather feedback, implement improvements, and ensure compliance.</li>
-              <li>Led website/server migrations, (Workspace to Microsoft 365) and social initiatives, negotiating specifications and managing changing priorities to deliver within budget as primary contact for executives and teams.</li>
-            </ul>
+            <div class="timeline__logo-row">
+              <img src="./logos/mph-logo-3.jpg" alt="MPH Sales logo" class="timeline__company-logo" loading="lazy">
+              <div class="timeline__logo-text">
+                <div class="timeline__date">July 2020 – Present</div>
+                <h3 class="timeline__role">Project Coordinator</h3>
+                <p class="timeline__company">MPH Sales, Inc.</p>
+                <ul class="timeline__bullets">
+                  <li>Managed 750+ active accounts across seven states, coordinating project inception, execution, and analysis for software implementations at a $750M corporation, providing logistical oversight, stakeholder alignment, and on-site support similar to meeting execution.</li>
+                  <li>Oversaw timelines, vendor coordination, and budget reconciliation using Microsoft Dynamics, Excel Pivot Tables, and Tableau; conducted post-project reviews to gather feedback, implement improvements, and ensure compliance.</li>
+                  <li>Led website/server migrations, (Workspace to Microsoft 365) and social initiatives, negotiating specifications and managing changing priorities to deliver within budget as primary contact for executives and teams.</li>
+                </ul>
+              </div>
+            </div>
           </div>
           <!-- Role 2 -->
           <div class="timeline__item reveal">
             <div class="timeline__dot"></div>
-            <div class="timeline__date">May 2023 – May 2025</div>
-            <h3 class="timeline__role">Client Success Manager</h3>
-            <img src="./logos/red-clay-logo.jpg" alt="Red Clay CPAs logo" class="timeline__company-logo" loading="lazy">
-            <p class="timeline__company">Red Clay CPAs</p>
-            <ul class="timeline__bullets">
-              <li>Managed client relationships, project milestones, and communications using TaxDome CRM and Google Suite, serving as primary escalation contact to facilitate transparency, enforce policies, and drive retention through excellent service.</li>
-              <li>Tracked progress, reconciled accounts, and delivered data-driven reports/post-event-like debriefs to all management levels, increasing satisfaction in a high-accountability environment.</li>
-              <li>Coordinated scheduling and actionable insights for client needs, demonstrating strategic judgment and enthusiasm for rising performance standards.</li>
-            </ul>
+            <div class="timeline__logo-row">
+              <img src="./logos/red-clay-logo.jpg" alt="Red Clay CPAs logo" class="timeline__company-logo" loading="lazy">
+              <div class="timeline__logo-text">
+                <div class="timeline__date">May 2023 – May 2025</div>
+                <h3 class="timeline__role">Client Success Manager</h3>
+                <p class="timeline__company">Red Clay CPAs</p>
+                <ul class="timeline__bullets">
+                  <li>Managed client relationships, project milestones, and communications using TaxDome CRM and Google Suite, serving as primary escalation contact to facilitate transparency, enforce policies, and drive retention through excellent service.</li>
+                  <li>Tracked progress, reconciled accounts, and delivered data-driven reports/post-event-like debriefs to all management levels, increasing satisfaction in a high-accountability environment.</li>
+                  <li>Coordinated scheduling and actionable insights for client needs, demonstrating strategic judgment and enthusiasm for rising performance standards.</li>
+                </ul>
+              </div>
+            </div>
           </div>
           <!-- Role 3 -->
           <div class="timeline__item reveal">
             <div class="timeline__dot"></div>
-            <div class="timeline__date">June 2019 – December 2020</div>
-            <h3 class="timeline__role">Digital Media Strategist</h3>
-            <img src="./logos/roswell-ga-logo-4.jpg" alt="Roswell Georgia logo" class="timeline__company-logo" loading="lazy">
-            <p class="timeline__company">Roswell City Council</p>
-            <ul class="timeline__bullets">
-              <li>Led campaign strategy and content for first-time and incumbent city council candidates; built strong grassroots engagement.</li>
-              <li>Developed campaign websites, coordinated social outreach, and provided actionable digital recommendations to improve constituent engagement.</li>
-            </ul>
+            <div class="timeline__logo-row">
+              <img src="./logos/roswell-ga-logo-4.jpg" alt="Roswell Georgia logo" class="timeline__company-logo" loading="lazy">
+              <div class="timeline__logo-text">
+                <div class="timeline__date">June 2019 – December 2020</div>
+                <h3 class="timeline__role">Digital Media Strategist</h3>
+                <p class="timeline__company">Roswell City Council</p>
+                <ul class="timeline__bullets">
+                  <li>Led campaign strategy and content for first-time and incumbent city council candidates; built strong grassroots engagement.</li>
+                  <li>Developed campaign websites, coordinated social outreach, and provided actionable digital recommendations to improve constituent engagement.</li>
+                </ul>
+              </div>
+            </div>
           </div>
           <!-- Role 4 -->
           <div class="timeline__item reveal">
@@ -5770,15 +5791,19 @@ h1, h2, h3, h4, h5, h6 {
           <!-- Role 5 -->
           <div class="timeline__item reveal">
             <div class="timeline__dot"></div>
-            <div class="timeline__date">October 2015 – October 2017</div>
-            <h3 class="timeline__role">Distribution & Logistics Consultant</h3>
-            <img src="./logos/sebia-logo-3.jpg" alt="Sebia logo" class="timeline__company-logo" loading="lazy">
-            <p class="timeline__company">Sebia USA</p>
-            <ul class="timeline__bullets">
-              <li>Utilized UPS WorldShip and integrated shipping platforms to manage and streamline domestic and international distribution of medical diagnostic equipment for the $75 million United States headquarters.</li>
-              <li>Spearheaded the expansion and renovation planning of 15,000 sq. ft. warehouse, improving layout efficiency, storage capacity, and operational flow.</li>
-              <li>Implemented Lean Six Sigma methodologies to optimize warehouse operations, reducing waste, improving inventory accuracy, and increasing overall process efficiency.</li>
-            </ul>
+            <div class="timeline__logo-row">
+              <img src="./logos/sebia-logo-3.jpg" alt="Sebia logo" class="timeline__company-logo" loading="lazy">
+              <div class="timeline__logo-text">
+                <div class="timeline__date">October 2015 – October 2017</div>
+                <h3 class="timeline__role">Distribution & Logistics Consultant</h3>
+                <p class="timeline__company">Sebia USA</p>
+                <ul class="timeline__bullets">
+                  <li>Utilized UPS WorldShip and integrated shipping platforms to manage and streamline domestic and international distribution of medical diagnostic equipment for the $75 million United States headquarters.</li>
+                  <li>Spearheaded the expansion and renovation planning of 15,000 sq. ft. warehouse, improving layout efficiency, storage capacity, and operational flow.</li>
+                  <li>Implemented Lean Six Sigma methodologies to optimize warehouse operations, reducing waste, improving inventory accuracy, and increasing overall process efficiency.</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

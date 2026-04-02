@@ -5645,6 +5645,213 @@ h1, h2, h3, h4, h5, h6 {
    SKILLS CAROUSEL DEMOS
    ============================================ */
 
+/* ---- Salesforce Demo ---- */
+.salesforce-demo {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+.salesforce-header {
+  background: #032D60;
+  color: #fff;
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+[data-theme="dark"] .salesforce-header { background: #1B3A5C; }
+.salesforce-header svg { flex-shrink: 0; opacity: 0.9; }
+.salesforce-body { padding: var(--space-4); }
+.salesforce-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.salesforce-kpi {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  text-align: center;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.salesforce-kpi:hover {
+  border-color: #0176D3;
+  box-shadow: 0 0 0 1px rgba(1,118,211,0.15);
+}
+.salesforce-kpi__value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0176D3;
+  line-height: 1.2;
+}
+[data-theme="dark"] .salesforce-kpi__value { color: #4DB8FF; }
+.salesforce-kpi__label {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.salesforce-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+.salesforce-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+}
+.salesforce-panel--full { grid-column: 1 / -1; }
+.salesforce-panel__title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.salesforce-search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+}
+.salesforce-search svg { flex-shrink: 0; color: var(--color-text-muted); }
+.salesforce-search input {
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 0.72rem;
+  padding: 2px 0;
+  width: 110px;
+  outline: none;
+}
+.salesforce-table-wrap {
+  overflow-x: auto;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.salesforce-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+}
+.salesforce-table th {
+  text-align: left;
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  position: sticky;
+  top: 0;
+  background: var(--color-surface);
+}
+.salesforce-table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+.salesforce-table tr:hover td { background: var(--color-accent-light); }
+.salesforce-stage {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.salesforce-stage--prospect { background: rgba(1,118,211,0.12); color: #0176D3; }
+.salesforce-stage--qualify { background: rgba(247,144,9,0.12); color: #F79009; }
+.salesforce-stage--proposal { background: rgba(127,86,217,0.12); color: #7F56D9; }
+.salesforce-stage--negotiate { background: rgba(234,179,8,0.12); color: #CA8A04; }
+.salesforce-stage--closed { background: rgba(22,163,74,0.12); color: #16A34A; }
+.salesforce-stage--lost { background: rgba(220,38,38,0.12); color: #DC2626; }
+[data-theme="dark"] .salesforce-stage--prospect { background: rgba(77,184,255,0.15); color: #4DB8FF; }
+[data-theme="dark"] .salesforce-stage--qualify { background: rgba(247,144,9,0.15); color: #FBB03B; }
+[data-theme="dark"] .salesforce-stage--proposal { background: rgba(127,86,217,0.15); color: #A78BFA; }
+[data-theme="dark"] .salesforce-stage--negotiate { background: rgba(234,179,8,0.15); color: #EAB308; }
+[data-theme="dark"] .salesforce-stage--closed { background: rgba(22,163,74,0.15); color: #4ADE80; }
+[data-theme="dark"] .salesforce-stage--lost { background: rgba(220,38,38,0.15); color: #F87171; }
+.salesforce-funnel { display: flex; flex-direction: column; gap: var(--space-2); }
+.salesforce-funnel__row { display: flex; align-items: center; gap: var(--space-2); }
+.salesforce-funnel__label {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  min-width: 72px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.salesforce-funnel__bar-wrap { flex: 1; height: 22px; background: var(--color-bg-card); border-radius: 4px; overflow: hidden; }
+.salesforce-funnel__bar {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--space-2);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #fff;
+  transition: width 0.6s var(--ease-out);
+}
+.salesforce-funnel__bar--prospect { width: 100%; background: #0176D3; }
+.salesforce-funnel__bar--qualify { width: 72%; background: #F79009; }
+.salesforce-funnel__bar--proposal { width: 48%; background: #7F56D9; }
+.salesforce-funnel__bar--negotiate { width: 28%; background: #CA8A04; }
+.salesforce-funnel__bar--won { width: 16%; background: #16A34A; }
+.salesforce-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: var(--space-3);
+}
+.salesforce-tab {
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.salesforce-tab.active {
+  color: #0176D3;
+  border-bottom-color: #0176D3;
+}
+[data-theme="dark"] .salesforce-tab.active { color: #4DB8FF; border-bottom-color: #4DB8FF; }
+.salesforce-tab:hover:not(.active) { color: var(--color-text); }
+.salesforce-view { display: none; }
+.salesforce-view.active { display: block; }
+@media (max-width: 640px) {
+  .salesforce-kpis { grid-template-columns: repeat(2, 1fr); }
+  .salesforce-panels { grid-template-columns: 1fr; }
+  .salesforce-table th:nth-child(4),
+  .salesforce-table td:nth-child(4) { display: none; }
+}
+
 /* ---- HubSpot Demo ---- */
 .hubspot-demo {
   background: var(--color-bg-card);
@@ -7592,8 +7799,83 @@ h1, h2, h3, h4, h5, h6 {
         <div class="mph-carousel-wrapper reveal" id="skillsCarousel">
           <div class="mph-carousel">
 
-            <!-- Slide 0: HubSpot CRM -->
+            <!-- Slide 0: Salesforce CRM -->
             <div class="mph-slide" data-slide="0">
+              <div class="section__header" style="margin-bottom: var(--space-6);">
+                <h2 class="section__title">Salesforce CRM</h2>
+                <p class="analytics__intro" style="margin-top: var(--space-6);">Experienced in Salesforce for managing sales pipelines, tracking opportunities, and generating reports across client accounts. Leveraged dashboards and automation to streamline lead management, forecast revenue, and drive data-informed sales strategies.</p>
+              </div>
+              <div class="salesforce-demo">
+                <div class="salesforce-header">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  Salesforce &mdash; Sales Cloud
+                </div>
+                <div class="salesforce-body">
+                  <div class="salesforce-kpis">
+                    <div class="salesforce-kpi">
+                      <div class="salesforce-kpi__value">312</div>
+                      <div class="salesforce-kpi__label">Open Leads</div>
+                    </div>
+                    <div class="salesforce-kpi">
+                      <div class="salesforce-kpi__value">$1.8M</div>
+                      <div class="salesforce-kpi__label">Pipeline Value</div>
+                    </div>
+                    <div class="salesforce-kpi">
+                      <div class="salesforce-kpi__value">64%</div>
+                      <div class="salesforce-kpi__label">Win Rate</div>
+                    </div>
+                    <div class="salesforce-kpi">
+                      <div class="salesforce-kpi__value">18 Days</div>
+                      <div class="salesforce-kpi__label">Avg Close Time</div>
+                    </div>
+                  </div>
+                  <div class="salesforce-tabs">
+                    <button class="salesforce-tab active" data-sf-tab="pipeline">Pipeline</button>
+                    <button class="salesforce-tab" data-sf-tab="opps">Opportunities</button>
+                  </div>
+                  <div class="salesforce-view active" id="sfPipelineView">
+                    <div class="salesforce-panels">
+                      <div class="salesforce-panel">
+                        <div class="salesforce-panel__title">Sales Pipeline</div>
+                        <div class="salesforce-funnel">
+                          <div class="salesforce-funnel__row"><div class="salesforce-funnel__label">Prospect</div><div class="salesforce-funnel__bar-wrap"><div class="salesforce-funnel__bar salesforce-funnel__bar--prospect">142</div></div></div>
+                          <div class="salesforce-funnel__row"><div class="salesforce-funnel__label">Qualify</div><div class="salesforce-funnel__bar-wrap"><div class="salesforce-funnel__bar salesforce-funnel__bar--qualify">98</div></div></div>
+                          <div class="salesforce-funnel__row"><div class="salesforce-funnel__label">Proposal</div><div class="salesforce-funnel__bar-wrap"><div class="salesforce-funnel__bar salesforce-funnel__bar--proposal">54</div></div></div>
+                          <div class="salesforce-funnel__row"><div class="salesforce-funnel__label">Negotiate</div><div class="salesforce-funnel__bar-wrap"><div class="salesforce-funnel__bar salesforce-funnel__bar--negotiate">27</div></div></div>
+                          <div class="salesforce-funnel__row"><div class="salesforce-funnel__label">Won</div><div class="salesforce-funnel__bar-wrap"><div class="salesforce-funnel__bar salesforce-funnel__bar--won">18</div></div></div>
+                        </div>
+                      </div>
+                      <div class="salesforce-panel">
+                        <div class="salesforce-panel__title">Revenue by Quarter</div>
+                        <div style="position:relative; height:180px;"><canvas id="salesforceChart"></canvas></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="salesforce-view" id="sfOppsView">
+                    <div class="salesforce-panel salesforce-panel--full">
+                      <div class="salesforce-panel__title">
+                        Opportunities
+                        <div class="salesforce-search">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                          <input type="text" id="sfSearch" placeholder="Search opportunities...">
+                        </div>
+                      </div>
+                      <div class="salesforce-table-wrap">
+                        <table class="salesforce-table">
+                          <thead>
+                            <tr><th>Opportunity</th><th>Account</th><th>Stage</th><th>Amount</th><th>Close Date</th></tr>
+                          </thead>
+                          <tbody id="sfOppsBody"></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 1: HubSpot CRM -->
+            <div class="mph-slide" data-slide="1">
               <div class="section__header" style="margin-bottom: var(--space-6);">
                 <h2 class="section__title">HubSpot CRM</h2>
                 <p class="analytics__intro" style="margin-top: var(--space-6);">Certified in HubSpot Contextual Marketing and Email Marketing. Built and managed email campaigns, segmented contact lists, and tracked engagement metrics to drive client retention and conversion.</p>
@@ -7625,7 +7907,7 @@ h1, h2, h3, h4, h5, h6 {
                   <div class="hubspot-panels">
                     <div class="hubspot-panel hubspot-panel--chart">
                       <div class="hubspot-panel__title">Email Campaign Performance</div>
-                      <canvas id="hubspotChart" width="400" height="180"></canvas>
+                      <div style="position:relative; height:180px;"><canvas id="hubspotChart"></canvas></div>
                     </div>
                     <div class="hubspot-panel hubspot-panel--table">
                       <div class="hubspot-panel__title">
@@ -7649,8 +7931,8 @@ h1, h2, h3, h4, h5, h6 {
               </div>
             </div>
 
-            <!-- Slide 1: SQL & Database Management -->
-            <div class="mph-slide" data-slide="1">
+            <!-- Slide 2: SQL & Database Management -->
+            <div class="mph-slide" data-slide="2">
               <div class="section__header" style="margin-bottom: var(--space-6);">
                 <h2 class="section__title">SQL &amp; Database Management</h2>
                 <p class="analytics__intro" style="margin-top: var(--space-6);">Proficient in SQL for data extraction, aggregation, and reporting. Write queries to analyze sales trends, generate pivot summaries, and support data-driven decision-making across operations.</p>
@@ -7690,8 +7972,8 @@ LIMIT 10;</pre>
               </div>
             </div>
 
-            <!-- Slide 2: HTML, CSS & JavaScript -->
-            <div class="mph-slide" data-slide="2">
+            <!-- Slide 3: HTML, CSS & JavaScript -->
+            <div class="mph-slide" data-slide="3">
               <div class="section__header" style="margin-bottom: var(--space-6);">
                 <h2 class="section__title">HTML, CSS &amp; JavaScript</h2>
                 <p class="analytics__intro" style="margin-top: var(--space-6);">Built this entire portfolio from scratch using HTML, CSS, and JavaScript &mdash; no frameworks or templates. Proficient in responsive design, CSS animations, DOM manipulation, and GitHub-based version control.</p>
@@ -7718,8 +8000,8 @@ LIMIT 10;</pre>
               </div>
             </div>
 
-            <!-- Slide 3: Microsoft 365 -->
-            <div class="mph-slide" data-slide="3">
+            <!-- Slide 4: Microsoft 365 -->
+            <div class="mph-slide" data-slide="4">
               <div class="section__header" style="margin-bottom: var(--space-6);">
                 <h2 class="section__title">Microsoft 365</h2>
                 <p class="analytics__intro" style="margin-top: var(--space-6);">Certified in Microsoft 365 Fundamentals. Led platform migrations, managed admin configurations, and trained teams on Excel, Teams, SharePoint, and Outlook to modernize business operations.</p>
@@ -7750,15 +8032,15 @@ LIMIT 10;</pre>
                     </div>
                     <div class="ms365-panel ms365-panel--chart">
                       <div class="ms365-panel__title">App Adoption Rates</div>
-                      <canvas id="ms365Chart" width="300" height="200"></canvas>
+                      <div style="position:relative; height:200px;"><canvas id="ms365Chart"></canvas></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Slide 4: AI & Prompt Engineering -->
-            <div class="mph-slide" data-slide="4">
+            <!-- Slide 5: AI & Prompt Engineering -->
+            <div class="mph-slide" data-slide="5">
               <div class="section__header" style="margin-bottom: var(--space-6);">
                 <h2 class="section__title">AI &amp; Prompt Engineering</h2>
                 <p class="analytics__intro" style="margin-top: var(--space-6);">Directed the complete development of this portfolio through iterative AI prompting. Demonstrates AI literacy, technical direction, and the ability to translate complex requirements into production-quality deliverables.</p>
@@ -7809,11 +8091,12 @@ LIMIT 10;</pre>
           <div class="mph-carousel-nav">
             <button class="mph-carousel-arrow mph-carousel-arrow--prev" aria-label="Previous slide">&#8592;</button>
             <div class="mph-carousel-pills">
-              <button class="mph-carousel-pill active" data-index="0">HubSpot</button>
-              <button class="mph-carousel-pill" data-index="1">SQL</button>
-              <button class="mph-carousel-pill" data-index="2">HTML/CSS/JS</button>
-              <button class="mph-carousel-pill" data-index="3">Microsoft 365</button>
-              <button class="mph-carousel-pill" data-index="4">AI &amp; Prompts</button>
+              <button class="mph-carousel-pill active" data-index="0">Salesforce</button>
+              <button class="mph-carousel-pill" data-index="1">HubSpot</button>
+              <button class="mph-carousel-pill" data-index="2">SQL</button>
+              <button class="mph-carousel-pill" data-index="3">HTML/CSS/JS</button>
+              <button class="mph-carousel-pill" data-index="4">Microsoft 365</button>
+              <button class="mph-carousel-pill" data-index="5">AI &amp; Prompts</button>
             </div>
             <button class="mph-carousel-arrow mph-carousel-arrow--next" aria-label="Next slide">&#8594;</button>
           </div>
@@ -10927,6 +11210,88 @@ LIMIT 10;</pre>
         goToSlide(idx);
       }
     });
+
+    /* ---- Salesforce CRM Demo ---- */
+    (function() {
+      // Tabs
+      var tabs = document.querySelectorAll('.salesforce-tab');
+      var pipelineView = document.getElementById('sfPipelineView');
+      var oppsView = document.getElementById('sfOppsView');
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          var target = this.getAttribute('data-sf-tab');
+          tabs.forEach(function(t) { t.classList.toggle('active', t.getAttribute('data-sf-tab') === target); });
+          if (pipelineView) pipelineView.classList.toggle('active', target === 'pipeline');
+          if (oppsView) oppsView.classList.toggle('active', target === 'opps');
+        });
+      });
+
+      // Revenue chart
+      var ctx = document.getElementById('salesforceChart');
+      if (ctx) {
+        new Chart(ctx.getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: ['Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024'],
+            datasets: [{
+              label: 'Closed Won',
+              data: [320, 410, 385, 490],
+              backgroundColor: 'rgba(1,118,211,0.7)',
+              borderRadius: 4,
+              barThickness: 24
+            },{
+              label: 'Pipeline',
+              data: [480, 520, 610, 580],
+              backgroundColor: 'rgba(1,118,211,0.25)',
+              borderRadius: 4,
+              barThickness: 24
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'bottom', labels: { font: { size: 10 }, padding: 8, usePointStyle: true, pointStyleWidth: 8 } }
+            },
+            scales: {
+              y: { beginAtZero: true, ticks: { font: { size: 10 }, color: '#999', callback: function(v) { return '$' + v + 'K'; } }, grid: { color: 'rgba(128,128,128,0.1)' } },
+              x: { ticks: { font: { size: 10 }, color: '#999' }, grid: { display: false } }
+            }
+          }
+        });
+      }
+
+      // Opportunities table
+      var opps = [
+        { name: 'Enterprise License Renewal', account: 'Acme Corp', stage: 'Closed', stageClass: 'closed', amount: '$245,000', close: '2024-03-15' },
+        { name: 'Cloud Migration Package', account: 'Globex Industries', stage: 'Negotiate', stageClass: 'negotiate', amount: '$187,500', close: '2024-04-22' },
+        { name: 'Analytics Platform Upsell', account: 'Initech LLC', stage: 'Proposal', stageClass: 'proposal', amount: '$92,000', close: '2024-05-10' },
+        { name: 'CRM Integration Suite', account: 'Hooli Inc', stage: 'Qualify', stageClass: 'qualify', amount: '$134,800', close: '2024-05-30' },
+        { name: 'Support Tier Upgrade', account: 'Pied Piper', stage: 'Prospect', stageClass: 'prospect', amount: '$56,000', close: '2024-06-15' },
+        { name: 'Data Warehouse Setup', account: 'Vance Refrigeration', stage: 'Proposal', stageClass: 'proposal', amount: '$210,000', close: '2024-04-28' },
+        { name: 'Security Compliance Pkg', account: 'Dunder Mifflin', stage: 'Closed', stageClass: 'closed', amount: '$78,500', close: '2024-02-20' },
+        { name: 'Mobile App Development', account: 'Stark Industries', stage: 'Negotiate', stageClass: 'negotiate', amount: '$165,000', close: '2024-05-18' }
+      ];
+
+      var tbody = document.getElementById('sfOppsBody');
+      function renderOpps(filter) {
+        if (!tbody) return;
+        var f = (filter || '').toLowerCase();
+        tbody.innerHTML = '';
+        opps.forEach(function(o) {
+          if (f && o.name.toLowerCase().indexOf(f) === -1 && o.account.toLowerCase().indexOf(f) === -1) return;
+          var tr = document.createElement('tr');
+          tr.innerHTML = '<td>' + o.name + '</td><td>' + o.account + '</td><td><span class="salesforce-stage salesforce-stage--' + o.stageClass + '">' + o.stage + '</span></td><td>' + o.amount + '</td><td>' + o.close + '</td>';
+          tbody.appendChild(tr);
+        });
+      }
+      renderOpps('');
+
+      var searchInput = document.getElementById('sfSearch');
+      if (searchInput) {
+        searchInput.addEventListener('input', function() { renderOpps(this.value); });
+      }
+    })();
 
     /* ---- HubSpot CRM Demo ---- */
     (function() {

@@ -953,4 +953,4 @@ with open('/home/user/workspace/jackhagler-portfolio/index.html', 'w', encoding=
 
 print("Successfully inserted Google Suite CSS, HTML, and JS!")
 print(f"Original line count: {len(content.split(chr(10)))}")
-print(f"New line count: {len(content_final.split(chr(10)))}")
+print(f"New line count: {len(content_final.split(chr(10)))}") 

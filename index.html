@@ -6658,6 +6658,261 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ============================================
+   MOBILE OVERHAUL — Apple-inspired mobile UX
+   ============================================ */
+@media (max-width: 768px) {
+
+  /* --- NAV FIX: hamburger must sit above mobile-nav overlay --- */
+  .nav {
+    z-index: 110;
+  }
+  .mobile-nav {
+    z-index: 105;
+    padding-top: calc(var(--nav-height) + var(--space-8));
+  }
+
+  /* --- HERO: Apple-style clean, centered, vertically compact --- */
+  .hero {
+    min-height: auto;
+    padding: calc(var(--nav-height) + var(--space-12)) 0 var(--space-12);
+    text-align: center;
+  }
+  .hero__pattern { opacity: 0.25; }
+  .hero__title {
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .hero__subtitle {
+    font-size: clamp(1.05rem, 4.5vw, 1.35rem);
+    margin-top: var(--space-2);
+  }
+  .hero__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+  }
+  .hero__ctas {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+  }
+  .hero__ctas .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    min-height: 48px;
+    font-size: 0.95rem;
+  }
+
+  /* --- SECTIONS: generous Apple-style vertical rhythm --- */
+  .section {
+    padding: var(--space-16) 0;
+  }
+  .section__header {
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+  .section__title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    letter-spacing: -0.01em;
+  }
+  .section__label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+  }
+
+  /* --- SECTION TRANSITIONS: smooth gradient overlaps --- */
+  .section + .section,
+  .section + .contact {
+    margin-top: 0;
+  }
+
+  /* --- SKILLS SECTION: constrain carousel height on mobile --- */
+  #skills .mph-carousel-wrapper {
+    overflow: visible;
+  }
+  #skills .mph-carousel {
+    overflow: hidden;
+    /* Switch from horizontal scroll to a show/hide approach on mobile */
+    display: block;
+    height: auto;
+  }
+  #skills .mph-slide {
+    display: none;
+    width: 100%;
+  }
+  #skills .mph-slide.mobile-active {
+    display: block;
+  }
+
+  /* --- ANALYTICS SECTION: better mobile spacing --- */
+  #analytics .mph-carousel {
+    overflow: hidden;
+    display: block;
+  }
+  #analytics .mph-slide {
+    display: none;
+    width: 100%;
+  }
+  #analytics .mph-slide.mobile-active {
+    display: block;
+  }
+
+  /* --- Carousel pills: horizontally scrollable, Apple-style --- */
+  .mph-carousel-nav {
+    flex-wrap: nowrap;
+    gap: var(--space-2);
+    padding: var(--space-3) 0;
+  }
+  .mph-carousel-pills {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding: 2px 0;
+  }
+  .mph-carousel-pills::-webkit-scrollbar { display: none; }
+  .mph-carousel-pill {
+    font-size: 0.72rem;
+    padding: 7px 14px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* --- EXPERIENCE TIMELINE: cleaner mobile layout --- */
+  .timeline__item {
+    padding-left: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+  .timeline__bullets li {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    margin-bottom: var(--space-2);
+  }
+  .timeline__company-logo {
+    width: 40px;
+    height: 40px;
+  }
+  .timeline__role {
+    font-size: 1.1rem;
+  }
+
+  /* --- EDUCATION: clean card layout --- */
+  .education__card {
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+  }
+
+  /* --- CONTACT: full-width inputs, larger touch targets --- */
+  .contact__form input,
+  .contact__form textarea {
+    min-height: 48px;
+    font-size: 16px;
+    border-radius: var(--radius-md);
+  }
+  .contact__form .btn {
+    width: 100%;
+    min-height: 48px;
+    font-size: 1rem;
+    border-radius: var(--radius-md);
+  }
+  .contact__info {
+    text-align: center;
+  }
+
+  /* --- VOLUNTEER: card images full-bleed --- */
+  .volunteer-card__image {
+    margin-left: calc(-1 * var(--space-6));
+    margin-right: calc(-1 * var(--space-6));
+    border-radius: 0;
+  }
+  .volunteer-card__image img {
+    border-radius: 0;
+  }
+
+  /* --- ABOUT: stat grid 2-col --- */
+  .about__stats {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+  .stat-card {
+    padding: var(--space-4);
+  }
+  .stat-card__number {
+    font-size: clamp(1.3rem, 5vw, 1.75rem);
+  }
+
+  /* --- RECOMMENDATIONS: compact card --- */
+  .recommendation-card {
+    padding: var(--space-5);
+  }
+
+  /* --- FOOTER: stack and center --- */
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-2);
+  }
+
+  /* --- Interactive demo panels: constrain height --- */
+  .hubspot-demo,
+  .sql-demo,
+  .webdev-demo,
+  .ms365-demo,
+  .aiprompt-demo {
+    max-height: 500px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-md);
+  }
+
+  /* --- Carousel arrows: 44px min touch target --- */
+  .mph-carousel-arrow {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* --- Formula cards: ensure readability --- */
+  .formula-card {
+    overflow-x: auto;
+  }
+
+  /* --- Pivot table: horizontal scroll --- */
+  .pivot-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* --- Google Suite responsive --- */
+  .gsuite-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .gsuite-tabs::-webkit-scrollbar { display: none; }
+}
+
+/* --- Smaller phone refinements --- */
+@media (max-width: 400px) {
+  .hero__title {
+    font-size: clamp(2rem, 12vw, 2.75rem);
+  }
+  .container {
+    padding: 0 16px;
+  }
+  .about__stats {
+    grid-template-columns: 1fr;
+  }
+  .section__title {
+    font-size: 1.35rem;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -11526,6 +11781,113 @@ LIMIT 10;</pre>
       });
     })();
 
+  })();
+
+  /* ============================================
+     MOBILE CAROUSEL — show/hide slides instead of horizontal scroll
+     ============================================ */
+  (function() {
+    var isMobile = window.matchMedia('(max-width: 768px)');
+
+    function activateMobileCarousels() {
+      // Process both analytics and skills carousels
+      ['mphCarousel', 'skillsCarousel'].forEach(function(id) {
+        var wrapper = document.getElementById(id);
+        if (!wrapper) return;
+        var slides = wrapper.querySelectorAll('.mph-slide');
+        var pills = wrapper.querySelectorAll('.mph-carousel-pill');
+        var prevBtn = wrapper.querySelector('.mph-carousel-arrow--prev');
+        var nextBtn = wrapper.querySelector('.mph-carousel-arrow--next');
+        var currentIdx = 0;
+
+        function showSlide(idx) {
+          if (idx < 0) idx = slides.length - 1;
+          if (idx >= slides.length) idx = 0;
+          currentIdx = idx;
+          slides.forEach(function(s, i) {
+            s.classList.toggle('mobile-active', i === idx);
+          });
+          pills.forEach(function(p, i) {
+            p.classList.toggle('active', i === idx);
+          });
+          // Resize any charts in the newly visible slide
+          setTimeout(function() {
+            var canvases = slides[idx].querySelectorAll('canvas');
+            canvases.forEach(function(c) {
+              var chart = (typeof Chart !== 'undefined') && Chart.getChart(c);
+              if (chart) chart.resize();
+            });
+          }, 100);
+        }
+
+        // Set first slide active
+        showSlide(0);
+
+        // Override pill clicks for mobile
+        pills.forEach(function(pill, i) {
+          pill.addEventListener('click', function(e) {
+            if (isMobile.matches) {
+              e.stopImmediatePropagation();
+              showSlide(i);
+            }
+          }, true);
+        });
+
+        // Override arrow clicks for mobile
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function(e) {
+            if (isMobile.matches) {
+              e.stopImmediatePropagation();
+              showSlide(currentIdx - 1);
+            }
+          }, true);
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function(e) {
+            if (isMobile.matches) {
+              e.stopImmediatePropagation();
+              showSlide(currentIdx + 1);
+            }
+          }, true);
+        }
+
+        // Touch swipe support
+        var touchStartX = 0;
+        var carousel = wrapper.querySelector('.mph-carousel');
+        if (carousel && isMobile.matches) {
+          carousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+          }, { passive: true });
+          carousel.addEventListener('touchend', function(e) {
+            var dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 50) {
+              if (dx < 0) showSlide(currentIdx + 1);
+              else showSlide(currentIdx - 1);
+            }
+          }, { passive: true });
+        }
+      });
+    }
+
+    if (isMobile.matches) {
+      activateMobileCarousels();
+    }
+
+    // Handle resize/orientation change
+    isMobile.addEventListener('change', function(e) {
+      if (e.matches) {
+        activateMobileCarousels();
+      } else {
+        // Desktop: remove mobile-active classes, let CSS flex scroll work
+        ['mphCarousel', 'skillsCarousel'].forEach(function(id) {
+          var wrapper = document.getElementById(id);
+          if (!wrapper) return;
+          wrapper.querySelectorAll('.mph-slide').forEach(function(s) {
+            s.classList.remove('mobile-active');
+          });
+        });
+      }
+    });
   })();
 
   </script>

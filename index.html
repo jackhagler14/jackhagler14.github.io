@@ -5641,6 +5641,816 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ============================================
+   SKILLS CAROUSEL DEMOS
+   ============================================ */
+
+/* ---- HubSpot Demo ---- */
+.hubspot-demo {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+.hubspot-header {
+  background: #FF5C35;
+  color: #fff;
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="dark"] .hubspot-header {
+  background: #D4421E;
+}
+
+.hubspot-header svg { flex-shrink: 0; opacity: 0.9; }
+
+.hubspot-body {
+  padding: var(--space-4);
+}
+
+.hubspot-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.hubspot-kpi {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  text-align: center;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.hubspot-kpi:hover {
+  border-color: #FF5C35;
+  box-shadow: 0 0 0 1px rgba(255,92,53,0.15);
+}
+
+.hubspot-kpi__value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #FF5C35;
+  line-height: 1.2;
+}
+
+[data-theme="dark"] .hubspot-kpi__value {
+  color: #FF8C6B;
+}
+
+.hubspot-kpi__label {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hubspot-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.hubspot-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+}
+
+.hubspot-panel__title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.hubspot-search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: 2px var(--space-2);
+}
+
+.hubspot-search svg { flex-shrink: 0; color: var(--color-text-muted); }
+
+.hubspot-search input {
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 0.72rem;
+  padding: 2px 0;
+  width: 110px;
+  outline: none;
+}
+
+.hubspot-table-wrap {
+  overflow-x: auto;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.hubspot-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+}
+
+.hubspot-table th {
+  text-align: left;
+  padding: var(--space-2) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  position: sticky;
+  top: 0;
+  background: var(--color-surface);
+}
+
+.hubspot-table td {
+  padding: var(--space-2) var(--space-2);
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.hubspot-status {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+
+.hubspot-status--active { background: rgba(34,197,94,0.12); color: #16a34a; }
+.hubspot-status--lead { background: rgba(59,130,246,0.12); color: #2563eb; }
+.hubspot-status--inactive { background: rgba(156,163,175,0.12); color: #6b7280; }
+
+[data-theme="dark"] .hubspot-status--active { background: rgba(34,197,94,0.2); color: #4ade80; }
+[data-theme="dark"] .hubspot-status--lead { background: rgba(59,130,246,0.2); color: #60a5fa; }
+[data-theme="dark"] .hubspot-status--inactive { background: rgba(156,163,175,0.2); color: #9ca3af; }
+
+/* ---- SQL Demo ---- */
+.sql-demo {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+.sql-header {
+  background: #1E1E2E;
+  color: #CDD6F4;
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.sql-header svg { flex-shrink: 0; opacity: 0.85; }
+
+.sql-body {
+  padding: var(--space-4);
+}
+
+.sql-presets {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.sql-preset {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3);
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.sql-preset:hover, .sql-preset.active {
+  background: rgba(139,233,253,0.1);
+  border-color: #89B4FA;
+  color: #89B4FA;
+}
+
+[data-theme="dark"] .sql-preset:hover, [data-theme="dark"] .sql-preset.active {
+  background: rgba(137,180,250,0.15);
+}
+
+.sql-editor {
+  background: #1E1E2E;
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-3);
+  overflow-x: auto;
+}
+
+.sql-code {
+  margin: 0;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: #CDD6F4;
+  white-space: pre;
+}
+
+.sql-code .sql-kw { color: #CBA6F7; font-weight: 600; }
+.sql-code .sql-fn { color: #89B4FA; }
+.sql-code .sql-str { color: #A6E3A1; }
+.sql-code .sql-num { color: #FAB387; }
+.sql-code .sql-col { color: #F9E2AF; }
+.sql-code .sql-tbl { color: #89DCEB; }
+
+.sql-run {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: #89B4FA;
+  color: #1E1E2E;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  margin-bottom: var(--space-3);
+}
+
+.sql-run:hover { background: #B4D0FB; }
+.sql-run:active { transform: scale(0.97); }
+
+.sql-results {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.sql-results__status {
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border-light);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.sql-results__status.sql-results__status--success {
+  color: #A6E3A1;
+}
+
+.sql-table-wrap {
+  overflow-x: auto;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.sql-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.sql-table th {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  color: #89B4FA;
+  font-weight: 600;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  position: sticky;
+  top: 0;
+  background: var(--color-surface);
+}
+
+.sql-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* ---- Web Dev Demo ---- */
+.webdev-demo {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+.webdev-header {
+  background: #2D2D2D;
+  color: #E0E0E0;
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.webdev-header svg { flex-shrink: 0; opacity: 0.85; }
+
+.webdev-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 260px;
+}
+
+.webdev-editor {
+  border-right: 1px solid var(--color-border-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.webdev-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+}
+
+.webdev-tab {
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.webdev-tab:hover { color: var(--color-text); }
+
+.webdev-tab.active {
+  color: #E06C75;
+  border-bottom-color: #E06C75;
+}
+
+.webdev-code {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: #ABB2BF;
+  background: #282C34;
+  flex: 1;
+  overflow: auto;
+  white-space: pre;
+}
+
+.webdev-code .wd-tag { color: #E06C75; }
+.webdev-code .wd-attr { color: #D19A66; }
+.webdev-code .wd-val { color: #98C379; }
+.webdev-code .wd-prop { color: #56B6C2; }
+.webdev-code .wd-sel { color: #E06C75; }
+.webdev-code .wd-brace { color: #ABB2BF; }
+.webdev-code .wd-kw { color: #C678DD; }
+.webdev-code .wd-fn { color: #61AFEF; }
+.webdev-code .wd-str { color: #98C379; }
+.webdev-code .wd-cmt { color: #5C6370; font-style: italic; }
+
+.webdev-preview {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+}
+
+.webdev-preview__label {
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.webdev-preview__frame {
+  flex: 1;
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mini card preview inside webdev */
+.webdev-minicard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: center;
+  max-width: 200px;
+  width: 100%;
+  box-shadow: var(--shadow-sm);
+}
+
+.webdev-minicard__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), rgba(var(--color-accent-rgb), 0.6));
+  margin: 0 auto var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.webdev-minicard__name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.webdev-minicard__role {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.webdev-minicard__btn {
+  display: inline-block;
+  margin-top: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+/* ---- Microsoft 365 Demo ---- */
+.ms365-demo {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+.ms365-header {
+  background: #0078D4;
+  color: #fff;
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="dark"] .ms365-header {
+  background: #005A9E;
+}
+
+.ms365-header svg { flex-shrink: 0; opacity: 0.9; }
+
+.ms365-body {
+  padding: var(--space-4);
+}
+
+.ms365-apps {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.ms365-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: default;
+  transition: background 0.15s;
+  min-width: 56px;
+}
+
+.ms365-app:hover {
+  background: var(--color-surface);
+}
+
+.ms365-app__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--app-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.ms365-app__name {
+  font-size: 0.65rem;
+  color: var(--color-text-secondary);
+}
+
+.ms365-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.ms365-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+}
+
+.ms365-panel__title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.ms365-activity-feed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.ms365-activity {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+}
+
+.ms365-activity__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.ms365-activity__text {
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.ms365-activity__time {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin-top: 1px;
+}
+
+/* ---- AI & Prompt Demo ---- */
+.aiprompt-demo {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+.aiprompt-header {
+  background: #6C5CE7;
+  color: #fff;
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="dark"] .aiprompt-header {
+  background: #5A4BD1;
+}
+
+.aiprompt-header svg { flex-shrink: 0; opacity: 0.9; }
+
+.aiprompt-body {
+  padding: var(--space-4);
+}
+
+.aiprompt-chat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  max-height: 240px;
+  overflow-y: auto;
+  padding: var(--space-2) 0;
+}
+
+.aiprompt-msg {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+
+.aiprompt-msg--ai {
+  flex-direction: row;
+}
+
+.aiprompt-msg--user {
+  flex-direction: row;
+}
+
+.aiprompt-msg__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.aiprompt-msg--user .aiprompt-msg__avatar {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.aiprompt-msg--ai .aiprompt-msg__avatar {
+  background: #6C5CE7;
+  color: #fff;
+}
+
+[data-theme="dark"] .aiprompt-msg--ai .aiprompt-msg__avatar {
+  background: #5A4BD1;
+}
+
+.aiprompt-msg__bubble {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  max-width: 80%;
+}
+
+.aiprompt-msg--ai .aiprompt-msg__bubble {
+  background: rgba(108,92,231,0.06);
+  border-color: rgba(108,92,231,0.15);
+}
+
+[data-theme="dark"] .aiprompt-msg--ai .aiprompt-msg__bubble {
+  background: rgba(108,92,231,0.12);
+  border-color: rgba(108,92,231,0.25);
+}
+
+.aiprompt-input {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+}
+
+.aiprompt-input input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  outline: none;
+}
+
+.aiprompt-input button {
+  background: #6C5CE7;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  cursor: default;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+}
+
+.aiprompt-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.aiprompt-stat {
+  text-align: center;
+  padding: var(--space-2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+}
+
+.aiprompt-stat__value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #6C5CE7;
+  line-height: 1.2;
+}
+
+[data-theme="dark"] .aiprompt-stat__value {
+  color: #A29BFE;
+}
+
+.aiprompt-stat__label {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Skills Carousel Responsive ---- */
+@media (max-width: 768px) {
+  .hubspot-kpis, .aiprompt-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hubspot-panels, .ms365-panels {
+    grid-template-columns: 1fr;
+  }
+  .webdev-body {
+    grid-template-columns: 1fr;
+  }
+  .webdev-editor {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  .webdev-code {
+    max-height: 160px;
+  }
+  .webdev-preview__frame {
+    min-height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hubspot-kpis, .aiprompt-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ms365-apps {
+    justify-content: center;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -6779,37 +7589,233 @@ h1, h2, h3, h4, h5, h6 {
           <p class="section__label">Skills</p>
           <h2 class="section__title">What I Bring</h2>
         </div>
-        <div class="skills__categories">
-          <div class="reveal">
-            <p class="skills__category-label">Communications</p>
-            <div class="skills__pills">
-              <span class="skill-pill">Cross-Cultural Communication</span>
-              <span class="skill-pill">Emotional Intelligence</span>
-              <span class="skill-pill">Stakeholder Communication</span>
-              <span class="skill-pill">Storytelling & Presentation</span>
+        <div class="mph-carousel-wrapper reveal" id="skillsCarousel">
+          <div class="mph-carousel">
+
+            <!-- Slide 0: HubSpot CRM -->
+            <div class="mph-slide" data-slide="0">
+              <div class="section__header" style="margin-bottom: var(--space-6);">
+                <h2 class="section__title">HubSpot CRM</h2>
+                <p class="analytics__intro" style="margin-top: var(--space-6);">Certified in HubSpot Contextual Marketing and Email Marketing. Built and managed email campaigns, segmented contact lists, and tracked engagement metrics to drive client retention and conversion.</p>
+              </div>
+              <div class="hubspot-demo">
+                <div class="hubspot-header">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  HubSpot CRM &mdash; Dashboard
+                </div>
+                <div class="hubspot-body">
+                  <div class="hubspot-kpis">
+                    <div class="hubspot-kpi">
+                      <div class="hubspot-kpi__value">1,247</div>
+                      <div class="hubspot-kpi__label">Contacts</div>
+                    </div>
+                    <div class="hubspot-kpi">
+                      <div class="hubspot-kpi__value">$847K</div>
+                      <div class="hubspot-kpi__label">Deals</div>
+                    </div>
+                    <div class="hubspot-kpi">
+                      <div class="hubspot-kpi__value">3,420</div>
+                      <div class="hubspot-kpi__label">Emails Sent</div>
+                    </div>
+                    <div class="hubspot-kpi">
+                      <div class="hubspot-kpi__value">34.2%</div>
+                      <div class="hubspot-kpi__label">Open Rate</div>
+                    </div>
+                  </div>
+                  <div class="hubspot-panels">
+                    <div class="hubspot-panel hubspot-panel--chart">
+                      <div class="hubspot-panel__title">Email Campaign Performance</div>
+                      <canvas id="hubspotChart" width="400" height="180"></canvas>
+                    </div>
+                    <div class="hubspot-panel hubspot-panel--table">
+                      <div class="hubspot-panel__title">
+                        Contacts
+                        <div class="hubspot-search">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                          <input type="text" id="hubspotSearch" placeholder="Search contacts...">
+                        </div>
+                      </div>
+                      <div class="hubspot-table-wrap">
+                        <table class="hubspot-table">
+                          <thead>
+                            <tr><th>Name</th><th>Email</th><th>Status</th><th>Last Activity</th></tr>
+                          </thead>
+                          <tbody id="hubspotContactsBody"></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <!-- Slide 1: SQL & Database Management -->
+            <div class="mph-slide" data-slide="1">
+              <div class="section__header" style="margin-bottom: var(--space-6);">
+                <h2 class="section__title">SQL &amp; Database Management</h2>
+                <p class="analytics__intro" style="margin-top: var(--space-6);">Proficient in SQL for data extraction, aggregation, and reporting. Write queries to analyze sales trends, generate pivot summaries, and support data-driven decision-making across operations.</p>
+              </div>
+              <div class="sql-demo">
+                <div class="sql-header">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                  SQL Console
+                </div>
+                <div class="sql-body">
+                  <div class="sql-presets">
+                    <button class="sql-preset active" data-query="top">Top Categories</button>
+                    <button class="sql-preset" data-query="monthly">Monthly Trend</button>
+                    <button class="sql-preset" data-query="state">State Summary</button>
+                  </div>
+                  <div class="sql-editor">
+                    <pre class="sql-code" id="sqlCode">SELECT category, state, SUM(qty) as total
+FROM sales
+GROUP BY category, state
+ORDER BY total DESC
+LIMIT 10;</pre>
+                  </div>
+                  <button class="sql-run" id="sqlRunBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Run Query
+                  </button>
+                  <div class="sql-results" id="sqlResults">
+                    <div class="sql-results__status" id="sqlStatus">Ready</div>
+                    <div class="sql-table-wrap">
+                      <table class="sql-table" id="sqlTable">
+                        <thead id="sqlThead"></thead>
+                        <tbody id="sqlTbody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2: HTML, CSS & JavaScript -->
+            <div class="mph-slide" data-slide="2">
+              <div class="section__header" style="margin-bottom: var(--space-6);">
+                <h2 class="section__title">HTML, CSS &amp; JavaScript</h2>
+                <p class="analytics__intro" style="margin-top: var(--space-6);">Built this entire portfolio from scratch using HTML, CSS, and JavaScript &mdash; no frameworks or templates. Proficient in responsive design, CSS animations, DOM manipulation, and GitHub-based version control.</p>
+              </div>
+              <div class="webdev-demo">
+                <div class="webdev-header">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  Code Editor
+                </div>
+                <div class="webdev-body">
+                  <div class="webdev-editor">
+                    <div class="webdev-tabs">
+                      <button class="webdev-tab active" data-lang="html">HTML</button>
+                      <button class="webdev-tab" data-lang="css">CSS</button>
+                      <button class="webdev-tab" data-lang="js">JS</button>
+                    </div>
+                    <pre class="webdev-code" id="webdevCode"></pre>
+                  </div>
+                  <div class="webdev-preview" id="webdevPreview">
+                    <div class="webdev-preview__label">Preview</div>
+                    <div class="webdev-preview__frame" id="webdevFrame"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: Microsoft 365 -->
+            <div class="mph-slide" data-slide="3">
+              <div class="section__header" style="margin-bottom: var(--space-6);">
+                <h2 class="section__title">Microsoft 365</h2>
+                <p class="analytics__intro" style="margin-top: var(--space-6);">Certified in Microsoft 365 Fundamentals. Led platform migrations, managed admin configurations, and trained teams on Excel, Teams, SharePoint, and Outlook to modernize business operations.</p>
+              </div>
+              <div class="ms365-demo">
+                <div class="ms365-header">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                  Microsoft 365 &mdash; Admin Center
+                </div>
+                <div class="ms365-body">
+                  <div class="ms365-apps">
+                    <div class="ms365-app" style="--app-color: #0078D4"><div class="ms365-app__icon">&#9993;</div><div class="ms365-app__name">Outlook</div></div>
+                    <div class="ms365-app" style="--app-color: #217346"><div class="ms365-app__icon">&#9638;</div><div class="ms365-app__name">Excel</div></div>
+                    <div class="ms365-app" style="--app-color: #6264A7"><div class="ms365-app__icon">&#9830;</div><div class="ms365-app__name">Teams</div></div>
+                    <div class="ms365-app" style="--app-color: #038387"><div class="ms365-app__icon">&#9670;</div><div class="ms365-app__name">SharePoint</div></div>
+                    <div class="ms365-app" style="--app-color: #0078D4"><div class="ms365-app__icon">&#9729;</div><div class="ms365-app__name">OneDrive</div></div>
+                  </div>
+                  <div class="ms365-panels">
+                    <div class="ms365-panel ms365-panel--activity">
+                      <div class="ms365-panel__title">Recent Activity</div>
+                      <div class="ms365-activity-feed" id="ms365Feed">
+                        <div class="ms365-activity"><span class="ms365-activity__dot" style="background:#0078D4"></span><div><div class="ms365-activity__text">Migrated 750+ accounts to Microsoft 365</div><div class="ms365-activity__time">2 weeks ago</div></div></div>
+                        <div class="ms365-activity"><span class="ms365-activity__dot" style="background:#217346"></span><div><div class="ms365-activity__text">Created Excel pivot reports for Q4 analysis</div><div class="ms365-activity__time">3 weeks ago</div></div></div>
+                        <div class="ms365-activity"><span class="ms365-activity__dot" style="background:#6264A7"></span><div><div class="ms365-activity__text">Configured Teams channels for 12 departments</div><div class="ms365-activity__time">1 month ago</div></div></div>
+                        <div class="ms365-activity"><span class="ms365-activity__dot" style="background:#038387"></span><div><div class="ms365-activity__text">Built SharePoint intranet for company wiki</div><div class="ms365-activity__time">1 month ago</div></div></div>
+                        <div class="ms365-activity"><span class="ms365-activity__dot" style="background:#0078D4"></span><div><div class="ms365-activity__text">Trained 40+ staff on OneDrive best practices</div><div class="ms365-activity__time">2 months ago</div></div></div>
+                      </div>
+                    </div>
+                    <div class="ms365-panel ms365-panel--chart">
+                      <div class="ms365-panel__title">App Adoption Rates</div>
+                      <canvas id="ms365Chart" width="300" height="200"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4: AI & Prompt Engineering -->
+            <div class="mph-slide" data-slide="4">
+              <div class="section__header" style="margin-bottom: var(--space-6);">
+                <h2 class="section__title">AI &amp; Prompt Engineering</h2>
+                <p class="analytics__intro" style="margin-top: var(--space-6);">Directed the complete development of this portfolio through iterative AI prompting. Demonstrates AI literacy, technical direction, and the ability to translate complex requirements into production-quality deliverables.</p>
+              </div>
+              <div class="aiprompt-demo">
+                <div class="aiprompt-header">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                  AI Assistant
+                </div>
+                <div class="aiprompt-body">
+                  <div class="aiprompt-chat" id="aipromptChat">
+                    <div class="aiprompt-msg aiprompt-msg--user">
+                      <div class="aiprompt-msg__avatar">JH</div>
+                      <div class="aiprompt-msg__bubble">Build a portfolio website with dark mode, scroll animations, and interactive dashboards.</div>
+                    </div>
+                    <div class="aiprompt-msg aiprompt-msg--ai">
+                      <div class="aiprompt-msg__avatar">AI</div>
+                      <div class="aiprompt-msg__bubble">I'll create a single-page portfolio with:<br>&bull; Dark/light theme toggle with CSS variables<br>&bull; Intersection Observer scroll animations<br>&bull; Chart.js interactive dashboards<br>&bull; Responsive carousel components<br>&bull; 9,800+ lines of hand-directed code</div>
+                    </div>
+                    <div class="aiprompt-msg aiprompt-msg--user">
+                      <div class="aiprompt-msg__avatar">JH</div>
+                      <div class="aiprompt-msg__bubble">Add interactive demos for each tool I've used &mdash; make them look like real app interfaces.</div>
+                    </div>
+                    <div class="aiprompt-msg aiprompt-msg--ai">
+                      <div class="aiprompt-msg__avatar">AI</div>
+                      <div class="aiprompt-msg__bubble">Done! Built realistic mini-app demos for Dynamics 365, Tableau, TaxDome, Sortly, Asana, Google Suite, and more &mdash; each with working search, filters, and live charts.</div>
+                    </div>
+                  </div>
+                  <div class="aiprompt-input">
+                    <input type="text" placeholder="Ask me to build something..." disabled>
+                    <button disabled>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                  </div>
+                  <div class="aiprompt-stats">
+                    <div class="aiprompt-stat"><div class="aiprompt-stat__value">500+</div><div class="aiprompt-stat__label">Prompts Written</div></div>
+                    <div class="aiprompt-stat"><div class="aiprompt-stat__value">25+</div><div class="aiprompt-stat__label">Features Built</div></div>
+                    <div class="aiprompt-stat"><div class="aiprompt-stat__value">9,800+</div><div class="aiprompt-stat__label">Lines of Code</div></div>
+                    <div class="aiprompt-stat"><div class="aiprompt-stat__value">7</div><div class="aiprompt-stat__label">Tools Integrated</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div class="reveal reveal-delay-1">
-            <p class="skills__category-label">Data & AI</p>
-            <div class="skills__pills">
-              <span class="skill-pill">AI Literacy</span>
-              <span class="skill-pill">Cloud Migration Strategy</span>
-              <span class="skill-pill">Cybersecurity Awareness</span>
-              <span class="skill-pill">Data Visualization</span>
-              <span class="skill-pill">Predictive Analytics</span>
+
+          <!-- Carousel Navigation -->
+          <div class="mph-carousel-nav">
+            <button class="mph-carousel-arrow mph-carousel-arrow--prev" aria-label="Previous slide">&#8592;</button>
+            <div class="mph-carousel-pills">
+              <button class="mph-carousel-pill active" data-index="0">HubSpot</button>
+              <button class="mph-carousel-pill" data-index="1">SQL</button>
+              <button class="mph-carousel-pill" data-index="2">HTML/CSS/JS</button>
+              <button class="mph-carousel-pill" data-index="3">Microsoft 365</button>
+              <button class="mph-carousel-pill" data-index="4">AI &amp; Prompts</button>
             </div>
-          </div>
-          <div class="reveal reveal-delay-2">
-            <p class="skills__category-label">Operations & Project Management</p>
-            <div class="skills__pills">
-              <span class="skill-pill">AI-Driven Project Intelligence</span>
-              <span class="skill-pill">Change Management</span>
-              <span class="skill-pill">Cross-Functional Collaboration</span>
-              <span class="skill-pill">Digital Transformation</span>
-              <span class="skill-pill">Financial Management</span>
-              <span class="skill-pill">Standards Compliance</span>
-              <span class="skill-pill">Vendor Coordination</span>
-            </div>
+            <button class="mph-carousel-arrow mph-carousel-arrow--next" aria-label="Next slide">&#8594;</button>
           </div>
         </div>
       </div>
@@ -9841,6 +10847,320 @@ h1, h2, h3, h4, h5, h6 {
         goToSlide(idx);
       }
     });
+  })();
+
+  /* ============================================
+     SKILLS SHOWCASE CAROUSEL
+     ============================================ */
+  (function() {
+    var wrapper = document.getElementById('skillsCarousel');
+    if (!wrapper) return;
+    var carousel = wrapper.querySelector('.mph-carousel');
+    var slides = wrapper.querySelectorAll('.mph-slide');
+    var pills = wrapper.querySelectorAll('.mph-carousel-pill');
+    var prevBtn = wrapper.querySelector('.mph-carousel-arrow--prev');
+    var nextBtn = wrapper.querySelector('.mph-carousel-arrow--next');
+    var currentIndex = 0;
+    var slideCount = slides.length;
+    var isDragging = false, startX = 0, scrollStart = 0;
+
+    function goToSlide(index) {
+      if (index < 0) index = slideCount - 1;
+      if (index >= slideCount) index = 0;
+      currentIndex = index;
+      var target = slides[index];
+      carousel.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+      pills.forEach(function(p, i) {
+        p.classList.toggle('active', i === index);
+      });
+      setTimeout(function() {
+        var canvases = target.querySelectorAll('canvas');
+        canvases.forEach(function(c) {
+          var chart = Chart.getChart(c);
+          if (chart) chart.resize();
+        });
+      }, 400);
+    }
+
+    pills.forEach(function(pill, i) {
+      pill.addEventListener('click', function() { goToSlide(i); });
+    });
+    prevBtn.addEventListener('click', function() { goToSlide(currentIndex - 1); });
+    nextBtn.addEventListener('click', function() { goToSlide(currentIndex + 1); });
+
+    carousel.addEventListener('scroll', function() {
+      if (isDragging) return;
+      var scrollLeft = carousel.scrollLeft;
+      var slideWidth = slides[0].offsetWidth;
+      var idx = Math.round(scrollLeft / slideWidth);
+      if (idx !== currentIndex && idx >= 0 && idx < slideCount) {
+        currentIndex = idx;
+        pills.forEach(function(p, i) { p.classList.toggle('active', i === idx); });
+      }
+    }, { passive: true });
+
+    carousel.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollStart = carousel.scrollLeft;
+      carousel.classList.add('grabbing');
+    });
+    carousel.addEventListener('mousemove', function(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      var x = e.pageX - carousel.offsetLeft;
+      carousel.scrollLeft = scrollStart - (x - startX);
+    });
+    carousel.addEventListener('mouseup', function() {
+      isDragging = false;
+      carousel.classList.remove('grabbing');
+      var slideWidth = slides[0].offsetWidth;
+      var idx = Math.round(carousel.scrollLeft / slideWidth);
+      goToSlide(idx);
+    });
+    carousel.addEventListener('mouseleave', function() {
+      if (isDragging) {
+        isDragging = false;
+        carousel.classList.remove('grabbing');
+        var slideWidth = slides[0].offsetWidth;
+        var idx = Math.round(carousel.scrollLeft / slideWidth);
+        goToSlide(idx);
+      }
+    });
+
+    /* ---- HubSpot CRM Demo ---- */
+    (function() {
+      // KPI chart
+      var ctx = document.getElementById('hubspotChart');
+      if (ctx) {
+        new Chart(ctx.getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+              label: 'Open Rate %',
+              data: [28, 31, 34, 30, 36, 34],
+              backgroundColor: 'rgba(255,92,53,0.7)',
+              borderRadius: 4,
+              barThickness: 20
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 50,
+                ticks: { font: { size: 10 }, color: '#999' },
+                grid: { color: 'rgba(128,128,128,0.1)' }
+              },
+              x: {
+                ticks: { font: { size: 10 }, color: '#999' },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+
+      // Contacts table
+      var contacts = [
+        { name: 'Sarah Johnson', email: 'sarah.j@acme.com', status: 'Active', statusClass: 'active', activity: '2 hours ago' },
+        { name: 'Mike Chen', email: 'mchen@globex.io', status: 'Lead', statusClass: 'lead', activity: '1 day ago' },
+        { name: 'Emily Davis', email: 'emily.d@initech.com', status: 'Active', statusClass: 'active', activity: '3 hours ago' },
+        { name: 'James Wilson', email: 'jwilson@hooli.net', status: 'Inactive', statusClass: 'inactive', activity: '2 weeks ago' },
+        { name: 'Lisa Anderson', email: 'lisa.a@piedpiper.com', status: 'Lead', statusClass: 'lead', activity: '5 hours ago' },
+        { name: 'Robert Taylor', email: 'rtaylor@vance.co', status: 'Active', statusClass: 'active', activity: '1 hour ago' }
+      ];
+
+      var tbody = document.getElementById('hubspotContactsBody');
+      function renderContacts(filter) {
+        if (!tbody) return;
+        var f = (filter || '').toLowerCase();
+        tbody.innerHTML = '';
+        contacts.forEach(function(c) {
+          if (f && c.name.toLowerCase().indexOf(f) === -1 && c.email.toLowerCase().indexOf(f) === -1) return;
+          var tr = document.createElement('tr');
+          tr.innerHTML = '<td>' + c.name + '</td><td>' + c.email + '</td><td><span class="hubspot-status hubspot-status--' + c.statusClass + '">' + c.status + '</span></td><td>' + c.activity + '</td>';
+          tbody.appendChild(tr);
+        });
+      }
+      renderContacts('');
+
+      var searchInput = document.getElementById('hubspotSearch');
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          renderContacts(this.value);
+        });
+      }
+    })();
+
+    /* ---- SQL Demo ---- */
+    (function() {
+      var queries = {
+        top: {
+          sql: '<span class="sql-kw">SELECT</span> <span class="sql-col">category</span>, <span class="sql-col">state</span>, <span class="sql-fn">SUM</span>(<span class="sql-col">qty</span>) <span class="sql-kw">AS</span> <span class="sql-col">total</span>\n<span class="sql-kw">FROM</span> <span class="sql-tbl">sales</span>\n<span class="sql-kw">GROUP BY</span> <span class="sql-col">category</span>, <span class="sql-col">state</span>\n<span class="sql-kw">ORDER BY</span> <span class="sql-col">total</span> <span class="sql-kw">DESC</span>\n<span class="sql-kw">LIMIT</span> <span class="sql-num">10</span>;',
+          headers: ['category', 'state', 'total'],
+          rows: [
+            ['Electronics', 'CA', '14,520'],
+            ['Furniture', 'TX', '12,340'],
+            ['Electronics', 'NY', '11,890'],
+            ['Office Supplies', 'CA', '9,760'],
+            ['Furniture', 'CA', '8,430'],
+            ['Electronics', 'TX', '7,890'],
+            ['Office Supplies', 'NY', '6,540'],
+            ['Furniture', 'NY', '5,980'],
+            ['Electronics', 'FL', '5,210'],
+            ['Office Supplies', 'TX', '4,870']
+          ]
+        },
+        monthly: {
+          sql: '<span class="sql-kw">SELECT</span> <span class="sql-fn">DATE_TRUNC</span>(<span class="sql-str">\'month\'</span>, <span class="sql-col">order_date</span>) <span class="sql-kw">AS</span> <span class="sql-col">month</span>,\n       <span class="sql-fn">SUM</span>(<span class="sql-col">revenue</span>) <span class="sql-kw">AS</span> <span class="sql-col">total_rev</span>\n<span class="sql-kw">FROM</span> <span class="sql-tbl">sales</span>\n<span class="sql-kw">GROUP BY</span> <span class="sql-col">month</span>\n<span class="sql-kw">ORDER BY</span> <span class="sql-col">month</span>;',
+          headers: ['month', 'total_rev'],
+          rows: [
+            ['2024-01', '$142,300'],
+            ['2024-02', '$158,900'],
+            ['2024-03', '$167,400'],
+            ['2024-04', '$134,200'],
+            ['2024-05', '$189,700'],
+            ['2024-06', '$201,500']
+          ]
+        },
+        state: {
+          sql: '<span class="sql-kw">SELECT</span> <span class="sql-col">state</span>,\n       <span class="sql-fn">COUNT</span>(<span class="sql-kw">DISTINCT</span> <span class="sql-col">order_id</span>) <span class="sql-kw">AS</span> <span class="sql-col">orders</span>,\n       <span class="sql-fn">SUM</span>(<span class="sql-col">revenue</span>) <span class="sql-kw">AS</span> <span class="sql-col">revenue</span>\n<span class="sql-kw">FROM</span> <span class="sql-tbl">sales</span>\n<span class="sql-kw">GROUP BY</span> <span class="sql-col">state</span>\n<span class="sql-kw">ORDER BY</span> <span class="sql-col">revenue</span> <span class="sql-kw">DESC</span>\n<span class="sql-kw">LIMIT</span> <span class="sql-num">5</span>;',
+          headers: ['state', 'orders', 'revenue'],
+          rows: [
+            ['CA', '2,847', '$487,200'],
+            ['TX', '2,134', '$389,600'],
+            ['NY', '1,956', '$356,800'],
+            ['FL', '1,423', '$245,100'],
+            ['IL', '987', '$178,400']
+          ]
+        }
+      };
+
+      var codeEl = document.getElementById('sqlCode');
+      var runBtn = document.getElementById('sqlRunBtn');
+      var statusEl = document.getElementById('sqlStatus');
+      var thead = document.getElementById('sqlThead');
+      var tbody = document.getElementById('sqlTbody');
+      var presetBtns = wrapper.querySelectorAll('.sql-preset');
+      var currentQuery = 'top';
+
+      function loadQuery(key) {
+        currentQuery = key;
+        var q = queries[key];
+        if (codeEl) codeEl.innerHTML = q.sql;
+        if (thead) thead.innerHTML = '';
+        if (tbody) tbody.innerHTML = '';
+        if (statusEl) { statusEl.textContent = 'Ready'; statusEl.className = 'sql-results__status'; }
+        presetBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.query === key); });
+      }
+
+      function runQuery() {
+        var q = queries[currentQuery];
+        if (!q || !thead || !tbody || !statusEl) return;
+        statusEl.textContent = 'Running query...';
+        statusEl.className = 'sql-results__status';
+        thead.innerHTML = '';
+        tbody.innerHTML = '';
+
+        setTimeout(function() {
+          var headRow = '<tr>' + q.headers.map(function(h) { return '<th>' + h + '</th>'; }).join('') + '</tr>';
+          thead.innerHTML = headRow;
+          q.rows.forEach(function(row, i) {
+            setTimeout(function() {
+              var tr = document.createElement('tr');
+              tr.innerHTML = row.map(function(cell) { return '<td>' + cell + '</td>'; }).join('');
+              tr.style.opacity = '0';
+              tr.style.transform = 'translateY(4px)';
+              tbody.appendChild(tr);
+              requestAnimationFrame(function() {
+                tr.style.transition = 'opacity 0.2s, transform 0.2s';
+                tr.style.opacity = '1';
+                tr.style.transform = 'translateY(0)';
+              });
+            }, i * 60);
+          });
+          statusEl.textContent = q.rows.length + ' rows returned in 0.034s';
+          statusEl.className = 'sql-results__status sql-results__status--success';
+        }, 400);
+      }
+
+      loadQuery('top');
+
+      presetBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() { loadQuery(this.dataset.query); });
+      });
+
+      if (runBtn) runBtn.addEventListener('click', runQuery);
+    })();
+
+    /* ---- Web Dev Demo ---- */
+    (function() {
+      var snippets = {
+        html: '<span class="wd-tag">&lt;div</span> <span class="wd-attr">class</span>=<span class="wd-val">"card"</span><span class="wd-tag">&gt;</span>\n  <span class="wd-tag">&lt;div</span> <span class="wd-attr">class</span>=<span class="wd-val">"avatar"</span><span class="wd-tag">&gt;</span>JH<span class="wd-tag">&lt;/div&gt;</span>\n  <span class="wd-tag">&lt;h3&gt;</span>Jack Hagler<span class="wd-tag">&lt;/h3&gt;</span>\n  <span class="wd-tag">&lt;p&gt;</span>Operations &amp; Tech<span class="wd-tag">&lt;/p&gt;</span>\n  <span class="wd-tag">&lt;button&gt;</span>View Portfolio<span class="wd-tag">&lt;/button&gt;</span>\n<span class="wd-tag">&lt;/div&gt;</span>',
+        css: '<span class="wd-sel">.card</span> <span class="wd-brace">{</span>\n  <span class="wd-prop">text-align</span>: center;\n  <span class="wd-prop">padding</span>: 1.5rem;\n  <span class="wd-prop">border-radius</span>: 12px;\n  <span class="wd-prop">border</span>: 1px solid #e5e7eb;\n<span class="wd-brace">}</span>\n\n<span class="wd-sel">.avatar</span> <span class="wd-brace">{</span>\n  <span class="wd-prop">width</span>: 48px;\n  <span class="wd-prop">height</span>: 48px;\n  <span class="wd-prop">border-radius</span>: 50%;\n  <span class="wd-prop">background</span>: var(--accent);\n<span class="wd-brace">}</span>',
+        js: '<span class="wd-cmt">// Dark mode toggle</span>\n<span class="wd-kw">const</span> <span class="wd-fn">toggle</span> = document\n  .<span class="wd-fn">getElementById</span>(<span class="wd-str">\'theme\'</span>);\n\ntoggle.<span class="wd-fn">addEventListener</span>(<span class="wd-str">\'click\'</span>,\n  () <span class="wd-kw">=&gt;</span> <span class="wd-brace">{</span>\n    document.body.dataset\n      .theme <span class="wd-kw">=</span>\n      document.body.dataset\n        .theme <span class="wd-kw">===</span> <span class="wd-str">\'dark\'</span>\n        <span class="wd-kw">?</span> <span class="wd-str">\'light\'</span>\n        <span class="wd-kw">:</span> <span class="wd-str">\'dark\'</span>;\n  <span class="wd-brace">}</span>\n);'
+      };
+
+      var codeEl = document.getElementById('webdevCode');
+      var frameEl = document.getElementById('webdevFrame');
+      var tabs = wrapper.querySelectorAll('.webdev-tab');
+
+      function showSnippet(lang) {
+        if (codeEl) codeEl.innerHTML = snippets[lang] || '';
+        tabs.forEach(function(t) { t.classList.toggle('active', t.dataset.lang === lang); });
+      }
+
+      // Render the minicard preview
+      if (frameEl) {
+        frameEl.innerHTML = '<div class="webdev-minicard"><div class="webdev-minicard__avatar">JH</div><div class="webdev-minicard__name">Jack Hagler</div><div class="webdev-minicard__role">Operations &amp; Tech</div><div class="webdev-minicard__btn">View Portfolio</div></div>';
+      }
+
+      showSnippet('html');
+
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() { showSnippet(this.dataset.lang); });
+      });
+    })();
+
+    /* ---- Microsoft 365 Chart ---- */
+    (function() {
+      var ctx = document.getElementById('ms365Chart');
+      if (!ctx) return;
+      new Chart(ctx.getContext('2d'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Outlook', 'Excel', 'Teams', 'SharePoint', 'OneDrive'],
+          datasets: [{
+            data: [94, 87, 82, 68, 76],
+            backgroundColor: ['#0078D4', '#217346', '#6264A7', '#038387', '#0078D4'],
+            borderWidth: 0,
+            spacing: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '55%',
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                font: { size: 10 },
+                padding: 8,
+                usePointStyle: true,
+                pointStyleWidth: 8
+              }
+            }
+          }
+        }
+      });
+    })();
+
   })();
 
   </script>
